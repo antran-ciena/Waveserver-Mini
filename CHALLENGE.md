@@ -189,7 +189,7 @@ Simulate physical signal loss on a port via `inject-fault` and recover via `clea
 | Command | Behaviour |
 |---------|-----------|
 | `inject-fault <port>` | Set the port's fault flag. **Only allowed on admin-enabled ports.** |
-| `clear-fault <port>` | Clear the port's fault flag. **Always allowed**, even if admin-disabled. |
+| `clear-fault <port>` | Clear the port's fault flag. **Only allowed on admin-enabled ports.** |
 
 ### Hints
 
