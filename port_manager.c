@@ -50,8 +50,10 @@ void notify_port_state(uint8_t port_id)
     udp_port_state_change_t *payload = (udp_port_state_change_t *)udp_request.payload;
     payload->port_id = port_id;
     payload->operational_state = ports[port_idx].operational_state;
+    payload->fault_active = ports[port_idx].fault_active;
 
     send_udp_message_one_way(notify_socket, &udp_request, CONN_MANAGER_UDP);
+    send_udp_message_one_way(notify_socket, &udp_request, PROTECTION_MGR_UDP);
     LOG(LOG_DEBUG, "Notified conn-mgr: port_idx=%d, operational_state=%s",
         port_idx,
         ports[port_idx].operational_state == PORT_UP ? "UP" : "DOWN");
