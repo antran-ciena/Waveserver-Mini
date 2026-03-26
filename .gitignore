@@ -1,0 +1,15 @@
+# Build artifacts
+/cli
+/conn_manager
+/port_manager
+/traffic_manager
+
+# macOS debug symbol bundles
+/*.dSYM/
+
+# Runtime files
+/wsmini.log
+
+# Python cache
+__pycache__/
+*.pyc

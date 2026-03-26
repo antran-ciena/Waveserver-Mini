@@ -6,7 +6,7 @@ COMMON = common.c
 
 ALL = port_manager conn_manager traffic_manager cli
 
-.PHONY: all clean
+.PHONY: all clean setup run stop test rebuild cleanall
 
 all: $(ALL)
 
@@ -24,3 +24,21 @@ cli: cli.c $(COMMON)
 
 clean:
 	rm -f $(ALL)
+
+setup:
+	chmod +x start.sh test.py stop.sh
+
+run: all
+	./start.sh
+
+stop:
+	./stop.sh
+
+test: all
+	./test.py --no-build
+
+rebuild: clean all
+
+cleanall: clean
+	rm -f wsmini.log
+	rm -rf *.dSYM
