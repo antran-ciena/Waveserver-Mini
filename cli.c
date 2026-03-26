@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <strings.h>
+#include <ctype.h>
 #include <errno.h>
 #include <unistd.h>
 
@@ -246,18 +247,72 @@ void cmd_show_traffic_stats(void)
  */
 void cmd_show_logs(const char *level_filter, const char *service_filter)
 {
-    // TODO: F5 — Show Logs with Filtering (/3 pts)
-    //
-    // Read the shared log file (see LOG_FILE_PATH in common.h) and print its contents.
-    //
-    // Log lines follow this format:
-    //   [timestamp] [LEVEL] [service] [file:line] message
-    //
-    // Filtering rules:
-    //   - level_filter: if provided, only show lines whose level tag matches (i.e., "ERROR", "WARN", "DEBUG", "INFO"). 
-    //   - service_filter: if provided, only show lines from that service (i.e., "port_mgr", "conn_mgr", "traffic_mgr", "cli")
-    //   - Both filters can be active at the same time, and should be case insensitive
-    //   - If neither filter is set, print everything.
+    FILE *f = fopen(LOG_FILE_PATH, "r");
+    if (!f)
+    {
+        printf("[ERROR] Failed to open log file\n");
+        return;
+    }
+
+    char level_pattern[32] = {0};
+    if (level_filter && level_filter[0] != '\0')
+    {
+        snprintf(level_pattern, sizeof(level_pattern), "[%s]", level_filter);
+    }
+
+    char service_pattern[32] = {0};
+    if (service_filter && service_filter[0] != '\0')
+    {
+        size_t n = strlen(service_filter);
+        if (n > sizeof(service_pattern) - 3)
+            n = sizeof(service_pattern) - 3;
+
+        service_pattern[0] = '[';
+        for (size_t i = 0; i < n; i++)
+        {
+            char c = service_filter[i];
+            service_pattern[i + 1] = (c == '-') ? '_' : c;
+        }
+        service_pattern[n + 1] = ']';
+        service_pattern[n + 2] = '\0';
+    }
+
+    char line[1024];
+    while (fgets(line, sizeof(line), f) != NULL)
+    {
+        if (level_pattern[0] != '\0' && strcasestr(line, level_pattern) == NULL)
+            continue;
+        if (service_pattern[0] != '\0' && strcasestr(line, service_pattern) == NULL)
+            continue;
+
+        // Normalize the service tag for display: [port_mgr] -> [port-mgr].
+        // This keeps filtering behavior intact while matching CLI expectations.
+        int bracket_count = 0;
+        bool in_service_tag = false;
+        for (char *p = line; *p != '\0'; p++)
+        {
+            if (*p == '[')
+            {
+                bracket_count++;
+                if (bracket_count == 3)
+                    in_service_tag = true;
+                continue;
+            }
+
+            if (*p == ']' && in_service_tag)
+            {
+                in_service_tag = false;
+                continue;
+            }
+
+            if (in_service_tag && *p == '_')
+                *p = '-';
+        }
+
+        fputs(line, stdout);
+    }
+
+    fclose(f);
 }
 
 /**

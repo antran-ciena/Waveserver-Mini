@@ -218,12 +218,17 @@ int main()
         return 1;
     }
 
+    struct timeval rx_timeout = {.tv_sec = 1, .tv_usec = 0};
+    setsockopt(server_socket, SOL_SOCKET, SO_RCVTIMEO, &rx_timeout, sizeof(rx_timeout));
+
     notify_socket = create_udp_client();
     if (notify_socket < 0)
     {
         LOG(LOG_ERROR, "Failed to create notify socket - exiting");
         return 1;
     }
+
+    time_t last_health_check = time(NULL);
 
     while (true)
     {
@@ -246,18 +251,24 @@ int main()
             }
         }
 
-        // TODO: F6 — Health Check Cron Job (/2 pts)
-        //
-        // The health check should walk through every port and log a
-        // summary of its current state at LOG_INFO level.
-        // e.g.,
-        // [26-03-24 10:29:48] [INFO] [port_mgr] [port_manager.c:231] ----------------------------- HEALTH CHECK -----------------------------
-        // [26-03-24 10:29:48] [INFO] [port_mgr] [port_manager.c:235] port_idx=0 (LINE) admin=Disabled fault=None oper=DOWN received=0 dropped=0
-        // [26-03-24 10:29:48] [INFO] [port_mgr] [port_manager.c:235] port_idx=1 (LINE) admin=Disabled fault=None oper=DOWN received=0 dropped=0
-        // [26-03-24 10:29:48] [INFO] [port_mgr] [port_manager.c:235] port_idx=2 (CLIENT) admin=Disabled fault=None oper=DOWN received=0 dropped=0
-        // [26-03-24 10:29:48] [INFO] [port_mgr] [port_manager.c:235] port_idx=3 (CLIENT) admin=Disabled fault=None oper=DOWN received=0 dropped=0
-        // [26-03-24 10:29:48] [INFO] [port_mgr] [port_manager.c:235] port_idx=4 (CLIENT) admin=Disabled fault=None oper=DOWN received=0 dropped=1
-        // [26-03-24 10:29:48] [INFO] [port_mgr] [port_manager.c:235] port_idx=5 (CLIENT) admin=Disabled fault=None oper=DOWN received=0 dropped=1
+        time_t now = time(NULL);
+        if (now - last_health_check >= 5)
+        {
+            LOG(LOG_INFO, "----------------------------- HEALTH CHECK -----------------------------");
+            for (int i = 0; i < MAX_PORT_NUM; i++)
+            {
+                LOG(LOG_INFO,
+                    "port_idx=%d (%s) admin=%s fault=%s oper=%s received=%u dropped=%u",
+                    i,
+                    ports[i].type == LINE_PORT ? "LINE" : "CLIENT",
+                    ports[i].admin_enabled ? "Enabled" : "Disabled",
+                    ports[i].fault_active ? "Active" : "None",
+                    ports[i].operational_state == PORT_UP ? "UP" : "DOWN",
+                    ports[i].rx_frames,
+                    ports[i].dropped_frames);
+            }
+            last_health_check = now;
+        }
     }
     return 0;
 }
