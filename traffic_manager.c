@@ -66,6 +66,24 @@ void handle_start_traffic(const udp_message_t *req, udp_message_t *resp)
 void handle_stop_traffic(udp_message_t *resp)
 {
     // TODO: F4 — Stop Traffic Handler (/2 pts)
+    resp->status = STATUS_FAILURE;
+
+    if (stats.line_port != 0 && (stats.line_port < 1 || stats.line_port > 2)) 
+    {
+        LOG(LOG_ERROR, "[ERROR] Line port must be 1 or 2, got %d\n", stats.line_port);
+        return;
+    }
+
+    if (stats.client_port != 0 && (stats.client_port < 3 || stats.client_port > 6))
+    {
+        LOG(LOG_ERROR, "[ERROR] Client port must be 3–6, got %d\n", stats.client_port);
+        return;
+    }
+
+    stats.running = false;
+    resp->status = STATUS_SUCCESS;
+    LOG(LOG_INFO, "Traffic generation stopped (client=%u, line=%u, 0=random)",
+        stats.client_port, stats.line_port);
 }
 
 bool dispatch(const udp_message_t *req, udp_message_t *resp)
