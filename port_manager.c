@@ -4,12 +4,6 @@
 
 #define SERVICE_NAME "port_mgr"
 
-// TODO: F2 — Inject & Clear Fault (/8 pts)
-//
-// Implement inject-fault and clear-fault handlers + dispatch wiring.
-// Only support fault injection for ports that are admin-enabled.
-// We do not support this feature for ports that are admin-disabled.
-
 static port_t ports[MAX_PORT_NUM];
 static int notify_socket; // used to send to connection mgr
 
