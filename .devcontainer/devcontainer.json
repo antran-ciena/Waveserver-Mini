@@ -1,0 +1,4 @@
+{
+  "name": "ciena-devcontainer",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu"
+}
