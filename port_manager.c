@@ -163,6 +163,7 @@ bool dispatch(const udp_message_t *req, udp_message_t *resp)
         break;
     case MSG_SET_PORT:
         handle_set_port(req, resp);
+        break;
     case MSG_DELETE_PORT:
         handle_delete_port(req, resp);
         break;
