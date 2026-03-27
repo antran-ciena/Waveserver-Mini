@@ -18,16 +18,101 @@ void initialize_stats()
 
 void generate_traffic()
 {
-    // TODO: F1 — Traffic Generation (/8 pts)
-    //
-    // Generate an OTN frame, query the connection manager for a valid route,
-    // and forward or drop accordingly. Update both local traffic stats and
-    // the port manager's per-port counters.
-    //
-    // Refer to common.h for the relevant structs and message types.
-    // A port value of 0 in stats means "randomize within its valid range."
+    otn_frame_t frame = {0};
 
+    frame.header.client_port = (stats.client_port == 0)
+        ? (uint8_t)(3 + (rand() % 4))   // 3..6
+        : stats.client_port;
+
+    frame.header.line_port = (stats.line_port == 0)
+        ? (uint8_t)(1 + (rand() % 2))   // 1..2
+        : stats.line_port;
+
+    frame.header.frame_id = stats.next_frame_id++;
+
+    snprintf(frame.data, sizeof(frame.data), "Waveserver mini frame");
+
+    LOG(LOG_DEBUG, "Frame #%u generated: client-%u -> line-%u msg=\"%s\"",
+        frame.header.frame_id,
+        frame.header.client_port,
+        frame.header.line_port,
+        frame.data);
+
+    udp_message_t req = {0};
+    udp_message_t resp = {0};
+
+    req.msg_type = MSG_LOOKUP_CONNECTION;
+    req.status = STATUS_REQUEST;
+
+    udp_route_lookup_request_t *lookup =
+        (udp_route_lookup_request_t *)req.payload;
+    lookup->client_port = frame.header.client_port;
+    lookup->line_port = frame.header.line_port;
+
+    bool forwarded = false;
+
+    if (send_udp_message_and_receive(client_socket, &req, &resp, CONN_MANAGER_UDP) &&
+        resp.status == STATUS_SUCCESS)
+    {
+        udp_route_lookup_reply_t *reply =
+            (udp_route_lookup_reply_t *)resp.payload;
+
+        if (reply->operational_state == CONN_UP)
+        {
+            stats.total_forwarded++;
+            forwarded = true;
+
+            LOG(LOG_DEBUG, "Frame #%u FORWARDED: client-%u -> line-%u via %s",
+                frame.header.frame_id,
+                frame.header.client_port,
+                frame.header.line_port,
+                reply->conn_name);
+        }
+        else
+        {
+            stats.total_dropped++;
+
+            LOG(LOG_WARN, "Frame #%u DROPPED: connection %s is DOWN for client-%u line-%u",
+                frame.header.frame_id,
+                reply->conn_name,
+                frame.header.client_port,
+                frame.header.line_port);
+        }
+    }
+    else
+    {
+        stats.total_dropped++;
+
+        LOG(LOG_WARN, "Frame #%u DROPPED: no connection for client-%u line-%u",
+            frame.header.frame_id,
+            frame.header.client_port,
+            frame.header.line_port);
+    }
+
+    udp_message_t counter_msg = {0};
+    counter_msg.msg_type = MSG_UPDATE_COUNTERS;
+    counter_msg.status = STATUS_REQUEST;
+
+    udp_counter_update_t *counter =
+        (udp_counter_update_t *)counter_msg.payload;
+
+    counter->port_id = frame.header.client_port;
+    counter->pkts_rx = forwarded ? 1 : 0;
+    counter->pkts_dropped = forwarded ? 0 : 1;
+    send_udp_message_one_way(client_socket, &counter_msg, PORT_MANAGER_UDP);
+
+    memset(&counter_msg, 0, sizeof(counter_msg));
+    counter_msg.msg_type = MSG_UPDATE_COUNTERS;
+    counter_msg.status = STATUS_REQUEST;
+
+    counter = (udp_counter_update_t *)counter_msg.payload;
+    counter->port_id = frame.header.line_port;
+    counter->pkts_rx = forwarded ? 1 : 0;
+    counter->pkts_dropped = forwarded ? 0 : 1;
+    send_udp_message_one_way(client_socket, &counter_msg, PORT_MANAGER_UDP);
 }
+
+
 
 void handle_get_traffic_stats(udp_message_t *resp)
 {
@@ -65,8 +150,11 @@ void handle_start_traffic(const udp_message_t *req, udp_message_t *resp)
 
 void handle_stop_traffic(udp_message_t *resp)
 {
-    // TODO: F4 — Stop Traffic Handler (/2 pts)
+    stats.running = false;
+    resp->status = STATUS_SUCCESS;
+    LOG(LOG_INFO, "Traffic generation stopped");
 }
+
 
 bool dispatch(const udp_message_t *req, udp_message_t *resp)
 {
