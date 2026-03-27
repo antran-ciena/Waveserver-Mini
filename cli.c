@@ -158,7 +158,7 @@ void cmd_show_ports(void)
                (port->type == LINE_PORT) ? "line" : "client",
                (port->admin_enabled) ? "enabled" : "disabled",
                (port->fault_active) ? "yes" : "no",
-               (port->operational_state == PORT_UP) ? "UP" : "DOWN",
+               (port->operational_state == PORT_UP) ? "up" : "down",
                port->rx_frames,
                port->dropped_frames);
     }
