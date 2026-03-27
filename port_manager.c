@@ -65,7 +65,7 @@ void notify_port_state(uint8_t port_id)
 
 void recalculate_oper_state(port_t *port) {
     port_state_t prev_state = port->operational_state;
-    port->operational_state = (port->admin_enabled || !port->fault_active) ? PORT_UP : PORT_DOWN;
+    port->operational_state = (port->admin_enabled && (!port->fault_active)) ? PORT_UP : PORT_DOWN;
     
     if (port->operational_state != prev_state) {
         LOG(LOG_INFO, "port_idx=%d oper_state changed: %s -> %s (admin=%s fault=%s)",
