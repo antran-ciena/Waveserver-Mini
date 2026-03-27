@@ -1,0 +1,12 @@
+# Binaries
+port_manager
+conn_manager
+traffic_manager
+cli
+
+# Logs
+*.log
+wsmini.log
+
+# Build artifacts
+*.o

@@ -26,6 +26,59 @@ void generate_traffic()
     //
     // Refer to common.h for the relevant structs and message types.
     // A port value of 0 in stats means "randomize within its valid range."
+    //Note: Generate a frame using stats.client_port and stats.line_port. 
+    //A value of 0 means "randomize within its valid range" (client: 3–6, line: 1–2)
+
+    static const char *payloads[] = {
+        "Data payload alpha",
+        "Waveserver mini frame",
+        "OTN client traffic",
+        "Forwarding test pattern"
+    };
+    otn_frame_t frame = {0};
+    udp_message_t req = {0};
+    udp_message_t resp = {0};
+    udp_message_t counter_msg = {0};
+    udp_route_lookup_request_t *lookup = (udp_route_lookup_request_t *)req.payload;
+    udp_route_lookup_reply_t *route = (udp_route_lookup_reply_t *)resp.payload;
+    udp_counter_update_t *counter = (udp_counter_update_t *)counter_msg.payload;
+
+    frame.header.client_port = stats.client_port == 0 ? (uint8_t)(3 + (rand() % MAX_CLIENT_PORTS)) : stats.client_port;
+    frame.header.line_port = stats.line_port == 0 ? (uint8_t)(1 + (rand() % MAX_LINE_PORTS)) : stats.line_port;
+    frame.header.frame_id = stats.next_frame_id++;
+    strncpy(frame.data, payloads[rand() % (sizeof(payloads) / sizeof(payloads[0]))], sizeof(frame.data) - 1);
+
+    LOG(LOG_DEBUG, "Frame #%u generated: client-%u -> line-%u msg=\"%s\"",
+        frame.header.frame_id, frame.header.client_port, frame.header.line_port, frame.data);
+
+    req.msg_type = MSG_LOOKUP_CONNECTION;
+    req.status = STATUS_REQUEST;
+    lookup->client_port = frame.header.client_port;
+    lookup->line_port = frame.header.line_port;
+
+    counter_msg.msg_type = MSG_UPDATE_COUNTERS;
+    counter_msg.status = STATUS_REQUEST;
+
+    if (!send_udp_message_and_receive(client_socket, &req, &resp, CONN_MANAGER_UDP) ||
+        resp.status != STATUS_SUCCESS ||
+        route->operational_state != CONN_UP)
+    {
+        stats.total_dropped++;
+        counter->port_id = frame.header.client_port;
+        counter->pkts_rx = 0;
+        counter->pkts_dropped = 1;
+        send_udp_message_one_way(client_socket, &counter_msg, PORT_MANAGER_UDP);
+        LOG(LOG_WARN, "Frame #%u DROPPED: no connection for client-%u line-%u",
+            frame.header.frame_id, frame.header.client_port, frame.header.line_port);
+        return;
+    }
+    stats.total_forwarded++;
+    counter->port_id = frame.header.line_port;
+    counter->pkts_rx = 1;
+    counter->pkts_dropped = 0;
+    send_udp_message_one_way(client_socket, &counter_msg, PORT_MANAGER_UDP);
+    LOG(LOG_DEBUG, "Frame #%u forwarded: Client-%u -> Line-%u via %s",
+        frame.header.frame_id, frame.header.client_port, frame.header.line_port, route->conn_name);
 
 }
 
@@ -66,6 +119,9 @@ void handle_start_traffic(const udp_message_t *req, udp_message_t *resp)
 void handle_stop_traffic(udp_message_t *resp)
 {
     // TODO: F4 — Stop Traffic Handler (/2 pts)
+    stats.running = false;
+    resp->status = STATUS_SUCCESS;
+    LOG(LOG_INFO, "Traffic stopped");
 }
 
 bool dispatch(const udp_message_t *req, udp_message_t *resp)
