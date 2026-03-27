@@ -158,7 +158,7 @@ void cmd_show_ports(void)
                (port->type == LINE_PORT) ? "line" : "client",
                (port->admin_enabled) ? "enabled" : "disabled",
                (port->fault_active) ? "yes" : "no",
-               (port->operational_state == PORT_UP) ? "UP" : "DOWN",
+               (port->operational_state == PORT_UP) ? "up" : "down",
                port->rx_frames,
                port->dropped_frames);
     }
@@ -258,6 +258,70 @@ void cmd_show_logs(const char *level_filter, const char *service_filter)
     //   - service_filter: if provided, only show lines from that service (i.e., "port_mgr", "conn_mgr", "traffic_mgr", "cli")
     //   - Both filters can be active at the same time, and should be case insensitive
     //   - If neither filter is set, print everything.
+
+    FILE *f = fopen("wsmini.log", "r");
+    if (!f)
+    {
+        fprintf(stderr, "[ERROR] Could not open log file\n");
+        return;
+    }
+
+    char line[1024];
+    while (fgets(line, sizeof(line), f))
+    {
+        // If level_filter provided, extract [LEVEL] and match (case-insensitive)
+        // Log format: [timestamp] [LEVEL] [service] [file:line] message
+        if (level_filter)
+        {
+            char *bracket1 = strchr(line, '[');
+            if (!bracket1) continue;
+            char *bracket2 = strchr(bracket1 + 1, '[');
+            if (!bracket2) continue;
+            char *bracket_end = strchr(bracket2 + 1, ']');
+            if (!bracket_end) continue;
+
+            int level_len = bracket_end - bracket2 - 1;
+            if (level_len > 32) level_len = 32;
+            char level_buf[32];
+            strncpy(level_buf, bracket2 + 1, level_len);
+            level_buf[level_len] = '\0';
+
+            if (strcasecmp(level_buf, level_filter) != 0)
+                continue;
+        }
+
+        // If service_filter provided, extract [service] and match (case-insensitive)
+        // Log format: [timestamp] [LEVEL] [service] [file:line] message
+        if (service_filter)
+        {
+            char *search = line;
+            char *bracket = NULL;
+            // Find third bracket pair for service
+            for (int i = 0; i < 3; i++)
+            {
+                bracket = strchr(search, '[');
+                if (!bracket) break;
+                search = bracket + 1;
+            }
+            if (!bracket) continue;
+            char *bracket_end = strchr(bracket + 1, ']');
+            if (!bracket_end) continue;
+
+            int service_len = bracket_end - bracket - 1;
+            if (service_len > 32) service_len = 32;
+            char service_buf[32];
+            strncpy(service_buf, bracket + 1, service_len);
+            service_buf[service_len] = '\0';
+
+            if (strcasecmp(service_buf, service_filter) != 0)
+                continue;
+        }
+
+        // Line passed all filters, print it
+        printf("%s", line);
+    }
+
+    fclose(f);
 }
 
 /**
@@ -373,22 +437,14 @@ void cmd_delete_port(uint8_t port_id)
 
 void cmd_inject_fault(uint8_t port_id)
 {
-    // TODO: F2 — Inject Fault — CLI Side (/8 pts)
-    // On success: print the OK message below.
-    // printf("[OK] Fault injected on Port-%d (%s)\n", port_id, port_id <= 2 ? "line" : "client");
-    // On failure: print the ERROR message below.
-    // printf("[ERROR] Failed to inject fault\n");
-    printf("TODO: F2 — Inject Fault — CLI Side (/8 pts)\n");
+    if (exec_port_cmd(port_id, MSG_INJECT_FAULT, "inject-fault"))
+        printf("[OK] Fault injected on Port-%d (%s)\n", port_id, port_id <= 2 ? "line" : "client");
 }
 
 void cmd_clear_fault(uint8_t port_id)
 {
-    // TODO: F2 — Clear Fault — CLI Side (/8 pts)
-    // On success: print the OK message below.
-    // printf("[OK] Fault cleared on Port-%d (%s)\n", port_id, port_id <= 2 ? "line" : "client");
-    // On failure: print the ERROR message below.
-    // printf("[ERROR] Failed to clear fault\n");
-    printf("TODO: F2 — Clear Fault — CLI Side (/8 pts)\n");
+    if (exec_port_cmd(port_id, MSG_CLEAR_FAULT, "clear-fault"))
+        printf("[OK] Fault cleared on Port-%d (%s)\n", port_id, port_id <= 2 ? "line" : "client");
 }
 
 /**
@@ -417,13 +473,18 @@ void cmd_start_traffic(uint8_t client_port, uint8_t line_port)
  */
 void cmd_stop_traffic(void)
 {
-    // TODO: F4 — Stop Traffic CLI (/2 pts)
-    //
-    // Send a stop-traffic request to the traffic manager.
-    // Print the appropriate message based on the outcome:
-    // printf("[ERROR] Failed to stop traffic\n");
-    // printf("[OK] Traffic generation stopped\n");
-    printf("TODO: F4 — Stop Traffic CLI (/2 pts)\n");
+    udp_message_t req = {0};
+    req.msg_type = MSG_STOP_TRAFFIC;
+    req.status = STATUS_REQUEST;
+
+    udp_message_t resp = {0};
+    if (!send_and_receive(&req, &resp, TRAFFIC_MGR_UDP) || resp.status != STATUS_SUCCESS)
+    {
+        printf("[ERROR] Failed to stop traffic\n");
+        return;
+    }
+
+    printf("[OK] Traffic generation stopped\n");
 }
 
 /**
