@@ -15,6 +15,7 @@ void initialize_connections()
 
 bool get_port_info(uint8_t port_id, port_t *out)
 {
+    
     udp_message_t req = {0};
     req.msg_type = MSG_GET_PORT_INFO;
     req.status = STATUS_REQUEST;
@@ -35,7 +36,7 @@ bool get_port_info(uint8_t port_id, port_t *out)
         return false;
     }
 
-    memcpy(out, resp.payload, sizeof(out));
+    memcpy(out, resp.payload, sizeof(*out));
     return true;
 }
 
