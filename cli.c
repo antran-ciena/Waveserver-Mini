@@ -246,18 +246,70 @@ void cmd_show_traffic_stats(void)
  */
 void cmd_show_logs(const char *level_filter, const char *service_filter)
 {
-    // TODO: F5 — Show Logs with Filtering (/3 pts)
-    //
-    // Read the shared log file (see LOG_FILE_PATH in common.h) and print its contents.
-    //
-    // Log lines follow this format:
-    //   [timestamp] [LEVEL] [service] [file:line] message
-    //
-    // Filtering rules:
-    //   - level_filter: if provided, only show lines whose level tag matches (i.e., "ERROR", "WARN", "DEBUG", "INFO"). 
-    //   - service_filter: if provided, only show lines from that service (i.e., "port_mgr", "conn_mgr", "traffic_mgr", "cli")
-    //   - Both filters can be active at the same time, and should be case insensitive
-    //   - If neither filter is set, print everything.
+    FILE *file = fopen(LOG_FILE_PATH, "r");
+    if (!file)
+    {
+        fprintf(stderr, "[ERROR] Could not open log file\n");
+        return;
+    }
+
+    char line[512];
+    while (fgets(line, sizeof(line), file))
+    {
+        // Parse log line format: [timestamp] [LEVEL] [service] [file:line] message
+        // Find bracket pairs for level (2nd) and service (3rd)
+        
+        char *bracket_pos = line;
+        char *level_start = NULL;
+        char *level_end = NULL;
+        char *service_start = NULL;
+        char *service_end = NULL;
+        
+        // Skip to 1st bracket pair (timestamp)
+        bracket_pos = strchr(bracket_pos, '[');
+        if (!bracket_pos) continue;
+        bracket_pos = strchr(bracket_pos + 1, ']');
+        if (!bracket_pos) continue;
+        
+        // 2nd bracket pair (LEVEL)
+        bracket_pos = strchr(bracket_pos + 1, '[');
+        if (!bracket_pos) continue;
+        level_start = bracket_pos + 1;
+        level_end = strchr(level_start, ']');
+        if (!level_end) continue;
+        
+        // 3rd bracket pair (service)
+        bracket_pos = strchr(level_end + 1, '[');
+        if (!bracket_pos) continue;
+        service_start = bracket_pos + 1;
+        service_end = strchr(service_start, ']');
+        if (!service_end) continue;
+        
+        // Extract level and service into temporary buffers
+        char level[32] = {0};
+        char service[64] = {0};
+        
+        if (level_end > level_start && level_end - level_start < (int)sizeof(level))
+            strncpy(level, level_start, level_end - level_start);
+        
+        if (service_end > service_start && service_end - service_start < (int)sizeof(service))
+            strncpy(service, service_start, service_end - service_start);
+        
+        // Apply filters (case-insensitive comparison)!
+        bool matches = true;
+        
+        if (level_filter && strcasecmp(level, level_filter) != 0)
+            matches = false;
+        
+        if (service_filter && strcasecmp(service, service_filter) != 0)
+            matches = false;
+        
+        if (matches)
+            printf("%s", line);
+    }
+    
+    // Close file when done (avoiding the B2 bug lol)
+    fclose(file);
 }
 
 /**
@@ -378,7 +430,10 @@ void cmd_inject_fault(uint8_t port_id)
     // printf("[OK] Fault injected on Port-%d (%s)\n", port_id, port_id <= 2 ? "line" : "client");
     // On failure: print the ERROR message below.
     // printf("[ERROR] Failed to inject fault\n");
-    printf("TODO: F2 — Inject Fault — CLI Side (/8 pts)\n");
+    if (exec_port_cmd(port_id, MSG_INJECT_FAULT, "inject-fault"))
+        printf("[OK] Port-%d disabled\n", port_id);
+    else
+        printf("[ERROR] Failed to delete port\n");
 }
 
 void cmd_clear_fault(uint8_t port_id)
@@ -388,7 +443,10 @@ void cmd_clear_fault(uint8_t port_id)
     // printf("[OK] Fault cleared on Port-%d (%s)\n", port_id, port_id <= 2 ? "line" : "client");
     // On failure: print the ERROR message below.
     // printf("[ERROR] Failed to clear fault\n");
-    printf("TODO: F2 — Clear Fault — CLI Side (/8 pts)\n");
+    if (exec_port_cmd(port_id, MSG_CLEAR_FAULT, "clear-fault"))
+        printf("[OK] Port-%d disabled\n", port_id);
+    else
+        printf("[ERROR] Failed to delete port\n");
 }
 
 /**
@@ -423,7 +481,40 @@ void cmd_stop_traffic(void)
     // Print the appropriate message based on the outcome:
     // printf("[ERROR] Failed to stop traffic\n");
     // printf("[OK] Traffic generation stopped\n");
-    printf("TODO: F4 — Stop Traffic CLI (/2 pts)\n");
+    udp_message_t req = {0};
+    req.msg_type = MSG_STOP_TRAFFIC;
+    req.status = STATUS_REQUEST;
+
+    udp_message_t resp = {0};
+    if (!send_and_receive(&req, &resp, TRAFFIC_MGR_UDP) || resp.status != STATUS_SUCCESS)
+    {
+        printf("[ERROR] Failed to stop traffic\n");
+        return;
+    }
+    printf("[OK] Traffic generation stopped\n");
+}
+
+void cmd_set_protection_group(void)
+{
+    udp_message_t req = {0};
+    req.msg_type = MSG_CREATE_PROTECTION_GROUP;
+    req.status = STATUS_REQUEST;
+
+    udp_message_t resp = {0};
+    if (!send_and_receive(&req, &resp, PROTECTION_MGR_UDP))
+    {
+        printf("[ERROR] Failed to set protection group\n");
+        return;
+    }
+
+    if (resp.status == STATUS_SUCCESS)
+    {
+        printf("[OK] Protection group created: port-1 <-> port-2\n");
+    }
+    else
+    {
+        print_cmd_error(&resp, "set protection group", "port-1/port-2");
+    }
 }
 
 /**
@@ -451,6 +542,7 @@ void cmd_help(void)
     printf("\n");
     printf("  start traffic [--client <id>] [--line <id>] Start traffic for specified ports (ports that are not specified will be randomized)\n");
     printf("  stop traffic                                Stop frame generation\n");
+    printf("  set protection group                        Create protection group port-1 <-> port-2\n");
     printf("\n");
     printf("  help                                        Show this help message\n");
     printf("  exit                                        Quit the CLI\n");
@@ -546,11 +638,21 @@ bool parse_and_execute(char *input)
     }
 
     // ---- set port <id> ----
-    if (strcmp(tokens[0], "set") == 0 && token_count >= 3 &&
-        strcmp(tokens[1], "port") == 0)
+    if (strcmp(tokens[0], "set") == 0 && token_count >= 3)
     {
-        uint8_t port_id = (uint8_t)atoi(tokens[2]);
-        cmd_set_port(port_id);
+        if (strcmp(tokens[1], "port") == 0)
+        {
+            uint8_t port_id = (uint8_t)atoi(tokens[2]);
+            cmd_set_port(port_id);
+        }
+        else if (strcmp(tokens[1], "protection") == 0 && strcmp(tokens[2], "group") == 0)
+        {
+            cmd_set_protection_group();
+        }
+        else
+        {
+            fprintf(stderr, "[ERROR] Unknown set command\n");
+        }
         return true;
     }
 
