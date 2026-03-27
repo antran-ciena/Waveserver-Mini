@@ -66,3 +66,4 @@
 [26-03-26 19:27:19] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-3
 [26-03-26 19:27:19] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-4
 [26-03-26 19:27:19] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-5
+[26-03-26 19:40:08] [ERROR] [conn_mgr] [conn_manager.c:188] could not find connection with that name (name=doesnotexist)
