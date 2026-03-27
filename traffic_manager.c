@@ -26,7 +26,87 @@ void generate_traffic()
     //
     // Refer to common.h for the relevant structs and message types.
     // A port value of 0 in stats means "randomize within its valid range."
+    
+    uint8_t line = stats.line_port;
+    if (line == 0)
+    {
+        line = (rand() % (2 - 1 + 1)) + 1;
+    }
 
+    uint8_t client = stats.client_port;
+    
+    if (client == 0)
+    {
+        client = (rand() % (6 - 3 + 1)) + 3;
+    }
+
+    otn_header_t header = {
+        client, 
+        line, 
+        stats.next_frame_id
+    };
+
+    stats.next_frame_id++;
+    
+    udp_message_t con_request = {0};
+    udp_request.msg_type = MSG_GET_CONNECTIONS;
+    udp_request.status = STATUS_REQUEST;
+    if (!send_and_receive(&udp_request, &udp_response, CONN_MANAGER_UDP))
+    {
+        printf("[ERROR] Failed to get connections from Connection Manager\n");
+        return;
+    }
+
+    if (udp_response.status != STATUS_SUCCESS)
+    {
+        printf("[ERROR] Connection Manager returned failure status\n");
+        return;
+    }
+
+    udp_get_connections_reply_t *rsp_payload = (udp_get_connections_reply_t *)udp_response.payload;
+
+    if (rsp_payload->conn_count == 0)
+    {
+        printf("No connections available\n");
+        return;
+    }
+
+    con_t target_conn = NULL;
+
+    for (int i = 0; i < rsp_payload->conn_count; i++)
+    {
+        conn_t connection = rsp_payload->all_connections[i];
+        if ((connection.client_port == client) && (connection.line_port == line)) {
+            target_conn = conn;
+            break;
+        }
+    }
+
+    otn_frame_t frame;
+
+    frame.header = header;
+
+    udp_counter_update_t;
+
+    counter_update.port_id = client;
+    if (target_conn == NULL)
+    {
+        printf("[ERROR] No available connection exists with target client and line ports\n");
+        counter_update.pkts_dropped += 1;
+        stats.total_dropped +=1;
+    }
+    else if (target.operational_state != CONN_UP)
+    {
+        // Drop the frame if conn is down
+        printf("[ERROR] Target connection is down\n");
+        counter_update.pkts_dropped += 1;
+        stats.total_dropped +=1;
+    } else {
+        counter_update.pkts_rx += 1;
+        stats.total_forwarded += 1;
+    }
+    
+    dispatch()
 }
 
 void handle_get_traffic_stats(udp_message_t *resp)

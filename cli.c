@@ -195,7 +195,7 @@ void cmd_show_connections(void)
         printf("No connections available to display\n");
         return;
     }
-
+    
     printf("\n");
     printf(" Name     Client  Line  Operational state\n");
     printf(" ───────  ──────  ────  ──────────────────\n");
