@@ -65,7 +65,8 @@ void notify_port_state(uint8_t port_id)
 
 void recalculate_oper_state(port_t *port) {
     port_state_t prev_state = port->operational_state;
-    port->operational_state = (port->admin_enabled || !port->fault_active) ? PORT_UP : PORT_DOWN;
+    port->operational_state = (port->admin_enabled && !port->fault_active) ? PORT_UP : PORT_DOWN;
+    // both need to be true for the port to be UP. if either is false, the port is DOWN.
     
     if (port->operational_state != prev_state) {
         LOG(LOG_INFO, "port_idx=%d oper_state changed: %s -> %s (admin=%s fault=%s)",
@@ -139,8 +140,39 @@ void handle_delete_port(const udp_message_t *request, udp_message_t *response)
     if (!port) return;
 
     port->admin_enabled = false;
+    port->fault_active = false;
     recalculate_oper_state(port);
+    // Ensure port state DOWN is notified to connection manager
+    notify_port_state(port->id);
     LOG(LOG_INFO, "Port admin-disabled: port_idx=%d", port->id - 1);
+    response->status = STATUS_SUCCESS;
+}
+
+void handle_inject_fault(const udp_message_t *request, udp_message_t *response)
+{
+    port_t *port = get_port_from_request(request, response);
+    if (!port) return;
+
+    if (!port->admin_enabled)
+    {
+        set_error_msg(response, "Fault injection only supported on admin-enabled ports");
+        return;
+    }
+
+    port->fault_active = true;
+    recalculate_oper_state(port);
+    LOG(LOG_INFO, "Fault injected on port_idx=%d", port->id - 1);
+    response->status = STATUS_SUCCESS;
+}
+
+void handle_clear_fault(const udp_message_t *request, udp_message_t *response)
+{
+    port_t *port = get_port_from_request(request, response);
+    if (!port) return;
+
+    port->fault_active = false;
+    recalculate_oper_state(port);
+    LOG(LOG_INFO, "Fault cleared on port_idx=%d", port->id - 1);
     response->status = STATUS_SUCCESS;
 }
 
@@ -162,8 +194,15 @@ bool dispatch(const udp_message_t *req, udp_message_t *resp)
         break;
     case MSG_SET_PORT:
         handle_set_port(req, resp);
+        break; 
     case MSG_DELETE_PORT:
         handle_delete_port(req, resp);
+        break;
+    case MSG_INJECT_FAULT:
+        handle_inject_fault(req, resp);
+        break;
+    case MSG_CLEAR_FAULT:
+        handle_clear_fault(req, resp);
         break;
     default:
         LOG(LOG_WARN, "Unknown msg_type: %d", req->msg_type);
@@ -172,6 +211,24 @@ bool dispatch(const udp_message_t *req, udp_message_t *resp)
     }
 
     return send_reply;
+}
+
+// Feat6: emit a full point-in-time snapshot of every port for periodic health reporting.
+void log_health_check(void)
+{
+    LOG(LOG_INFO, "----------------------------- HEALTH CHECK -----------------------------");
+    for (int i = 0; i < MAX_PORT_NUM; i++)
+    {
+        const port_t *port = &ports[i];
+        LOG(LOG_INFO, "port_idx=%d (%s) admin=%s fault=%s oper=%s received=%u dropped=%u",
+            i,
+            port->type == LINE_PORT ? "LINE" : "CLIENT",
+            port->admin_enabled ? "Enabled" : "Disabled",
+            port->fault_active ? "Active" : "None",
+            port->operational_state == PORT_UP ? "UP" : "DOWN",
+            port->rx_frames,
+            port->dropped_frames);
+    }
 }
 
 int main()
@@ -192,39 +249,52 @@ int main()
         return 1;
     }
 
+    // Feat6: track the last time we wrote the 5-second health-check block.
+    time_t last_health_check = time(NULL);
+
     while (true)
     {
-        udp_message_t req = {0};
-        struct sockaddr_in sender;
-        socklen_t sender_len = sizeof(sender);
+        fd_set read_fds;
+        FD_ZERO(&read_fds);
+        FD_SET(server_socket, &read_fds);
 
-        ssize_t n = recvfrom(server_socket, &req, sizeof(req), 0, (struct sockaddr *)&sender, &sender_len);
-        if (n < 0 && errno != EAGAIN && errno != EWOULDBLOCK)
+        // Feat6: use a short timed poll instead of blocking forever so the
+        // periodic health check can still run when no UDP requests arrive.
+        struct timeval wait_time = {.tv_sec = 1, .tv_usec = 0};
+        int ready = select(server_socket + 1, &read_fds, NULL, NULL, &wait_time);
+        if (ready < 0)
         {
-            LOG(LOG_ERROR, "recvfrom failed");
+            LOG(LOG_ERROR, "select failed");
         }
-        else if (n > 0)
+        else if (ready > 0 && FD_ISSET(server_socket, &read_fds))
         {
-            udp_message_t resp = {0};
-            if (dispatch(&req, &resp) &&
-                (sendto(server_socket, &resp, sizeof(resp), 0, (struct sockaddr *)&sender, sender_len) < 0))
+            udp_message_t req = {0};
+            struct sockaddr_in sender;
+            socklen_t sender_len = sizeof(sender);
+
+            ssize_t n = recvfrom(server_socket, &req, sizeof(req), 0, (struct sockaddr *)&sender, &sender_len);
+            if (n < 0)
             {
-                LOG(LOG_ERROR, "sendto reply failed");
+                LOG(LOG_ERROR, "recvfrom failed");
+            }
+            else if (n > 0)
+            {
+                udp_message_t resp = {0};
+                if (dispatch(&req, &resp) &&
+                    (sendto(server_socket, &resp, sizeof(resp), 0, (struct sockaddr *)&sender, sender_len) < 0))
+                {
+                    LOG(LOG_ERROR, "sendto reply failed");
+                }
             }
         }
 
-        // TODO: F6 — Health Check Cron Job (/2 pts)
-        //
-        // The health check should walk through every port and log a
-        // summary of its current state at LOG_INFO level.
-        // e.g.,
-        // [26-03-24 10:29:48] [INFO] [port_mgr] [port_manager.c:231] ----------------------------- HEALTH CHECK -----------------------------
-        // [26-03-24 10:29:48] [INFO] [port_mgr] [port_manager.c:235] port_idx=0 (LINE) admin=Disabled fault=None oper=DOWN received=0 dropped=0
-        // [26-03-24 10:29:48] [INFO] [port_mgr] [port_manager.c:235] port_idx=1 (LINE) admin=Disabled fault=None oper=DOWN received=0 dropped=0
-        // [26-03-24 10:29:48] [INFO] [port_mgr] [port_manager.c:235] port_idx=2 (CLIENT) admin=Disabled fault=None oper=DOWN received=0 dropped=0
-        // [26-03-24 10:29:48] [INFO] [port_mgr] [port_manager.c:235] port_idx=3 (CLIENT) admin=Disabled fault=None oper=DOWN received=0 dropped=0
-        // [26-03-24 10:29:48] [INFO] [port_mgr] [port_manager.c:235] port_idx=4 (CLIENT) admin=Disabled fault=None oper=DOWN received=0 dropped=1
-        // [26-03-24 10:29:48] [INFO] [port_mgr] [port_manager.c:235] port_idx=5 (CLIENT) admin=Disabled fault=None oper=DOWN received=0 dropped=1
+        // Feat6: log port state every 5 seconds at INFO level.
+        time_t now = time(NULL);
+        if (now - last_health_check >= 5)
+        {
+            log_health_check();
+            last_health_check = now;
+        }
     }
     return 0;
 }

@@ -373,22 +373,14 @@ void cmd_delete_port(uint8_t port_id)
 
 void cmd_inject_fault(uint8_t port_id)
 {
-    // TODO: F2 — Inject Fault — CLI Side (/8 pts)
-    // On success: print the OK message below.
-    // printf("[OK] Fault injected on Port-%d (%s)\n", port_id, port_id <= 2 ? "line" : "client");
-    // On failure: print the ERROR message below.
-    // printf("[ERROR] Failed to inject fault\n");
-    printf("TODO: F2 — Inject Fault — CLI Side (/8 pts)\n");
+    if (exec_port_cmd(port_id, MSG_INJECT_FAULT, "inject-fault"))
+        printf("[OK] Fault injected on Port-%d (%s)\n", port_id, port_id <= 2 ? "line" : "client");
 }
 
 void cmd_clear_fault(uint8_t port_id)
 {
-    // TODO: F2 — Clear Fault — CLI Side (/8 pts)
-    // On success: print the OK message below.
-    // printf("[OK] Fault cleared on Port-%d (%s)\n", port_id, port_id <= 2 ? "line" : "client");
-    // On failure: print the ERROR message below.
-    // printf("[ERROR] Failed to clear fault\n");
-    printf("TODO: F2 — Clear Fault — CLI Side (/8 pts)\n");
+    if (exec_port_cmd(port_id, MSG_CLEAR_FAULT, "clear-fault"))
+        printf("[OK] Fault cleared on Port-%d (%s)\n", port_id, port_id <= 2 ? "line" : "client");
 }
 
 /**
@@ -417,13 +409,18 @@ void cmd_start_traffic(uint8_t client_port, uint8_t line_port)
  */
 void cmd_stop_traffic(void)
 {
-    // TODO: F4 — Stop Traffic CLI (/2 pts)
-    //
-    // Send a stop-traffic request to the traffic manager.
-    // Print the appropriate message based on the outcome:
-    // printf("[ERROR] Failed to stop traffic\n");
-    // printf("[OK] Traffic generation stopped\n");
-    printf("TODO: F4 — Stop Traffic CLI (/2 pts)\n");
+    udp_message_t req = {0};
+    req.msg_type = MSG_STOP_TRAFFIC;
+    req.status = STATUS_REQUEST;
+
+    udp_message_t resp = {0};
+    if (!send_and_receive(&req, &resp, TRAFFIC_MGR_UDP) || resp.status != STATUS_SUCCESS)
+    {
+        printf("[ERROR] Failed to stop traffic\n");
+        return;
+    }
+
+    printf("[OK] Traffic generation stopped\n");
 }
 
 /**

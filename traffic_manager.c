@@ -16,17 +16,98 @@ void initialize_stats()
     LOG(LOG_INFO, "Traffic stats initialized");
 }
 
+void send_counter_update(uint8_t port_id, uint32_t pkts_rx, uint32_t pkts_dropped)
+{
+    udp_message_t msg = {0};
+    msg.msg_type = MSG_UPDATE_COUNTERS;
+    msg.status = STATUS_REQUEST;
+
+    udp_counter_update_t *payload = (udp_counter_update_t *)msg.payload;
+    payload->port_id = port_id;
+    payload->pkts_rx = pkts_rx;
+    payload->pkts_dropped = pkts_dropped;
+
+    send_udp_message_one_way(client_socket, &msg, PORT_MANAGER_UDP);
+}
+
 void generate_traffic()
 {
-    // TODO: F1 — Traffic Generation (/8 pts)
-    //
-    // Generate an OTN frame, query the connection manager for a valid route,
-    // and forward or drop accordingly. Update both local traffic stats and
-    // the port manager's per-port counters.
-    //
-    // Refer to common.h for the relevant structs and message types.
-    // A port value of 0 in stats means "randomize within its valid range."
+    // 1. Determine client and line ports (randomize if 0)
+    uint8_t client = stats.client_port;
+    uint8_t line   = stats.line_port;
 
+    if (client == 0)
+        client = 3 + (rand() % 4);  // random 3-6
+    if (line == 0)
+        line = 1 + (rand() % 2);    // random 1-2
+
+    // 2. Build OTN frame
+    otn_frame_t frame = {0};
+    frame.header.client_port = client;
+    frame.header.line_port   = line;
+    frame.header.frame_id    = stats.next_frame_id++;
+
+    static const char *payloads[] = {
+        "Data payload alpha", "Waveserver mini frame",
+        "OTN test data", "Traffic payload bravo",
+        "Optical signal data"
+    };
+    snprintf(frame.data, sizeof(frame.data), "%s",
+             payloads[rand() % 5]);
+
+    LOG(LOG_DEBUG, "Frame #%u generated: client-%d → line-%d msg=\"%s\"",
+        frame.header.frame_id, client, line, frame.data);
+
+    // 3. Query Connection Manager for a route lookup
+    udp_message_t req = {0};
+    req.msg_type = MSG_LOOKUP_CONNECTION;
+    req.status   = STATUS_REQUEST;
+
+    udp_route_lookup_request_t *lookup = (udp_route_lookup_request_t *)req.payload;
+    lookup->client_port = client;
+    lookup->line_port   = line;
+
+    udp_message_t resp = {0};
+    if (!send_udp_message_and_receive(client_socket, &req, &resp, CONN_MANAGER_UDP))
+    {
+        LOG(LOG_WARN, "Frame #%u DROPPED: failed to reach connection manager",
+            frame.header.frame_id);
+        stats.total_dropped++;
+        send_counter_update(client, 0, 1);
+        return;
+    }
+
+    // 4. Forward or drop based on connection lookup result
+    if (resp.status != STATUS_SUCCESS)
+    {
+        // No connection exists for this client/line pair
+        LOG(LOG_WARN, "Frame #%u DROPPED: no connection for client-%d line-%d",
+            frame.header.frame_id, client, line);
+        stats.total_dropped++;
+        send_counter_update(client, 0, 1);
+        return;
+    }
+
+    udp_route_lookup_reply_t *route = (udp_route_lookup_reply_t *)resp.payload;
+
+    if (route->operational_state != CONN_UP)
+    {
+        // Connection exists but is DOWN
+        LOG(LOG_WARN, "Frame #%u DROPPED: connection %s is DOWN",
+            frame.header.frame_id, route->conn_name);
+        stats.total_dropped++;
+        send_counter_update(client, 0, 1);
+        return;
+    }
+
+    // 5. FORWARD — connection is UP
+    LOG(LOG_DEBUG, "Frame #%u FORWARDED: client-%d → line-%d via %s",
+        frame.header.frame_id, client, line, route->conn_name);
+    stats.total_forwarded++;
+
+    // Update port manager counters: client port gets rx+1, line port gets rx+1
+    send_counter_update(client, 1, 0);
+    send_counter_update(line, 1, 0);
 }
 
 void handle_get_traffic_stats(udp_message_t *resp)
@@ -65,7 +146,9 @@ void handle_start_traffic(const udp_message_t *req, udp_message_t *resp)
 
 void handle_stop_traffic(udp_message_t *resp)
 {
-    // TODO: F4 — Stop Traffic Handler (/2 pts)
+    stats.running = false;
+    resp->status = STATUS_SUCCESS;
+    LOG(LOG_INFO, "Traffic stopped");
 }
 
 bool dispatch(const udp_message_t *req, udp_message_t *resp)
