@@ -4,12 +4,6 @@
 
 #define SERVICE_NAME "port_mgr"
 
-// TODO: F2 — Inject & Clear Fault (/8 pts)
-//
-// Implement inject-fault and clear-fault handlers + dispatch wiring.
-// Only support fault injection for ports that are admin-enabled.
-// We do not support this feature for ports that are admin-disabled.
-
 static port_t ports[MAX_PORT_NUM];
 static int notify_socket; // used to send to connection mgr
 
@@ -56,8 +50,10 @@ void notify_port_state(uint8_t port_id)
     udp_port_state_change_t *payload = (udp_port_state_change_t *)udp_request.payload;
     payload->port_id = port_id;
     payload->operational_state = ports[port_idx].operational_state;
+    payload->fault_active = ports[port_idx].fault_active;
 
     send_udp_message_one_way(notify_socket, &udp_request, CONN_MANAGER_UDP);
+    send_udp_message_one_way(notify_socket, &udp_request, PROTECTION_MGR_UDP);
     LOG(LOG_DEBUG, "Notified conn-mgr: port_idx=%d, operational_state=%s",
         port_idx,
         ports[port_idx].operational_state == PORT_UP ? "UP" : "DOWN");
@@ -65,7 +61,7 @@ void notify_port_state(uint8_t port_id)
 
 void recalculate_oper_state(port_t *port) {
     port_state_t prev_state = port->operational_state;
-    port->operational_state = (port->admin_enabled || !port->fault_active) ? PORT_UP : PORT_DOWN;
+    port->operational_state = (port->admin_enabled && !port->fault_active) ? PORT_UP : PORT_DOWN;
     
     if (port->operational_state != prev_state) {
         LOG(LOG_INFO, "port_idx=%d oper_state changed: %s -> %s (admin=%s fault=%s)",
@@ -144,6 +140,32 @@ void handle_delete_port(const udp_message_t *request, udp_message_t *response)
     response->status = STATUS_SUCCESS;
 }
 
+void handle_inject_fault(const udp_message_t *request, udp_message_t *response)
+{
+    port_t *port = get_port_from_request(request, response);
+    if (!port) return;
+
+    if (!port->admin_enabled)
+    {
+        set_error_msg(response, "cannot inject fault on admin-disabled port");
+        return;
+    }
+
+    port->fault_active = true;
+    recalculate_oper_state(port);
+    response->status = STATUS_SUCCESS;
+}
+
+void handle_clear_fault(const udp_message_t *request, udp_message_t *response)
+{
+    port_t *port = get_port_from_request(request, response);
+    if (!port) return;
+
+    port->fault_active = false;
+    recalculate_oper_state(port);
+    response->status = STATUS_SUCCESS;
+}
+
 bool dispatch(const udp_message_t *req, udp_message_t *resp)
 {
     bool send_reply = true;
@@ -162,8 +184,15 @@ bool dispatch(const udp_message_t *req, udp_message_t *resp)
         break;
     case MSG_SET_PORT:
         handle_set_port(req, resp);
+        break;
     case MSG_DELETE_PORT:
         handle_delete_port(req, resp);
+        break;
+    case MSG_INJECT_FAULT:
+        handle_inject_fault(req, resp);
+        break;
+    case MSG_CLEAR_FAULT:
+        handle_clear_fault(req, resp);
         break;
     default:
         LOG(LOG_WARN, "Unknown msg_type: %d", req->msg_type);
@@ -185,12 +214,17 @@ int main()
         return 1;
     }
 
+    struct timeval rx_timeout = {.tv_sec = 1, .tv_usec = 0};
+    setsockopt(server_socket, SOL_SOCKET, SO_RCVTIMEO, &rx_timeout, sizeof(rx_timeout));
+
     notify_socket = create_udp_client();
     if (notify_socket < 0)
     {
         LOG(LOG_ERROR, "Failed to create notify socket - exiting");
         return 1;
     }
+
+    time_t last_health_check = time(NULL);
 
     while (true)
     {
@@ -213,18 +247,24 @@ int main()
             }
         }
 
-        // TODO: F6 — Health Check Cron Job (/2 pts)
-        //
-        // The health check should walk through every port and log a
-        // summary of its current state at LOG_INFO level.
-        // e.g.,
-        // [26-03-24 10:29:48] [INFO] [port_mgr] [port_manager.c:231] ----------------------------- HEALTH CHECK -----------------------------
-        // [26-03-24 10:29:48] [INFO] [port_mgr] [port_manager.c:235] port_idx=0 (LINE) admin=Disabled fault=None oper=DOWN received=0 dropped=0
-        // [26-03-24 10:29:48] [INFO] [port_mgr] [port_manager.c:235] port_idx=1 (LINE) admin=Disabled fault=None oper=DOWN received=0 dropped=0
-        // [26-03-24 10:29:48] [INFO] [port_mgr] [port_manager.c:235] port_idx=2 (CLIENT) admin=Disabled fault=None oper=DOWN received=0 dropped=0
-        // [26-03-24 10:29:48] [INFO] [port_mgr] [port_manager.c:235] port_idx=3 (CLIENT) admin=Disabled fault=None oper=DOWN received=0 dropped=0
-        // [26-03-24 10:29:48] [INFO] [port_mgr] [port_manager.c:235] port_idx=4 (CLIENT) admin=Disabled fault=None oper=DOWN received=0 dropped=1
-        // [26-03-24 10:29:48] [INFO] [port_mgr] [port_manager.c:235] port_idx=5 (CLIENT) admin=Disabled fault=None oper=DOWN received=0 dropped=1
+        time_t now = time(NULL);
+        if (now - last_health_check >= 5)
+        {
+            LOG(LOG_INFO, "----------------------------- HEALTH CHECK -----------------------------");
+            for (int i = 0; i < MAX_PORT_NUM; i++)
+            {
+                LOG(LOG_INFO,
+                    "port_idx=%d (%s) admin=%s fault=%s oper=%s received=%u dropped=%u",
+                    i,
+                    ports[i].type == LINE_PORT ? "LINE" : "CLIENT",
+                    ports[i].admin_enabled ? "Enabled" : "Disabled",
+                    ports[i].fault_active ? "Active" : "None",
+                    ports[i].operational_state == PORT_UP ? "UP" : "DOWN",
+                    ports[i].rx_frames,
+                    ports[i].dropped_frames);
+            }
+            last_health_check = now;
+        }
     }
     return 0;
 }

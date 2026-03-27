@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <strings.h>
+#include <ctype.h>
 #include <errno.h>
 #include <unistd.h>
 
@@ -158,7 +159,7 @@ void cmd_show_ports(void)
                (port->type == LINE_PORT) ? "line" : "client",
                (port->admin_enabled) ? "enabled" : "disabled",
                (port->fault_active) ? "yes" : "no",
-               (port->operational_state == PORT_UP) ? "UP" : "DOWN",
+             (port->operational_state == PORT_UP) ? "up" : "down",
                port->rx_frames,
                port->dropped_frames);
     }
@@ -246,18 +247,72 @@ void cmd_show_traffic_stats(void)
  */
 void cmd_show_logs(const char *level_filter, const char *service_filter)
 {
-    // TODO: F5 — Show Logs with Filtering (/3 pts)
-    //
-    // Read the shared log file (see LOG_FILE_PATH in common.h) and print its contents.
-    //
-    // Log lines follow this format:
-    //   [timestamp] [LEVEL] [service] [file:line] message
-    //
-    // Filtering rules:
-    //   - level_filter: if provided, only show lines whose level tag matches (i.e., "ERROR", "WARN", "DEBUG", "INFO"). 
-    //   - service_filter: if provided, only show lines from that service (i.e., "port_mgr", "conn_mgr", "traffic_mgr", "cli")
-    //   - Both filters can be active at the same time, and should be case insensitive
-    //   - If neither filter is set, print everything.
+    FILE *f = fopen(LOG_FILE_PATH, "r");
+    if (!f)
+    {
+        printf("[ERROR] Failed to open log file\n");
+        return;
+    }
+
+    char level_pattern[32] = {0};
+    if (level_filter && level_filter[0] != '\0')
+    {
+        snprintf(level_pattern, sizeof(level_pattern), "[%s]", level_filter);
+    }
+
+    char service_pattern[32] = {0};
+    if (service_filter && service_filter[0] != '\0')
+    {
+        size_t n = strlen(service_filter);
+        if (n > sizeof(service_pattern) - 3)
+            n = sizeof(service_pattern) - 3;
+
+        service_pattern[0] = '[';
+        for (size_t i = 0; i < n; i++)
+        {
+            char c = service_filter[i];
+            service_pattern[i + 1] = (c == '-') ? '_' : c;
+        }
+        service_pattern[n + 1] = ']';
+        service_pattern[n + 2] = '\0';
+    }
+
+    char line[1024];
+    while (fgets(line, sizeof(line), f) != NULL)
+    {
+        if (level_pattern[0] != '\0' && strcasestr(line, level_pattern) == NULL)
+            continue;
+        if (service_pattern[0] != '\0' && strcasestr(line, service_pattern) == NULL)
+            continue;
+
+        // Normalize the service tag for display: [port_mgr] -> [port-mgr].
+        // This keeps filtering behavior intact while matching CLI expectations.
+        int bracket_count = 0;
+        bool in_service_tag = false;
+        for (char *p = line; *p != '\0'; p++)
+        {
+            if (*p == '[')
+            {
+                bracket_count++;
+                if (bracket_count == 3)
+                    in_service_tag = true;
+                continue;
+            }
+
+            if (*p == ']' && in_service_tag)
+            {
+                in_service_tag = false;
+                continue;
+            }
+
+            if (in_service_tag && *p == '_')
+                *p = '-';
+        }
+
+        fputs(line, stdout);
+    }
+
+    fclose(f);
 }
 
 /**
@@ -373,22 +428,18 @@ void cmd_delete_port(uint8_t port_id)
 
 void cmd_inject_fault(uint8_t port_id)
 {
-    // TODO: F2 — Inject Fault — CLI Side (/8 pts)
-    // On success: print the OK message below.
-    // printf("[OK] Fault injected on Port-%d (%s)\n", port_id, port_id <= 2 ? "line" : "client");
-    // On failure: print the ERROR message below.
-    // printf("[ERROR] Failed to inject fault\n");
-    printf("TODO: F2 — Inject Fault — CLI Side (/8 pts)\n");
+    if (exec_port_cmd(port_id, MSG_INJECT_FAULT, "inject-fault"))
+        printf("[OK] Fault injected on Port-%d (%s)\n", port_id, port_id <= 2 ? "line" : "client");
+    else
+        printf("[ERROR] Failed to inject fault\n");
 }
 
 void cmd_clear_fault(uint8_t port_id)
 {
-    // TODO: F2 — Clear Fault — CLI Side (/8 pts)
-    // On success: print the OK message below.
-    // printf("[OK] Fault cleared on Port-%d (%s)\n", port_id, port_id <= 2 ? "line" : "client");
-    // On failure: print the ERROR message below.
-    // printf("[ERROR] Failed to clear fault\n");
-    printf("TODO: F2 — Clear Fault — CLI Side (/8 pts)\n");
+    if (exec_port_cmd(port_id, MSG_CLEAR_FAULT, "clear-fault"))
+        printf("[OK] Fault cleared on Port-%d (%s)\n", port_id, port_id <= 2 ? "line" : "client");
+    else
+        printf("[ERROR] Failed to clear fault\n");
 }
 
 /**
@@ -417,13 +468,84 @@ void cmd_start_traffic(uint8_t client_port, uint8_t line_port)
  */
 void cmd_stop_traffic(void)
 {
-    // TODO: F4 — Stop Traffic CLI (/2 pts)
-    //
-    // Send a stop-traffic request to the traffic manager.
-    // Print the appropriate message based on the outcome:
-    // printf("[ERROR] Failed to stop traffic\n");
-    // printf("[OK] Traffic generation stopped\n");
-    printf("TODO: F4 — Stop Traffic CLI (/2 pts)\n");
+    udp_message_t req = {0};
+    req.msg_type = MSG_STOP_TRAFFIC;
+    req.status = STATUS_REQUEST;
+
+    udp_message_t resp = {0};
+    if (!send_and_receive(&req, &resp, TRAFFIC_MGR_UDP) || resp.status != STATUS_SUCCESS)
+    {
+        printf("[ERROR] Failed to stop traffic\n");
+        return;
+    }
+
+    printf("[OK] Traffic generation stopped\n");
+}
+
+void cmd_set_protection_group(void)
+{
+    udp_message_t req = {0};
+    req.msg_type = MSG_SET_PROTECTION_GROUP;
+    req.status = STATUS_REQUEST;
+
+    udp_message_t resp = {0};
+    if (!send_and_receive(&req, &resp, PROTECTION_MGR_UDP) || resp.status != STATUS_SUCCESS)
+    {
+        printf("[ERROR] Failed to set protection group\n");
+        return;
+    }
+
+    printf("[OK] Protection group created: port-1 <-> port-2\n");
+}
+
+void cmd_delete_protection_group(void)
+{
+    udp_message_t req = {0};
+    req.msg_type = MSG_DELETE_PROTECTION_GROUP;
+    req.status = STATUS_REQUEST;
+
+    udp_message_t resp = {0};
+    if (!send_and_receive(&req, &resp, PROTECTION_MGR_UDP) || resp.status != STATUS_SUCCESS)
+    {
+        printf("[ERROR] Failed to delete protection group\n");
+        return;
+    }
+
+    printf("[OK] Protection group deleted\n");
+}
+
+void cmd_show_protection_group(void)
+{
+    udp_message_t req = {0};
+    req.msg_type = MSG_GET_PROTECTION_GROUP;
+    req.status = STATUS_REQUEST;
+
+    udp_message_t resp = {0};
+    if (!send_and_receive(&req, &resp, PROTECTION_MGR_UDP) || resp.status != STATUS_SUCCESS)
+    {
+        printf("[ERROR] Failed to show protection group\n");
+        return;
+    }
+
+    const udp_protection_group_reply_t *reply = (const udp_protection_group_reply_t *)resp.payload;
+
+    printf("  Protection Group: %s\n", reply->active ? "ACTIVE" : "INACTIVE");
+    printf("  Members:          port-%u <-> port-%u\n", reply->line_port_a, reply->line_port_b);
+    printf("  Switchovers:      %u\n", reply->switchover_events);
+
+    if (!reply->active)
+        return;
+
+    printf("  Connection  Original Line  Current Line  State\n");
+    printf("  ----------  -------------  ------------  ---------\n");
+    for (int i = 0; i < reply->conn_count; i++)
+    {
+        printf("  %-10s  port-%u         port-%u        %s\n",
+               reply->conns[i].conn_name,
+               reply->conns[i].original_line_port,
+               reply->conns[i].current_line_port,
+               reply->conns[i].is_switched ? "switched" : "normal");
+    }
 }
 
 /**
@@ -451,6 +573,9 @@ void cmd_help(void)
     printf("\n");
     printf("  start traffic [--client <id>] [--line <id>] Start traffic for specified ports (ports that are not specified will be randomized)\n");
     printf("  stop traffic                                Stop frame generation\n");
+    printf("  set protection group                        Enable 1+1 line protection (port-1 <-> port-2)\n");
+    printf("  delete protection group                     Disable 1+1 line protection\n");
+    printf("  show protection group                       Show protection group state\n");
     printf("\n");
     printf("  help                                        Show this help message\n");
     printf("  exit                                        Quit the CLI\n");
@@ -538,6 +663,10 @@ bool parse_and_execute(char *input)
             }
             cmd_show_logs(level, service);
         }
+        else if (token_count >= 3 && strcmp(tokens[1], "protection") == 0 && strcmp(tokens[2], "group") == 0)
+        {
+            cmd_show_protection_group();
+        }
         else
         {
             fprintf(stderr, "[ERROR] Unknown show command: %s\n", tokens[1]);
@@ -554,6 +683,13 @@ bool parse_and_execute(char *input)
         return true;
     }
 
+    if (strcmp(tokens[0], "set") == 0 && token_count >= 3 &&
+        strcmp(tokens[1], "protection") == 0 && strcmp(tokens[2], "group") == 0)
+    {
+        cmd_set_protection_group();
+        return true;
+    }
+
     // ---- delete port <id> ----
     // ---- delete connection <name> ----
     if (strcmp(tokens[0], "delete") == 0 && token_count >= 3)
@@ -562,6 +698,10 @@ bool parse_and_execute(char *input)
         {
             uint8_t port_id = (uint8_t)atoi(tokens[2]);
             cmd_delete_port(port_id);
+        }
+        else if (strcmp(tokens[1], "protection") == 0 && token_count >= 3 && strcmp(tokens[2], "group") == 0)
+        {
+            cmd_delete_protection_group();
         }
         else if (strcmp(tokens[1], "connection") == 0)
         {
