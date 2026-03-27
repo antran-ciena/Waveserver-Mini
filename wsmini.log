@@ -386,3 +386,33 @@
 >>>>>>> Stashed changes
 [26-03-26 21:00:44] [INFO] [traffic_mgr] [traffic_manager.c:16] Traffic stats initialized
 [26-03-26 21:00:49] [INFO] [cli] [cli.c:683] CLI started
+[26-03-26 21:01:43] [INFO] [traffic_mgr] [traffic_manager.c:116] Traffic started (client=0, line=0, 0=random)
+[26-03-26 21:01:43] [DEBUG] [traffic_mgr] [traffic_manager.c:52] Frame #1 generated: client-3 -> line-2 msg="Forwarding test pattern"
+[26-03-26 21:01:56] [ERROR] [cli] [common.c:136] recvfrom on port 5003 failed
+[26-03-26 21:01:56] [ERROR] [cli] [cli.c:61] Request timed out — is the service running?
+[26-03-26 21:02:05] [ERROR] [cli] [common.c:136] recvfrom on port 5003 failed
+[26-03-26 21:02:05] [ERROR] [cli] [cli.c:61] Request timed out — is the service running?
+[26-03-26 21:04:06] [INFO] [traffic_mgr] [traffic_manager.c:16] Traffic stats initialized
+[26-03-26 21:04:24] [INFO] [cli] [cli.c:683] CLI started
+[26-03-26 21:04:27] [INFO] [traffic_mgr] [traffic_manager.c:116] Traffic started (client=0, line=0, 0=random)
+[26-03-26 21:04:27] [DEBUG] [traffic_mgr] [traffic_manager.c:52] Frame #1 generated: client-5 -> line-2 msg="OTN client traffic"
+[26-03-26 21:04:33] [ERROR] [cli] [common.c:136] recvfrom on port 5003 failed
+[26-03-26 21:04:33] [ERROR] [cli] [cli.c:61] Request timed out — is the service running?
+[26-03-26 21:04:59] [INFO] [conn_mgr] [conn_manager.c:14] Initialize connection table
+[26-03-26 21:04:59] [INFO] [traffic_mgr] [traffic_manager.c:16] Traffic stats initialized
+[26-03-26 21:04:59] [INFO] [port_mgr] [port_manager.c:29] Initialized ports
+[26-03-26 21:05:07] [INFO] [cli] [cli.c:683] CLI started
+[26-03-26 21:05:10] [INFO] [traffic_mgr] [traffic_manager.c:116] Traffic started (client=0, line=0, 0=random)
+[26-03-26 21:05:10] [DEBUG] [traffic_mgr] [traffic_manager.c:52] Frame #1 generated: client-4 -> line-2 msg="Forwarding test pattern"
+[26-03-26 21:05:10] [WARN] [conn_mgr] [conn_manager.c:130] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 21:05:10] [WARN] [traffic_mgr] [traffic_manager.c:72] Frame #1 DROPPED: no connection for client-4 line-2
+[26-03-26 21:05:10] [INFO] [port_mgr] [port_manager.c:122] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 21:05:13] [INFO] [traffic_mgr] [traffic_manager.c:124] Traffic stopped
+[26-03-26 21:11:10] [INFO] [traffic_mgr] [traffic_manager.c:16] Traffic stats initialized
+[26-03-26 21:11:10] [INFO] [conn_mgr] [conn_manager.c:14] Initialize connection table
+[26-03-26 21:11:10] [INFO] [port_mgr] [port_manager.c:29] Initialized ports
+[26-03-26 21:11:16] [INFO] [cli] [cli.c:709] CLI started
+[26-03-26 21:11:48] [INFO] [port_mgr] [port_manager.c:76] port_idx=0 oper_state changed: DOWN -> UP (admin=enabled fault=none)
+[26-03-26 21:11:48] [DEBUG] [port_mgr] [port_manager.c:63] Notified conn-mgr: port_idx=0, operational_state=UP
+[26-03-26 21:11:48] [INFO] [port_mgr] [port_manager.c:132] Port admin-enabled: port_idx=0
+[26-03-26 21:11:48] [INFO] [conn_mgr] [conn_manager.c:66] Port-1 operational_state changed to UP

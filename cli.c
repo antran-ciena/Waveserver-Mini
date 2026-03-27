@@ -258,6 +258,32 @@ void cmd_show_logs(const char *level_filter, const char *service_filter)
     //   - service_filter: if provided, only show lines from that service (i.e., "port_mgr", "conn_mgr", "traffic_mgr", "cli")
     //   - Both filters can be active at the same time, and should be case insensitive
     //   - If neither filter is set, print everything.
+
+    FILE *f = fopen(LOG_FILE_PATH, "r");
+    if (f == NULL)
+    {
+        fprintf(stderr, "[ERROR] Failed to open log file: %s\n", strerror(errno));
+        return;
+    }
+
+    char line[1024];
+    while (fgets(line, sizeof(line), f))
+    {
+        if (level_filter)
+        {
+            char tag[32];
+            snprintf(tag, sizeof(tag), "[%s]", level_filter);
+            if (!strcasestr(line, tag)) continue;
+        }
+        if (service_filter)
+        {
+            char tag[64];
+            snprintf(tag, sizeof(tag), "[%s]", service_filter);
+            if (!strcasestr(line, tag)) continue;
+        }
+        printf("%s", line);
+    }
+    fclose(f);
 }
 
 /**
