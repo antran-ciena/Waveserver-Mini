@@ -140,8 +140,39 @@ void handle_delete_port(const udp_message_t *request, udp_message_t *response)
     if (!port) return;
 
     port->admin_enabled = false;
+    port->fault_active = false;
     recalculate_oper_state(port);
+    // Ensure port state DOWN is notified to connection manager
+    notify_port_state(port->id);
     LOG(LOG_INFO, "Port admin-disabled: port_idx=%d", port->id - 1);
+    response->status = STATUS_SUCCESS;
+}
+
+void handle_inject_fault(const udp_message_t *request, udp_message_t *response)
+{
+    port_t *port = get_port_from_request(request, response);
+    if (!port) return;
+
+    if (!port->admin_enabled)
+    {
+        set_error_msg(response, "Fault injection only supported on admin-enabled ports");
+        return;
+    }
+
+    port->fault_active = true;
+    recalculate_oper_state(port);
+    LOG(LOG_INFO, "Fault injected on port_idx=%d", port->id - 1);
+    response->status = STATUS_SUCCESS;
+}
+
+void handle_clear_fault(const udp_message_t *request, udp_message_t *response)
+{
+    port_t *port = get_port_from_request(request, response);
+    if (!port) return;
+
+    port->fault_active = false;
+    recalculate_oper_state(port);
+    LOG(LOG_INFO, "Fault cleared on port_idx=%d", port->id - 1);
     response->status = STATUS_SUCCESS;
 }
 
@@ -167,6 +198,12 @@ bool dispatch(const udp_message_t *req, udp_message_t *resp)
     case MSG_DELETE_PORT:
         handle_delete_port(req, resp);
         break;
+    case MSG_INJECT_FAULT:
+        handle_inject_fault(req, resp);
+        break;
+    case MSG_CLEAR_FAULT:
+        handle_clear_fault(req, resp);
+        break;
     default:
         LOG(LOG_WARN, "Unknown msg_type: %d", req->msg_type);
         send_reply = false;
@@ -176,6 +213,7 @@ bool dispatch(const udp_message_t *req, udp_message_t *resp)
     return send_reply;
 }
 
+// Feat6: emit a full point-in-time snapshot of every port for periodic health reporting.
 void log_health_check(void)
 {
     LOG(LOG_INFO, "----------------------------- HEALTH CHECK -----------------------------");
@@ -211,32 +249,46 @@ int main()
         return 1;
     }
 
-    struct timeval rx_timeout = {.tv_sec = 1, .tv_usec = 0};
-    setsockopt(server_socket, SOL_SOCKET, SO_RCVTIMEO, &rx_timeout, sizeof(rx_timeout));
-
+    // Feat6: track the last time we wrote the 5-second health-check block.
     time_t last_health_check = time(NULL);
 
     while (true)
     {
-        udp_message_t req = {0};
-        struct sockaddr_in sender;
-        socklen_t sender_len = sizeof(sender);
+        fd_set read_fds;
+        FD_ZERO(&read_fds);
+        FD_SET(server_socket, &read_fds);
 
-        ssize_t n = recvfrom(server_socket, &req, sizeof(req), 0, (struct sockaddr *)&sender, &sender_len);
-        if (n < 0 && errno != EAGAIN && errno != EWOULDBLOCK)
+        // Feat6: use a short timed poll instead of blocking forever so the
+        // periodic health check can still run when no UDP requests arrive.
+        struct timeval wait_time = {.tv_sec = 1, .tv_usec = 0};
+        int ready = select(server_socket + 1, &read_fds, NULL, NULL, &wait_time);
+        if (ready < 0)
         {
-            LOG(LOG_ERROR, "recvfrom failed");
+            LOG(LOG_ERROR, "select failed");
         }
-        else if (n > 0)
+        else if (ready > 0 && FD_ISSET(server_socket, &read_fds))
         {
-            udp_message_t resp = {0};
-            if (dispatch(&req, &resp) &&
-                (sendto(server_socket, &resp, sizeof(resp), 0, (struct sockaddr *)&sender, sender_len) < 0))
+            udp_message_t req = {0};
+            struct sockaddr_in sender;
+            socklen_t sender_len = sizeof(sender);
+
+            ssize_t n = recvfrom(server_socket, &req, sizeof(req), 0, (struct sockaddr *)&sender, &sender_len);
+            if (n < 0)
             {
-                LOG(LOG_ERROR, "sendto reply failed");
+                LOG(LOG_ERROR, "recvfrom failed");
+            }
+            else if (n > 0)
+            {
+                udp_message_t resp = {0};
+                if (dispatch(&req, &resp) &&
+                    (sendto(server_socket, &resp, sizeof(resp), 0, (struct sockaddr *)&sender, sender_len) < 0))
+                {
+                    LOG(LOG_ERROR, "sendto reply failed");
+                }
             }
         }
 
+        // Feat6: log port state every 5 seconds at INFO level.
         time_t now = time(NULL);
         if (now - last_health_check >= 5)
         {
