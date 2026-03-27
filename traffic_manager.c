@@ -105,7 +105,8 @@ void generate_traffic()
         counter_update.pkts_rx += 1;
         stats.total_forwarded += 1;
     }
-    
+
+    // Dispatch request to update counters
     dispatch()
 }
 
