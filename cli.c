@@ -349,10 +349,14 @@ void cmd_delete_connection(const char *name)
         return;
     }
 
-    if (udp_response.status == STATUS_SUCCESS)
+    if (udp_response.status == STATUS_SUCCESS) // B3: Missing brackets around if-else body
+    {
         printf("[OK] Connection %s deleted\n", name);
+    }
     else
+    {
         print_cmd_error(&udp_response, "delete connection", name);
+    }
 }
 
 void cmd_set_port(uint8_t port_id)
