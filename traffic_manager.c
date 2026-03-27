@@ -18,15 +18,65 @@ void initialize_stats()
 
 void generate_traffic()
 {
-    // TODO: F1 — Traffic Generation (/8 pts)
-    //
-    // Generate an OTN frame, query the connection manager for a valid route,
-    // and forward or drop accordingly. Update both local traffic stats and
-    // the port manager's per-port counters.
-    //
-    // Refer to common.h for the relevant structs and message types.
-    // A port value of 0 in stats means "randomize within its valid range."
+    // if the user pinned a port use that, otherwise randomize
+    // client ports are 3-6 and line ports are 1-2
+    uint8_t client_port = stats.client_port;
+    uint8_t line_port = stats.line_port;
+    if (client_port == 0)
+        client_port = 3 + (rand() % MAX_CLIENT_PORTS);
+    if (line_port == 0)
+        line_port = 1 + (rand() % MAX_LINE_PORTS);
 
+    // build the OTN frame with a sequential ID and the chosen ports
+    otn_frame_t frame = {0};
+    frame.header.client_port = client_port;
+    frame.header.line_port = line_port;
+    frame.header.frame_id = stats.next_frame_id++;
+    snprintf(frame.data, sizeof(frame.data), "frame-%u", frame.header.frame_id);
+
+    // ask conn manager if there's a valid route for this client->line pair
+    udp_message_t req = {0};
+    req.msg_type = MSG_LOOKUP_CONNECTION;
+    req.status = STATUS_REQUEST;
+    udp_route_lookup_request_t *lookup = (udp_route_lookup_request_t *)req.payload;
+    lookup->client_port = client_port;
+    lookup->line_port = line_port;
+
+    udp_message_t resp = {0};
+    bool forwarded = false;
+
+    // if conn manager finds a matching connection and its UP, forward the frame
+    if (send_udp_message_and_receive(client_socket, &req, &resp, CONN_MANAGER_UDP) &&
+        resp.status == STATUS_SUCCESS)
+    {
+        udp_route_lookup_reply_t *reply = (udp_route_lookup_reply_t *)resp.payload;
+        if (reply->operational_state == CONN_UP)
+        {
+            forwarded = true;
+            stats.total_forwarded++;
+            LOG(LOG_INFO, "Frame %u forwarded: client-%d → line-%d via %s",
+                frame.header.frame_id, client_port, line_port, reply->conn_name);
+        }
+    }
+
+    // no connection or connection is DOWN, drop the frame
+    if (!forwarded)
+    {
+        stats.total_dropped++;
+        LOG(LOG_WARN, "Frame %u dropped: client-%d → line-%d (no route or conn DOWN)",
+            frame.header.frame_id, client_port, line_port);
+    }
+
+    // tell port manager about this frame so it can update per-port counters
+    // this is fire-and-forget, we dont wait for a reply
+    udp_message_t counter_msg = {0};
+    counter_msg.msg_type = MSG_UPDATE_COUNTERS;
+    counter_msg.status = STATUS_REQUEST;
+    udp_counter_update_t *counter = (udp_counter_update_t *)counter_msg.payload;
+    counter->port_id = client_port;
+    counter->pkts_rx = 1;
+    counter->pkts_dropped = forwarded ? 0 : 1;
+    send_udp_message_one_way(client_socket, &counter_msg, PORT_MANAGER_UDP);
 }
 
 void handle_get_traffic_stats(udp_message_t *resp)
