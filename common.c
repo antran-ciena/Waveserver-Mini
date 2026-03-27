@@ -52,6 +52,8 @@ void log_write(log_level_t level,
     if (f)
     {
         fputs(log_line, f);
+        fflush(f);
+        fclose(f);
     }
     else
     {

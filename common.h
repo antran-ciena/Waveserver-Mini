@@ -11,6 +11,7 @@
 #define PORT_MANAGER_UDP (5001)
 #define CONN_MANAGER_UDP (5002)
 #define TRAFFIC_MGR_UDP (5003)
+#define PROTECTION_MGR_UDP (5004)
 
 #define MAX_UDP_MSG_SIZE (512)
 #define MAX_CONN_NAME_CHARACTER (32)
@@ -46,6 +47,7 @@ typedef enum
     PORT_DOWN = 0,
     PORT_UP
 } port_state_t;
+
 typedef enum
 {
     LINE_PORT = 0,
@@ -79,18 +81,21 @@ typedef struct
 } conn_t;
 
 /////// OTN ///////
-typedef struct {
-    uint8_t  client_port;
-    uint8_t  line_port;
+typedef struct
+{
+    uint8_t client_port;
+    uint8_t line_port;
     uint32_t frame_id;
 } otn_header_t;
 
-typedef struct {
+typedef struct
+{
     otn_header_t header;
-    char         data[MAX_OTN_PAYLOAD_SIZE];
+    char data[MAX_OTN_PAYLOAD_SIZE];
 } otn_frame_t;
 
-typedef struct {
+typedef struct
+{
     uint32_t next_frame_id;
     uint32_t total_dropped;
     uint32_t total_forwarded;
@@ -98,6 +103,34 @@ typedef struct {
     uint8_t client_port;
     uint8_t line_port;
 } traffic_stats_t;
+
+/////// Protection ///////
+typedef struct
+{
+    char conn_name[MAX_CONN_NAME_CHARACTER];
+    uint8_t new_line_port;
+} udp_pm_update_conn_line_request_t;
+
+typedef struct
+{
+    char conn_name[MAX_CONN_NAME_CHARACTER];
+} udp_pm_get_conn_by_name_request_t;
+
+typedef struct
+{
+    bool group_active;
+    uint32_t switchovers;
+    uint8_t member_a;
+    uint8_t member_b;
+    uint8_t entry_count;
+    struct
+    {
+        char conn_name[MAX_CONN_NAME_CHARACTER];
+        uint8_t original_line;
+        uint8_t current_line;
+        bool switched;
+    } entries[MAX_CONNS];
+} udp_get_protection_group_reply_t;
 
 /////// Message types /////
 typedef enum
@@ -123,6 +156,15 @@ typedef enum
     MSG_GET_TRAFFIC_STATS, // CLI → Traffic Mgr : get traffic counters and if traffic up/down (request → reply)
     MSG_START_TRAFFIC,     // CLI → Traffic Mgr : start frame generation (request → reply)
     MSG_STOP_TRAFFIC,      // CLI → Traffic Mgr : stop frame generation (request → reply)
+
+    // Protection Manager messages
+    MSG_SET_PROTECTION_GROUP,   // CLI -> Protection Mgr
+    MSG_DELETE_PROTECTION_GROUP,// CLI -> Protection Mgr
+    MSG_GET_PROTECTION_GROUP,   // CLI -> Protection Mgr
+
+    // Protection Manager <-> Connection Manager
+    MSG_PM_UPDATE_CONN_LINE,    // Protection Mgr -> Conn Mgr
+    MSG_PM_GET_CONN_BY_NAME     // Protection Mgr -> Conn Mgr
 } msg_type_t;
 
 typedef enum
@@ -145,8 +187,9 @@ typedef struct
     uint8_t port_id;
 } udp_port_cmd_request_t;
 
-//MSG_SET_PORT, MSG_DELETE_PORT, MSG_INJECT_FAULT, MSG_CLEAR_FAULT reply
+// MSG_SET_PORT, MSG_DELETE_PORT, MSG_INJECT_FAULT, MSG_CLEAR_FAULT reply
 // MSG_CREATE_CONN and MSG_DELETE_CONN
+// MSG_SET_PROTECTION_GROUP and MSG_DELETE_PROTECTION_GROUP can also use this
 typedef struct
 {
     char error_msg[64]; // populated on STATUS_FAILURE, empty on success
@@ -155,12 +198,12 @@ typedef struct
 // MSG_UPDATE_COUNTERS (fire-and-forget)
 typedef struct
 {
-    uint8_t  port_id;
+    uint8_t port_id;
     uint32_t pkts_rx;
     uint32_t pkts_dropped;
 } udp_counter_update_t;
 
-// MSG_PORT_STATE_CHANGE (fire_and_forget)
+// MSG_PORT_STATE_CHANGE (fire-and-forget)
 typedef struct
 {
     uint8_t port_id;
@@ -195,7 +238,7 @@ typedef struct
     char name[MAX_CONN_NAME_CHARACTER];
 } udp_delete_conn_request_t;
 
-// MSG_GET_CONNECTIONS request
+// MSG_GET_CONNECTIONS reply
 typedef struct
 {
     conn_t all_connections[MAX_CONNS];
@@ -219,3 +262,5 @@ void send_udp_message_one_way(int sock, udp_message_t *msg, uint16_t dest_port);
 
 // Request-reply: send a message and wait for a response. Returns true on success.
 bool send_udp_message_and_receive(int sock, udp_message_t *req, udp_message_t *resp, uint16_t dest_port);
+
+
