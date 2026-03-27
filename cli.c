@@ -258,6 +258,70 @@ void cmd_show_logs(const char *level_filter, const char *service_filter)
     //   - service_filter: if provided, only show lines from that service (i.e., "port_mgr", "conn_mgr", "traffic_mgr", "cli")
     //   - Both filters can be active at the same time, and should be case insensitive
     //   - If neither filter is set, print everything.
+
+    FILE *f = fopen("wsmini.log", "r");
+    if (!f)
+    {
+        fprintf(stderr, "[ERROR] Could not open log file\n");
+        return;
+    }
+
+    char line[1024];
+    while (fgets(line, sizeof(line), f))
+    {
+        // If level_filter provided, extract [LEVEL] and match (case-insensitive)
+        // Log format: [timestamp] [LEVEL] [service] [file:line] message
+        if (level_filter)
+        {
+            char *bracket1 = strchr(line, '[');
+            if (!bracket1) continue;
+            char *bracket2 = strchr(bracket1 + 1, '[');
+            if (!bracket2) continue;
+            char *bracket_end = strchr(bracket2 + 1, ']');
+            if (!bracket_end) continue;
+
+            int level_len = bracket_end - bracket2 - 1;
+            if (level_len > 32) level_len = 32;
+            char level_buf[32];
+            strncpy(level_buf, bracket2 + 1, level_len);
+            level_buf[level_len] = '\0';
+
+            if (strcasecmp(level_buf, level_filter) != 0)
+                continue;
+        }
+
+        // If service_filter provided, extract [service] and match (case-insensitive)
+        // Log format: [timestamp] [LEVEL] [service] [file:line] message
+        if (service_filter)
+        {
+            char *search = line;
+            char *bracket = NULL;
+            // Find third bracket pair for service
+            for (int i = 0; i < 3; i++)
+            {
+                bracket = strchr(search, '[');
+                if (!bracket) break;
+                search = bracket + 1;
+            }
+            if (!bracket) continue;
+            char *bracket_end = strchr(bracket + 1, ']');
+            if (!bracket_end) continue;
+
+            int service_len = bracket_end - bracket - 1;
+            if (service_len > 32) service_len = 32;
+            char service_buf[32];
+            strncpy(service_buf, bracket + 1, service_len);
+            service_buf[service_len] = '\0';
+
+            if (strcasecmp(service_buf, service_filter) != 0)
+                continue;
+        }
+
+        // Line passed all filters, print it
+        printf("%s", line);
+    }
+
+    fclose(f);
 }
 
 /**
