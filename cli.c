@@ -378,7 +378,11 @@ void cmd_inject_fault(uint8_t port_id)
     // printf("[OK] Fault injected on Port-%d (%s)\n", port_id, port_id <= 2 ? "line" : "client");
     // On failure: print the ERROR message below.
     // printf("[ERROR] Failed to inject fault\n");
-    printf("TODO: F2 — Inject Fault — CLI Side (/8 pts)\n");
+
+    if (exec_port_cmd(port_id, MSG_INJECT_FAULT, "inject-fault"))
+        printf("[OK] Fault injected on Port-%d (%s)\n", port_id, port_id <= 2 ? "line" : "client");
+    else
+        printf("[ERROR] Failed to inject fault\n");
 }
 
 void cmd_clear_fault(uint8_t port_id)
@@ -388,7 +392,11 @@ void cmd_clear_fault(uint8_t port_id)
     // printf("[OK] Fault cleared on Port-%d (%s)\n", port_id, port_id <= 2 ? "line" : "client");
     // On failure: print the ERROR message below.
     // printf("[ERROR] Failed to clear fault\n");
-    printf("TODO: F2 — Clear Fault — CLI Side (/8 pts)\n");
+    
+    if (exec_port_cmd(port_id, MSG_CLEAR_FAULT, "clear-fault"))
+        printf("[OK] Fault cleared on Port-%d (%s)\n", port_id, port_id <= 2 ? "line" : "client");
+    else
+        printf("[ERROR] Failed to clear fault\n");
 }
 
 /**
