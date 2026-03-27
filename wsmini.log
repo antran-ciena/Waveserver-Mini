@@ -317,6 +317,7 @@
 [26-03-26 20:35:36] [INFO] [cli] [cli.c:673] CLI started
 [26-03-26 20:35:44] [ERROR] [conn_mgr] [conn_manager.c:284] could not find connection with that name (name=brad)
 =======
+<<<<<<< Updated upstream
 [26-03-26 20:30:56] [INFO] [conn_mgr] [conn_manager.c:14] Initialize connection table
 [26-03-26 20:30:56] [INFO] [port_mgr] [port_manager.c:29] Initialized ports
 [26-03-26 20:30:56] [INFO] [traffic_mgr] [traffic_manager.c:16] Traffic stats initialized
@@ -386,6 +387,7 @@
 >>>>>>> Stashed changes
 [26-03-26 21:00:44] [INFO] [traffic_mgr] [traffic_manager.c:16] Traffic stats initialized
 [26-03-26 21:00:49] [INFO] [cli] [cli.c:683] CLI started
+<<<<<<< Updated upstream
 [26-03-26 21:01:43] [INFO] [traffic_mgr] [traffic_manager.c:116] Traffic started (client=0, line=0, 0=random)
 [26-03-26 21:01:43] [DEBUG] [traffic_mgr] [traffic_manager.c:52] Frame #1 generated: client-3 -> line-2 msg="Forwarding test pattern"
 [26-03-26 21:01:56] [ERROR] [cli] [common.c:136] recvfrom on port 5003 failed
@@ -479,3 +481,1272 @@
 [26-03-26 21:27:07] [INFO] [port_mgr] [port_manager.c:29] port_idx=3 (CLIENT) admin=Disabled fault=None oper=DOWN received=0 dropped=0
 [26-03-26 21:27:07] [INFO] [port_mgr] [port_manager.c:29] port_idx=4 (CLIENT) admin=Disabled fault=None oper=DOWN received=0 dropped=0
 [26-03-26 21:27:07] [INFO] [port_mgr] [port_manager.c:29] port_idx=5 (CLIENT) admin=Disabled fault=None oper=DOWN received=0 dropped=0
+=======
+=======
+[26-03-26 20:30:32] [INFO] [port_mgr] [port_manager.c:29] Initialized ports
+[26-03-26 20:30:32] [INFO] [traffic_mgr] [traffic_manager.c:16] Traffic stats initialized
+[26-03-26 20:30:46] [INFO] [port_mgr] [port_manager.c:29] Initialized ports
+[26-03-26 20:30:46] [INFO] [traffic_mgr] [traffic_manager.c:16] Traffic stats initialized
+[26-03-26 20:31:04] [INFO] [port_mgr] [port_manager.c:29] Initialized ports
+[26-03-26 20:31:04] [INFO] [traffic_mgr] [traffic_manager.c:16] Traffic stats initialized
+[26-03-26 20:31:47] [INFO] [port_mgr] [port_manager.c:29] Initialized ports
+[26-03-26 20:31:47] [INFO] [conn_mgr] [conn_manager.c:14] Initialize connection table
+[26-03-26 20:31:47] [INFO] [traffic_mgr] [traffic_manager.c:16] Traffic stats initialized
+[26-03-26 20:35:04] [INFO] [conn_mgr] [conn_manager.c:14] Initialize connection table
+[26-03-26 20:35:04] [INFO] [port_mgr] [port_manager.c:29] Initialized ports
+[26-03-26 20:35:04] [INFO] [traffic_mgr] [traffic_manager.c:16] Traffic stats initialized
+[26-03-26 20:35:14] [INFO] [cli] [cli.c:673] CLI started
+[26-03-26 20:35:17] [INFO] [port_mgr] [port_manager.c:71] port_idx=0 oper_state changed: DOWN -> UP (admin=enabled fault=none)
+[26-03-26 20:35:17] [DEBUG] [port_mgr] [port_manager.c:61] Notified conn-mgr: port_idx=0, operational_state=UP
+[26-03-26 20:35:17] [INFO] [conn_mgr] [conn_manager.c:64] Port-1 operational_state changed to UP
+[26-03-26 20:35:17] [INFO] [port_mgr] [port_manager.c:132] Port admin-enabled: port_idx=0
+[26-03-26 20:35:19] [INFO] [port_mgr] [port_manager.c:71] port_idx=2 oper_state changed: DOWN -> UP (admin=enabled fault=none)
+[26-03-26 20:35:19] [DEBUG] [port_mgr] [port_manager.c:61] Notified conn-mgr: port_idx=2, operational_state=UP
+[26-03-26 20:35:19] [INFO] [conn_mgr] [conn_manager.c:64] Port-3 operational_state changed to UP
+[26-03-26 20:35:19] [INFO] [port_mgr] [port_manager.c:132] Port admin-enabled: port_idx=2
+[26-03-26 20:35:24] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-2
+[26-03-26 20:35:24] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-0
+[26-03-26 20:35:25] [INFO] [conn_mgr] [conn_manager.c:250] Connection 'xc-1' created: client port-3 → line port-1
+[26-03-26 20:35:53] [ERROR] [conn_mgr] [conn_manager.c:191] Create connection rejected: client port-3 already in use
+[26-03-26 20:37:26] [ERROR] [conn_mgr] [conn_manager.c:181] Create connection rejected: duplicate name 'xc-1'
+[26-03-26 20:37:41] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-4
+[26-03-26 20:37:41] [ERROR] [conn_mgr] [conn_manager.c:207] Create connection rejected: client port-5 is DOWN
+>>>>>>> Stashed changes
+[26-03-26 20:45:32] [INFO] [port_mgr] [port_manager.c:29] Initialized ports
+[26-03-26 20:45:32] [INFO] [conn_mgr] [conn_manager.c:14] Initialize connection table
+[26-03-26 20:45:32] [ERROR] [port_mgr] [common.c:81] Could not bind to socket
+[26-03-26 20:45:32] [INFO] [traffic_mgr] [traffic_manager.c:16] Traffic stats initialized
+[26-03-26 20:45:32] [ERROR] [conn_mgr] [common.c:81] Could not bind to socket
+[26-03-26 20:45:32] [ERROR] [conn_mgr] [conn_manager.c:340] Failed to create server socket - exiting
+[26-03-26 20:45:32] [ERROR] [port_mgr] [port_manager.c:216] Failed to create server socket - exiting
+[26-03-26 20:45:32] [ERROR] [traffic_mgr] [common.c:81] Could not bind to socket
+[26-03-26 20:45:32] [ERROR] [traffic_mgr] [traffic_manager.c:162] Failed to create server socket - exiting
+[26-03-26 20:45:55] [INFO] [cli] [cli.c:673] CLI started
+[26-03-26 20:46:01] [ERROR] [cli] [common.c:136] recvfrom on port 5001 failed
+[26-03-26 20:46:01] [ERROR] [cli] [cli.c:61] Request timed out — is the service running?
+[26-03-26 20:46:01] [ERROR] [cli] [cli.c:108] send_and_receive failed to send message to PORT_MANAGER
+[26-03-26 20:46:15] [INFO] [port_mgr] [port_manager.c:29] Initialized ports
+[26-03-26 20:46:15] [INFO] [conn_mgr] [conn_manager.c:14] Initialize connection table
+[26-03-26 20:46:15] [INFO] [traffic_mgr] [traffic_manager.c:16] Traffic stats initialized
+[26-03-26 20:46:22] [INFO] [cli] [cli.c:673] CLI started
+[26-03-26 20:46:24] [INFO] [port_mgr] [port_manager.c:71] port_idx=0 oper_state changed: DOWN -> UP (admin=enabled fault=none)
+[26-03-26 20:46:24] [DEBUG] [port_mgr] [port_manager.c:61] Notified conn-mgr: port_idx=0, operational_state=UP
+[26-03-26 20:46:24] [INFO] [conn_mgr] [conn_manager.c:64] Port-1 operational_state changed to UP
+[26-03-26 20:46:24] [INFO] [port_mgr] [port_manager.c:132] Port admin-enabled: port_idx=0
+[26-03-26 20:46:27] [INFO] [port_mgr] [port_manager.c:71] port_idx=2 oper_state changed: DOWN -> UP (admin=enabled fault=none)
+[26-03-26 20:46:27] [DEBUG] [port_mgr] [port_manager.c:61] Notified conn-mgr: port_idx=2, operational_state=UP
+[26-03-26 20:46:27] [INFO] [conn_mgr] [conn_manager.c:64] Port-3 operational_state changed to UP
+[26-03-26 20:46:27] [INFO] [port_mgr] [port_manager.c:132] Port admin-enabled: port_idx=2
+[26-03-26 20:46:31] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-2
+[26-03-26 20:46:31] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-0
+[26-03-26 20:46:31] [INFO] [conn_mgr] [conn_manager.c:250] Connection 'xc-1' created: client port-3 → line port-1
+[26-03-26 20:46:44] [DEBUG] [traffic_mgr] [traffic_manager.c:90] Returning traffic stats
+[26-03-26 20:46:51] [INFO] [traffic_mgr] [traffic_manager.c:115] Traffic started (client=0, line=0, 0=random)
+[26-03-26 20:46:51] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #1 generated: client-6 -> line-1 msg="OTN client traffic"
+[26-03-26 20:46:51] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-1
+[26-03-26 20:46:51] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:46:51] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #1 DROPPED: no connection for client-6 line-1
+[26-03-26 20:46:54] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #2 generated: client-5 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:46:54] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-2
+[26-03-26 20:46:54] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:46:54] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #2 DROPPED: no connection for client-5 line-2
+[26-03-26 20:46:57] [DEBUG] [traffic_mgr] [traffic_manager.c:90] Returning traffic stats
+[26-03-26 20:46:57] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #3 generated: client-3 -> line-1 msg="OTN client traffic"
+[26-03-26 20:46:57] [DEBUG] [conn_mgr] [conn_manager.c:141] MSG_LOOKUP_CONNECTION: client-3 → line-1 via xc-1 operational_state=UP
+[26-03-26 20:46:57] [DEBUG] [traffic_mgr] [traffic_manager.c:80] Frame #3 forwarded: Client-3 -> Line-1 via xc-1
+[26-03-26 20:46:57] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=0: rx=1 dropped=0
+[26-03-26 20:47:00] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #4 generated: client-5 -> line-1 msg="Data payload alpha"
+[26-03-26 20:47:00] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:47:00] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:47:00] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #4 DROPPED: no connection for client-5 line-1
+[26-03-26 20:47:03] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #5 generated: client-4 -> line-2 msg="Forwarding test pattern"
+[26-03-26 20:47:03] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:47:03] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #5 DROPPED: no connection for client-4 line-2
+[26-03-26 20:47:03] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:47:06] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #6 generated: client-3 -> line-1 msg="Forwarding test pattern"
+[26-03-26 20:47:06] [DEBUG] [conn_mgr] [conn_manager.c:141] MSG_LOOKUP_CONNECTION: client-3 → line-1 via xc-1 operational_state=UP
+[26-03-26 20:47:06] [DEBUG] [traffic_mgr] [traffic_manager.c:80] Frame #6 forwarded: Client-3 -> Line-1 via xc-1
+[26-03-26 20:47:06] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=0: rx=1 dropped=0
+[26-03-26 20:47:09] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #7 generated: client-6 -> line-2 msg="Forwarding test pattern"
+[26-03-26 20:47:09] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-2
+[26-03-26 20:47:09] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:47:09] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #7 DROPPED: no connection for client-6 line-2
+[26-03-26 20:47:13] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #8 generated: client-3 -> line-1 msg="Data payload alpha"
+[26-03-26 20:47:13] [DEBUG] [conn_mgr] [conn_manager.c:141] MSG_LOOKUP_CONNECTION: client-3 → line-1 via xc-1 operational_state=UP
+[26-03-26 20:47:13] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=0: rx=1 dropped=0
+[26-03-26 20:47:13] [DEBUG] [traffic_mgr] [traffic_manager.c:80] Frame #8 forwarded: Client-3 -> Line-1 via xc-1
+[26-03-26 20:47:16] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #9 generated: client-4 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:47:16] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:47:16] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:47:16] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #9 DROPPED: no connection for client-4 line-2
+[26-03-26 20:47:19] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #10 generated: client-4 -> line-1 msg="Forwarding test pattern"
+[26-03-26 20:47:19] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-1
+[26-03-26 20:47:19] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:47:19] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #10 DROPPED: no connection for client-4 line-1
+[26-03-26 20:47:22] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #11 generated: client-4 -> line-2 msg="Forwarding test pattern"
+[26-03-26 20:47:22] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:47:22] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:47:22] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #11 DROPPED: no connection for client-4 line-2
+[26-03-26 20:47:25] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #12 generated: client-3 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:47:25] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:47:25] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #12 DROPPED: no connection for client-3 line-2
+[26-03-26 20:47:25] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:47:29] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #13 generated: client-4 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:47:29] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:47:29] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #13 DROPPED: no connection for client-4 line-2
+[26-03-26 20:47:29] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:47:32] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #14 generated: client-6 -> line-1 msg="Data payload alpha"
+[26-03-26 20:47:32] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-1
+[26-03-26 20:47:32] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:47:32] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #14 DROPPED: no connection for client-6 line-1
+[26-03-26 20:47:35] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #15 generated: client-3 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:47:35] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:47:35] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #15 DROPPED: no connection for client-3 line-2
+[26-03-26 20:47:35] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:47:38] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #16 generated: client-6 -> line-2 msg="Forwarding test pattern"
+[26-03-26 20:47:38] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-2
+[26-03-26 20:47:38] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:47:38] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #16 DROPPED: no connection for client-6 line-2
+[26-03-26 20:47:41] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #17 generated: client-5 -> line-1 msg="OTN client traffic"
+[26-03-26 20:47:41] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:47:42] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:47:42] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #17 DROPPED: no connection for client-5 line-1
+[26-03-26 20:47:44] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #18 generated: client-4 -> line-1 msg="Data payload alpha"
+[26-03-26 20:47:44] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-1
+[26-03-26 20:47:44] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:47:44] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #18 DROPPED: no connection for client-4 line-1
+[26-03-26 20:47:47] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #19 generated: client-4 -> line-2 msg="Forwarding test pattern"
+[26-03-26 20:47:47] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:47:47] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #19 DROPPED: no connection for client-4 line-2
+[26-03-26 20:47:47] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:47:50] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #20 generated: client-6 -> line-1 msg="Waveserver mini frame"
+[26-03-26 20:47:50] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-1
+[26-03-26 20:47:50] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #20 DROPPED: no connection for client-6 line-1
+[26-03-26 20:47:50] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:47:53] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #21 generated: client-5 -> line-1 msg="OTN client traffic"
+[26-03-26 20:47:53] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:47:54] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:47:54] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #21 DROPPED: no connection for client-5 line-1
+[26-03-26 20:47:56] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #22 generated: client-5 -> line-1 msg="OTN client traffic"
+[26-03-26 20:47:56] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:47:56] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:47:56] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #22 DROPPED: no connection for client-5 line-1
+[26-03-26 20:47:59] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #23 generated: client-6 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:47:59] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-2
+[26-03-26 20:47:59] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:47:59] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #23 DROPPED: no connection for client-6 line-2
+[26-03-26 20:48:02] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #24 generated: client-3 -> line-1 msg="Forwarding test pattern"
+[26-03-26 20:48:02] [DEBUG] [conn_mgr] [conn_manager.c:141] MSG_LOOKUP_CONNECTION: client-3 → line-1 via xc-1 operational_state=UP
+[26-03-26 20:48:02] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=0: rx=1 dropped=0
+[26-03-26 20:48:02] [DEBUG] [traffic_mgr] [traffic_manager.c:80] Frame #24 forwarded: Client-3 -> Line-1 via xc-1
+[26-03-26 20:48:05] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #25 generated: client-3 -> line-1 msg="OTN client traffic"
+[26-03-26 20:48:05] [DEBUG] [conn_mgr] [conn_manager.c:141] MSG_LOOKUP_CONNECTION: client-3 → line-1 via xc-1 operational_state=UP
+[26-03-26 20:48:05] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=0: rx=1 dropped=0
+[26-03-26 20:48:05] [DEBUG] [traffic_mgr] [traffic_manager.c:80] Frame #25 forwarded: Client-3 -> Line-1 via xc-1
+[26-03-26 20:48:08] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #26 generated: client-4 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:48:08] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:48:08] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #26 DROPPED: no connection for client-4 line-2
+[26-03-26 20:48:08] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:48:11] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #27 generated: client-3 -> line-2 msg="Data payload alpha"
+[26-03-26 20:48:11] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:48:11] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:48:11] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #27 DROPPED: no connection for client-3 line-2
+[26-03-26 20:48:14] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #28 generated: client-5 -> line-2 msg="OTN client traffic"
+[26-03-26 20:48:14] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-2
+[26-03-26 20:48:14] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:48:14] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #28 DROPPED: no connection for client-5 line-2
+[26-03-26 20:48:17] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #29 generated: client-6 -> line-1 msg="OTN client traffic"
+[26-03-26 20:48:17] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-1
+[26-03-26 20:48:17] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:48:17] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #29 DROPPED: no connection for client-6 line-1
+[26-03-26 20:48:20] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #30 generated: client-5 -> line-2 msg="OTN client traffic"
+[26-03-26 20:48:20] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-2
+[26-03-26 20:48:20] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:48:20] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #30 DROPPED: no connection for client-5 line-2
+[26-03-26 20:48:23] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #31 generated: client-3 -> line-1 msg="Data payload alpha"
+[26-03-26 20:48:23] [DEBUG] [conn_mgr] [conn_manager.c:141] MSG_LOOKUP_CONNECTION: client-3 → line-1 via xc-1 operational_state=UP
+[26-03-26 20:48:23] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=0: rx=1 dropped=0
+[26-03-26 20:48:23] [DEBUG] [traffic_mgr] [traffic_manager.c:80] Frame #31 forwarded: Client-3 -> Line-1 via xc-1
+[26-03-26 20:48:26] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #32 generated: client-5 -> line-1 msg="OTN client traffic"
+[26-03-26 20:48:26] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:48:26] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #32 DROPPED: no connection for client-5 line-1
+[26-03-26 20:48:26] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:48:29] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #33 generated: client-3 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:48:29] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:48:29] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:48:29] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #33 DROPPED: no connection for client-3 line-2
+[26-03-26 20:48:32] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #34 generated: client-5 -> line-2 msg="Data payload alpha"
+[26-03-26 20:48:32] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-2
+[26-03-26 20:48:32] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #34 DROPPED: no connection for client-5 line-2
+[26-03-26 20:48:32] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:48:35] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #35 generated: client-4 -> line-1 msg="OTN client traffic"
+[26-03-26 20:48:35] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-1
+[26-03-26 20:48:35] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #35 DROPPED: no connection for client-4 line-1
+[26-03-26 20:48:35] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:48:38] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #36 generated: client-3 -> line-2 msg="Data payload alpha"
+[26-03-26 20:48:38] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:48:38] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:48:38] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #36 DROPPED: no connection for client-3 line-2
+[26-03-26 20:48:41] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #37 generated: client-4 -> line-1 msg="Forwarding test pattern"
+[26-03-26 20:48:41] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-1
+[26-03-26 20:48:41] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:48:41] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #37 DROPPED: no connection for client-4 line-1
+[26-03-26 20:48:44] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #38 generated: client-4 -> line-1 msg="Data payload alpha"
+[26-03-26 20:48:44] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-1
+[26-03-26 20:48:44] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:48:44] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #38 DROPPED: no connection for client-4 line-1
+[26-03-26 20:48:47] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #39 generated: client-3 -> line-2 msg="Forwarding test pattern"
+[26-03-26 20:48:47] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:48:47] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #39 DROPPED: no connection for client-3 line-2
+[26-03-26 20:48:47] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:48:51] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #40 generated: client-5 -> line-1 msg="Data payload alpha"
+[26-03-26 20:48:51] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:48:51] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #40 DROPPED: no connection for client-5 line-1
+[26-03-26 20:48:51] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:48:54] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #41 generated: client-3 -> line-1 msg="Data payload alpha"
+[26-03-26 20:48:54] [DEBUG] [conn_mgr] [conn_manager.c:141] MSG_LOOKUP_CONNECTION: client-3 → line-1 via xc-1 operational_state=UP
+[26-03-26 20:48:54] [DEBUG] [traffic_mgr] [traffic_manager.c:80] Frame #41 forwarded: Client-3 -> Line-1 via xc-1
+[26-03-26 20:48:54] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=0: rx=1 dropped=0
+[26-03-26 20:48:57] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #42 generated: client-4 -> line-1 msg="OTN client traffic"
+[26-03-26 20:48:57] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-1
+[26-03-26 20:48:57] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #42 DROPPED: no connection for client-4 line-1
+[26-03-26 20:48:57] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:49:00] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #43 generated: client-6 -> line-2 msg="Forwarding test pattern"
+[26-03-26 20:49:00] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-2
+[26-03-26 20:49:00] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #43 DROPPED: no connection for client-6 line-2
+[26-03-26 20:49:00] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:49:03] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #44 generated: client-4 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:49:03] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:49:04] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #44 DROPPED: no connection for client-4 line-2
+[26-03-26 20:49:04] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:49:06] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #45 generated: client-4 -> line-1 msg="Forwarding test pattern"
+[26-03-26 20:49:06] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-1
+[26-03-26 20:49:06] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #45 DROPPED: no connection for client-4 line-1
+[26-03-26 20:49:06] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:49:09] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #46 generated: client-6 -> line-1 msg="OTN client traffic"
+[26-03-26 20:49:09] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-1
+[26-03-26 20:49:09] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #46 DROPPED: no connection for client-6 line-1
+[26-03-26 20:49:09] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:49:12] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #47 generated: client-6 -> line-1 msg="OTN client traffic"
+[26-03-26 20:49:12] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-1
+[26-03-26 20:49:12] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #47 DROPPED: no connection for client-6 line-1
+[26-03-26 20:49:12] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:49:15] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #48 generated: client-6 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:49:15] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-2
+[26-03-26 20:49:15] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:49:15] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #48 DROPPED: no connection for client-6 line-2
+[26-03-26 20:49:19] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #49 generated: client-6 -> line-2 msg="OTN client traffic"
+[26-03-26 20:49:19] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-2
+[26-03-26 20:49:19] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:49:19] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #49 DROPPED: no connection for client-6 line-2
+[26-03-26 20:49:22] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #50 generated: client-5 -> line-2 msg="OTN client traffic"
+[26-03-26 20:49:22] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-2
+[26-03-26 20:49:22] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:49:22] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #50 DROPPED: no connection for client-5 line-2
+[26-03-26 20:49:25] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #51 generated: client-6 -> line-1 msg="OTN client traffic"
+[26-03-26 20:49:25] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-1
+[26-03-26 20:49:25] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:49:25] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #51 DROPPED: no connection for client-6 line-1
+[26-03-26 20:49:28] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #52 generated: client-6 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:49:28] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-2
+[26-03-26 20:49:28] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:49:28] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #52 DROPPED: no connection for client-6 line-2
+[26-03-26 20:49:31] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #53 generated: client-5 -> line-1 msg="Data payload alpha"
+[26-03-26 20:49:31] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:49:32] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:49:32] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #53 DROPPED: no connection for client-5 line-1
+[26-03-26 20:49:34] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #54 generated: client-4 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:49:34] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:49:34] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:49:34] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #54 DROPPED: no connection for client-4 line-2
+[26-03-26 20:49:37] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #55 generated: client-5 -> line-1 msg="Forwarding test pattern"
+[26-03-26 20:49:37] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:49:37] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #55 DROPPED: no connection for client-5 line-1
+[26-03-26 20:49:37] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:49:40] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #56 generated: client-4 -> line-1 msg="OTN client traffic"
+[26-03-26 20:49:40] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-1
+[26-03-26 20:49:40] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:49:40] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #56 DROPPED: no connection for client-4 line-1
+[26-03-26 20:49:43] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #57 generated: client-3 -> line-2 msg="OTN client traffic"
+[26-03-26 20:49:43] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:49:44] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:49:44] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #57 DROPPED: no connection for client-3 line-2
+[26-03-26 20:49:46] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #58 generated: client-5 -> line-1 msg="Forwarding test pattern"
+[26-03-26 20:49:46] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:49:46] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:49:46] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #58 DROPPED: no connection for client-5 line-1
+[26-03-26 20:49:49] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #59 generated: client-6 -> line-1 msg="Waveserver mini frame"
+[26-03-26 20:49:49] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-1
+[26-03-26 20:49:49] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #59 DROPPED: no connection for client-6 line-1
+[26-03-26 20:49:49] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:49:52] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #60 generated: client-5 -> line-1 msg="Data payload alpha"
+[26-03-26 20:49:52] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:49:52] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #60 DROPPED: no connection for client-5 line-1
+[26-03-26 20:49:52] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:49:55] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #61 generated: client-3 -> line-2 msg="Data payload alpha"
+[26-03-26 20:49:55] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:49:55] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:49:55] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #61 DROPPED: no connection for client-3 line-2
+[26-03-26 20:49:58] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #62 generated: client-6 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:49:58] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-2
+[26-03-26 20:49:59] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #62 DROPPED: no connection for client-6 line-2
+[26-03-26 20:49:59] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:50:01] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #63 generated: client-3 -> line-2 msg="OTN client traffic"
+[26-03-26 20:50:01] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:50:01] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #63 DROPPED: no connection for client-3 line-2
+[26-03-26 20:50:01] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:50:04] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #64 generated: client-3 -> line-1 msg="Forwarding test pattern"
+[26-03-26 20:50:04] [DEBUG] [conn_mgr] [conn_manager.c:141] MSG_LOOKUP_CONNECTION: client-3 → line-1 via xc-1 operational_state=UP
+[26-03-26 20:50:04] [DEBUG] [traffic_mgr] [traffic_manager.c:80] Frame #64 forwarded: Client-3 -> Line-1 via xc-1
+[26-03-26 20:50:04] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=0: rx=1 dropped=0
+[26-03-26 20:50:07] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #65 generated: client-4 -> line-2 msg="OTN client traffic"
+[26-03-26 20:50:07] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:50:07] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:50:07] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #65 DROPPED: no connection for client-4 line-2
+[26-03-26 20:50:10] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #66 generated: client-3 -> line-1 msg="Data payload alpha"
+[26-03-26 20:50:10] [DEBUG] [conn_mgr] [conn_manager.c:141] MSG_LOOKUP_CONNECTION: client-3 → line-1 via xc-1 operational_state=UP
+[26-03-26 20:50:10] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=0: rx=1 dropped=0
+[26-03-26 20:50:10] [DEBUG] [traffic_mgr] [traffic_manager.c:80] Frame #66 forwarded: Client-3 -> Line-1 via xc-1
+[26-03-26 20:50:13] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #67 generated: client-5 -> line-1 msg="Waveserver mini frame"
+[26-03-26 20:50:13] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:50:14] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:50:14] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #67 DROPPED: no connection for client-5 line-1
+[26-03-26 20:50:16] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #68 generated: client-3 -> line-2 msg="OTN client traffic"
+[26-03-26 20:50:16] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:50:16] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #68 DROPPED: no connection for client-3 line-2
+[26-03-26 20:50:16] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:50:19] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #69 generated: client-3 -> line-1 msg="OTN client traffic"
+[26-03-26 20:50:19] [DEBUG] [conn_mgr] [conn_manager.c:141] MSG_LOOKUP_CONNECTION: client-3 → line-1 via xc-1 operational_state=UP
+[26-03-26 20:50:19] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=0: rx=1 dropped=0
+[26-03-26 20:50:19] [DEBUG] [traffic_mgr] [traffic_manager.c:80] Frame #69 forwarded: Client-3 -> Line-1 via xc-1
+[26-03-26 20:50:22] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #70 generated: client-4 -> line-1 msg="Data payload alpha"
+[26-03-26 20:50:22] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-1
+[26-03-26 20:50:22] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:50:22] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #70 DROPPED: no connection for client-4 line-1
+[26-03-26 20:50:25] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #71 generated: client-4 -> line-2 msg="OTN client traffic"
+[26-03-26 20:50:25] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:50:26] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #71 DROPPED: no connection for client-4 line-2
+[26-03-26 20:50:26] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:50:28] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #72 generated: client-5 -> line-1 msg="Forwarding test pattern"
+[26-03-26 20:50:28] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:50:28] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #72 DROPPED: no connection for client-5 line-1
+[26-03-26 20:50:28] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:50:31] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #73 generated: client-6 -> line-1 msg="OTN client traffic"
+[26-03-26 20:50:31] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-1
+[26-03-26 20:50:31] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #73 DROPPED: no connection for client-6 line-1
+[26-03-26 20:50:31] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:50:34] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #74 generated: client-4 -> line-1 msg="OTN client traffic"
+[26-03-26 20:50:34] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-1
+[26-03-26 20:50:34] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #74 DROPPED: no connection for client-4 line-1
+[26-03-26 20:50:34] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:50:37] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #75 generated: client-4 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:50:37] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:50:37] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:50:37] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #75 DROPPED: no connection for client-4 line-2
+[26-03-26 20:50:40] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #76 generated: client-6 -> line-2 msg="OTN client traffic"
+[26-03-26 20:50:40] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-2
+[26-03-26 20:50:41] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:50:41] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #76 DROPPED: no connection for client-6 line-2
+[26-03-26 20:50:43] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #77 generated: client-6 -> line-1 msg="OTN client traffic"
+[26-03-26 20:50:43] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-1
+[26-03-26 20:50:43] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #77 DROPPED: no connection for client-6 line-1
+[26-03-26 20:50:43] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:50:46] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #78 generated: client-3 -> line-1 msg="Waveserver mini frame"
+[26-03-26 20:50:46] [DEBUG] [conn_mgr] [conn_manager.c:141] MSG_LOOKUP_CONNECTION: client-3 → line-1 via xc-1 operational_state=UP
+[26-03-26 20:50:46] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=0: rx=1 dropped=0
+[26-03-26 20:50:46] [DEBUG] [traffic_mgr] [traffic_manager.c:80] Frame #78 forwarded: Client-3 -> Line-1 via xc-1
+[26-03-26 20:50:49] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #79 generated: client-5 -> line-1 msg="Data payload alpha"
+[26-03-26 20:50:49] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:50:49] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:50:49] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #79 DROPPED: no connection for client-5 line-1
+[26-03-26 20:50:52] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #80 generated: client-3 -> line-2 msg="Data payload alpha"
+[26-03-26 20:50:52] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:50:53] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:50:53] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #80 DROPPED: no connection for client-3 line-2
+[26-03-26 20:50:55] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #81 generated: client-4 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:50:55] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:50:55] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #81 DROPPED: no connection for client-4 line-2
+[26-03-26 20:50:55] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:50:58] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #82 generated: client-6 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:50:58] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-2
+[26-03-26 20:50:58] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:50:58] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #82 DROPPED: no connection for client-6 line-2
+[26-03-26 20:51:01] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #83 generated: client-5 -> line-1 msg="Waveserver mini frame"
+[26-03-26 20:51:01] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:51:01] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:51:01] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #83 DROPPED: no connection for client-5 line-1
+[26-03-26 20:51:04] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #84 generated: client-3 -> line-1 msg="Waveserver mini frame"
+[26-03-26 20:51:04] [DEBUG] [conn_mgr] [conn_manager.c:141] MSG_LOOKUP_CONNECTION: client-3 → line-1 via xc-1 operational_state=UP
+[26-03-26 20:51:04] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=0: rx=1 dropped=0
+[26-03-26 20:51:04] [DEBUG] [traffic_mgr] [traffic_manager.c:80] Frame #84 forwarded: Client-3 -> Line-1 via xc-1
+[26-03-26 20:51:07] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #85 generated: client-5 -> line-2 msg="OTN client traffic"
+[26-03-26 20:51:07] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-2
+[26-03-26 20:51:07] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:51:07] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #85 DROPPED: no connection for client-5 line-2
+[26-03-26 20:51:10] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #86 generated: client-3 -> line-1 msg="Data payload alpha"
+[26-03-26 20:51:10] [DEBUG] [conn_mgr] [conn_manager.c:141] MSG_LOOKUP_CONNECTION: client-3 → line-1 via xc-1 operational_state=UP
+[26-03-26 20:51:10] [DEBUG] [traffic_mgr] [traffic_manager.c:80] Frame #86 forwarded: Client-3 -> Line-1 via xc-1
+[26-03-26 20:51:10] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=0: rx=1 dropped=0
+[26-03-26 20:51:13] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #87 generated: client-5 -> line-2 msg="Data payload alpha"
+[26-03-26 20:51:13] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-2
+[26-03-26 20:51:13] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #87 DROPPED: no connection for client-5 line-2
+[26-03-26 20:51:13] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:51:16] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #88 generated: client-3 -> line-2 msg="Data payload alpha"
+[26-03-26 20:51:16] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:51:16] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #88 DROPPED: no connection for client-3 line-2
+[26-03-26 20:51:16] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:51:19] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #89 generated: client-5 -> line-1 msg="Waveserver mini frame"
+[26-03-26 20:51:19] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:51:19] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:51:19] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #89 DROPPED: no connection for client-5 line-1
+[26-03-26 20:51:22] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #90 generated: client-5 -> line-1 msg="OTN client traffic"
+[26-03-26 20:51:22] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:51:22] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:51:22] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #90 DROPPED: no connection for client-5 line-1
+[26-03-26 20:51:25] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #91 generated: client-5 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:51:25] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-2
+[26-03-26 20:51:25] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:51:25] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #91 DROPPED: no connection for client-5 line-2
+[26-03-26 20:51:28] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #92 generated: client-3 -> line-1 msg="OTN client traffic"
+[26-03-26 20:51:28] [DEBUG] [conn_mgr] [conn_manager.c:141] MSG_LOOKUP_CONNECTION: client-3 → line-1 via xc-1 operational_state=UP
+[26-03-26 20:51:28] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=0: rx=1 dropped=0
+[26-03-26 20:51:28] [DEBUG] [traffic_mgr] [traffic_manager.c:80] Frame #92 forwarded: Client-3 -> Line-1 via xc-1
+[26-03-26 20:51:31] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #93 generated: client-4 -> line-1 msg="Forwarding test pattern"
+[26-03-26 20:51:31] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-1
+[26-03-26 20:51:31] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #93 DROPPED: no connection for client-4 line-1
+[26-03-26 20:51:31] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:51:34] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #94 generated: client-6 -> line-1 msg="Waveserver mini frame"
+[26-03-26 20:51:34] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-1
+[26-03-26 20:51:35] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:51:35] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #94 DROPPED: no connection for client-6 line-1
+[26-03-26 20:51:37] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #95 generated: client-3 -> line-2 msg="Data payload alpha"
+[26-03-26 20:51:37] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:51:37] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #95 DROPPED: no connection for client-3 line-2
+[26-03-26 20:51:37] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:51:40] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #96 generated: client-6 -> line-2 msg="OTN client traffic"
+[26-03-26 20:51:40] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-2
+[26-03-26 20:51:40] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #96 DROPPED: no connection for client-6 line-2
+[26-03-26 20:51:40] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:51:43] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #97 generated: client-6 -> line-2 msg="Forwarding test pattern"
+[26-03-26 20:51:43] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-2
+[26-03-26 20:51:43] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:51:43] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #97 DROPPED: no connection for client-6 line-2
+[26-03-26 20:51:46] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #98 generated: client-6 -> line-2 msg="Data payload alpha"
+[26-03-26 20:51:46] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-2
+[26-03-26 20:51:46] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:51:46] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #98 DROPPED: no connection for client-6 line-2
+[26-03-26 20:51:49] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #99 generated: client-6 -> line-2 msg="Data payload alpha"
+[26-03-26 20:51:49] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-2
+[26-03-26 20:51:50] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:51:50] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #99 DROPPED: no connection for client-6 line-2
+[26-03-26 20:51:52] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #100 generated: client-3 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:51:52] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:51:52] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:51:52] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #100 DROPPED: no connection for client-3 line-2
+[26-03-26 20:51:55] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #101 generated: client-6 -> line-1 msg="OTN client traffic"
+[26-03-26 20:51:55] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-1
+[26-03-26 20:51:55] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:51:55] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #101 DROPPED: no connection for client-6 line-1
+[26-03-26 20:51:58] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #102 generated: client-3 -> line-1 msg="Forwarding test pattern"
+[26-03-26 20:51:58] [DEBUG] [conn_mgr] [conn_manager.c:141] MSG_LOOKUP_CONNECTION: client-3 → line-1 via xc-1 operational_state=UP
+[26-03-26 20:51:58] [DEBUG] [traffic_mgr] [traffic_manager.c:80] Frame #102 forwarded: Client-3 -> Line-1 via xc-1
+[26-03-26 20:51:58] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=0: rx=1 dropped=0
+[26-03-26 20:52:01] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #103 generated: client-6 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:52:01] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-2
+[26-03-26 20:52:01] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #103 DROPPED: no connection for client-6 line-2
+[26-03-26 20:52:01] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:52:04] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #104 generated: client-5 -> line-1 msg="Data payload alpha"
+[26-03-26 20:52:04] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:52:05] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:52:05] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #104 DROPPED: no connection for client-5 line-1
+[26-03-26 20:52:07] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #105 generated: client-6 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:52:07] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-2
+[26-03-26 20:52:07] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:52:07] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #105 DROPPED: no connection for client-6 line-2
+[26-03-26 20:52:10] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #106 generated: client-6 -> line-1 msg="OTN client traffic"
+[26-03-26 20:52:10] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-1
+[26-03-26 20:52:10] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:52:10] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #106 DROPPED: no connection for client-6 line-1
+[26-03-26 20:52:13] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #107 generated: client-4 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:52:13] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:52:13] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #107 DROPPED: no connection for client-4 line-2
+[26-03-26 20:52:13] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:52:16] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #108 generated: client-3 -> line-1 msg="Data payload alpha"
+[26-03-26 20:52:16] [DEBUG] [conn_mgr] [conn_manager.c:141] MSG_LOOKUP_CONNECTION: client-3 → line-1 via xc-1 operational_state=UP
+[26-03-26 20:52:16] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=0: rx=1 dropped=0
+[26-03-26 20:52:16] [DEBUG] [traffic_mgr] [traffic_manager.c:80] Frame #108 forwarded: Client-3 -> Line-1 via xc-1
+[26-03-26 20:52:19] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #109 generated: client-3 -> line-2 msg="OTN client traffic"
+[26-03-26 20:52:19] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:52:19] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #109 DROPPED: no connection for client-3 line-2
+[26-03-26 20:52:19] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:52:22] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #110 generated: client-4 -> line-1 msg="Waveserver mini frame"
+[26-03-26 20:52:22] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-1
+[26-03-26 20:52:22] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #110 DROPPED: no connection for client-4 line-1
+[26-03-26 20:52:22] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:52:25] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #111 generated: client-5 -> line-2 msg="Forwarding test pattern"
+[26-03-26 20:52:25] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-2
+[26-03-26 20:52:25] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #111 DROPPED: no connection for client-5 line-2
+[26-03-26 20:52:25] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:52:28] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #112 generated: client-3 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:52:28] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:52:28] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:52:28] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #112 DROPPED: no connection for client-3 line-2
+[26-03-26 20:52:31] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #113 generated: client-6 -> line-1 msg="Waveserver mini frame"
+[26-03-26 20:52:31] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-1
+[26-03-26 20:52:31] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:52:31] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #113 DROPPED: no connection for client-6 line-1
+[26-03-26 20:52:34] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #114 generated: client-4 -> line-1 msg="Forwarding test pattern"
+[26-03-26 20:52:34] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-1
+[26-03-26 20:52:34] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:52:34] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #114 DROPPED: no connection for client-4 line-1
+[26-03-26 20:52:37] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #115 generated: client-4 -> line-2 msg="OTN client traffic"
+[26-03-26 20:52:37] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:52:37] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #115 DROPPED: no connection for client-4 line-2
+[26-03-26 20:52:37] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:52:40] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #116 generated: client-5 -> line-1 msg="Data payload alpha"
+[26-03-26 20:52:40] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:52:40] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:52:40] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #116 DROPPED: no connection for client-5 line-1
+[26-03-26 20:52:43] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #117 generated: client-3 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:52:43] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:52:43] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:52:43] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #117 DROPPED: no connection for client-3 line-2
+[26-03-26 20:52:46] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #118 generated: client-4 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:52:46] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:52:46] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #118 DROPPED: no connection for client-4 line-2
+[26-03-26 20:52:46] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:52:49] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #119 generated: client-4 -> line-1 msg="Waveserver mini frame"
+[26-03-26 20:52:49] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-1
+[26-03-26 20:52:49] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:52:49] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #119 DROPPED: no connection for client-4 line-1
+[26-03-26 20:52:52] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #120 generated: client-6 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:52:52] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-2
+[26-03-26 20:52:53] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #120 DROPPED: no connection for client-6 line-2
+[26-03-26 20:52:53] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:52:55] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #121 generated: client-4 -> line-2 msg="Data payload alpha"
+[26-03-26 20:52:55] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:52:55] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:52:55] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #121 DROPPED: no connection for client-4 line-2
+[26-03-26 20:52:58] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #122 generated: client-3 -> line-2 msg="Forwarding test pattern"
+[26-03-26 20:52:58] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:52:58] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #122 DROPPED: no connection for client-3 line-2
+[26-03-26 20:52:58] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:53:01] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #123 generated: client-5 -> line-2 msg="OTN client traffic"
+[26-03-26 20:53:01] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-2
+[26-03-26 20:53:01] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:53:01] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #123 DROPPED: no connection for client-5 line-2
+[26-03-26 20:53:04] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #124 generated: client-6 -> line-1 msg="OTN client traffic"
+[26-03-26 20:53:04] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-1
+[26-03-26 20:53:04] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:53:04] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #124 DROPPED: no connection for client-6 line-1
+[26-03-26 20:53:07] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #125 generated: client-5 -> line-2 msg="OTN client traffic"
+[26-03-26 20:53:07] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-2
+[26-03-26 20:53:08] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:53:08] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #125 DROPPED: no connection for client-5 line-2
+[26-03-26 20:53:10] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #126 generated: client-4 -> line-2 msg="Data payload alpha"
+[26-03-26 20:53:10] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:53:10] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #126 DROPPED: no connection for client-4 line-2
+[26-03-26 20:53:10] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:53:13] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #127 generated: client-4 -> line-2 msg="Data payload alpha"
+[26-03-26 20:53:13] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:53:13] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #127 DROPPED: no connection for client-4 line-2
+[26-03-26 20:53:13] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:53:16] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #128 generated: client-6 -> line-1 msg="Forwarding test pattern"
+[26-03-26 20:53:16] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-1
+[26-03-26 20:53:16] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:53:16] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #128 DROPPED: no connection for client-6 line-1
+[26-03-26 20:53:19] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #129 generated: client-3 -> line-2 msg="Forwarding test pattern"
+[26-03-26 20:53:19] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:53:19] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:53:19] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #129 DROPPED: no connection for client-3 line-2
+[26-03-26 20:53:22] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #130 generated: client-4 -> line-2 msg="Data payload alpha"
+[26-03-26 20:53:22] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:53:23] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #130 DROPPED: no connection for client-4 line-2
+[26-03-26 20:53:23] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:53:25] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #131 generated: client-5 -> line-1 msg="Forwarding test pattern"
+[26-03-26 20:53:25] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:53:25] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:53:25] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #131 DROPPED: no connection for client-5 line-1
+[26-03-26 20:53:28] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #132 generated: client-5 -> line-1 msg="Forwarding test pattern"
+[26-03-26 20:53:28] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:53:28] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:53:28] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #132 DROPPED: no connection for client-5 line-1
+[26-03-26 20:53:31] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #133 generated: client-5 -> line-1 msg="OTN client traffic"
+[26-03-26 20:53:31] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:53:31] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #133 DROPPED: no connection for client-5 line-1
+[26-03-26 20:53:31] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:53:34] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #134 generated: client-3 -> line-2 msg="OTN client traffic"
+[26-03-26 20:53:34] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:53:34] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:53:34] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #134 DROPPED: no connection for client-3 line-2
+[26-03-26 20:53:37] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #135 generated: client-5 -> line-1 msg="Forwarding test pattern"
+[26-03-26 20:53:37] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:53:37] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:53:37] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #135 DROPPED: no connection for client-5 line-1
+[26-03-26 20:53:40] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #136 generated: client-3 -> line-2 msg="OTN client traffic"
+[26-03-26 20:53:40] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:53:40] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #136 DROPPED: no connection for client-3 line-2
+[26-03-26 20:53:40] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:53:43] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #137 generated: client-4 -> line-1 msg="Waveserver mini frame"
+[26-03-26 20:53:43] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-1
+[26-03-26 20:53:43] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:53:43] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #137 DROPPED: no connection for client-4 line-1
+[26-03-26 20:53:46] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #138 generated: client-4 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:53:46] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:53:46] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #138 DROPPED: no connection for client-4 line-2
+[26-03-26 20:53:46] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:53:49] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #139 generated: client-3 -> line-1 msg="OTN client traffic"
+[26-03-26 20:53:49] [DEBUG] [conn_mgr] [conn_manager.c:141] MSG_LOOKUP_CONNECTION: client-3 → line-1 via xc-1 operational_state=UP
+[26-03-26 20:53:50] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=0: rx=1 dropped=0
+[26-03-26 20:53:50] [DEBUG] [traffic_mgr] [traffic_manager.c:80] Frame #139 forwarded: Client-3 -> Line-1 via xc-1
+[26-03-26 20:53:52] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #140 generated: client-3 -> line-2 msg="Forwarding test pattern"
+[26-03-26 20:53:52] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:53:52] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:53:52] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #140 DROPPED: no connection for client-3 line-2
+[26-03-26 20:53:55] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #141 generated: client-3 -> line-1 msg="Waveserver mini frame"
+[26-03-26 20:53:55] [DEBUG] [conn_mgr] [conn_manager.c:141] MSG_LOOKUP_CONNECTION: client-3 → line-1 via xc-1 operational_state=UP
+[26-03-26 20:53:55] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=0: rx=1 dropped=0
+[26-03-26 20:53:55] [DEBUG] [traffic_mgr] [traffic_manager.c:80] Frame #141 forwarded: Client-3 -> Line-1 via xc-1
+[26-03-26 20:53:58] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #142 generated: client-3 -> line-1 msg="Data payload alpha"
+[26-03-26 20:53:58] [DEBUG] [conn_mgr] [conn_manager.c:141] MSG_LOOKUP_CONNECTION: client-3 → line-1 via xc-1 operational_state=UP
+[26-03-26 20:53:58] [DEBUG] [traffic_mgr] [traffic_manager.c:80] Frame #142 forwarded: Client-3 -> Line-1 via xc-1
+[26-03-26 20:53:58] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=0: rx=1 dropped=0
+[26-03-26 20:54:01] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #143 generated: client-6 -> line-1 msg="Data payload alpha"
+[26-03-26 20:54:01] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-1
+[26-03-26 20:54:01] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:54:01] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #143 DROPPED: no connection for client-6 line-1
+[26-03-26 20:54:04] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #144 generated: client-4 -> line-1 msg="Data payload alpha"
+[26-03-26 20:54:04] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-1
+[26-03-26 20:54:04] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:54:04] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #144 DROPPED: no connection for client-4 line-1
+[26-03-26 20:54:07] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #145 generated: client-6 -> line-2 msg="OTN client traffic"
+[26-03-26 20:54:07] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-2
+[26-03-26 20:54:07] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #145 DROPPED: no connection for client-6 line-2
+[26-03-26 20:54:07] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:54:10] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #146 generated: client-5 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:54:10] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-2
+[26-03-26 20:54:10] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #146 DROPPED: no connection for client-5 line-2
+[26-03-26 20:54:10] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:54:13] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #147 generated: client-3 -> line-1 msg="Waveserver mini frame"
+[26-03-26 20:54:13] [DEBUG] [conn_mgr] [conn_manager.c:141] MSG_LOOKUP_CONNECTION: client-3 → line-1 via xc-1 operational_state=UP
+[26-03-26 20:54:13] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=0: rx=1 dropped=0
+[26-03-26 20:54:13] [DEBUG] [traffic_mgr] [traffic_manager.c:80] Frame #147 forwarded: Client-3 -> Line-1 via xc-1
+[26-03-26 20:54:16] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #148 generated: client-4 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:54:16] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:54:16] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:54:16] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #148 DROPPED: no connection for client-4 line-2
+[26-03-26 20:54:19] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #149 generated: client-5 -> line-1 msg="Waveserver mini frame"
+[26-03-26 20:54:19] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:54:19] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #149 DROPPED: no connection for client-5 line-1
+[26-03-26 20:54:19] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:54:22] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #150 generated: client-3 -> line-1 msg="OTN client traffic"
+[26-03-26 20:54:22] [DEBUG] [conn_mgr] [conn_manager.c:141] MSG_LOOKUP_CONNECTION: client-3 → line-1 via xc-1 operational_state=UP
+[26-03-26 20:54:23] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=0: rx=1 dropped=0
+[26-03-26 20:54:23] [DEBUG] [traffic_mgr] [traffic_manager.c:80] Frame #150 forwarded: Client-3 -> Line-1 via xc-1
+[26-03-26 20:54:25] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #151 generated: client-3 -> line-1 msg="OTN client traffic"
+[26-03-26 20:54:25] [DEBUG] [conn_mgr] [conn_manager.c:141] MSG_LOOKUP_CONNECTION: client-3 → line-1 via xc-1 operational_state=UP
+[26-03-26 20:54:25] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=0: rx=1 dropped=0
+[26-03-26 20:54:25] [DEBUG] [traffic_mgr] [traffic_manager.c:80] Frame #151 forwarded: Client-3 -> Line-1 via xc-1
+[26-03-26 20:54:28] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #152 generated: client-4 -> line-1 msg="Waveserver mini frame"
+[26-03-26 20:54:28] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-1
+[26-03-26 20:54:28] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #152 DROPPED: no connection for client-4 line-1
+[26-03-26 20:54:28] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:54:31] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #153 generated: client-4 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:54:31] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:54:31] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:54:31] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #153 DROPPED: no connection for client-4 line-2
+[26-03-26 20:54:34] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #154 generated: client-5 -> line-1 msg="OTN client traffic"
+[26-03-26 20:54:34] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:54:34] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:54:34] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #154 DROPPED: no connection for client-5 line-1
+[26-03-26 20:54:37] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #155 generated: client-5 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:54:37] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-2
+[26-03-26 20:54:38] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #155 DROPPED: no connection for client-5 line-2
+[26-03-26 20:54:38] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:54:40] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #156 generated: client-3 -> line-2 msg="Data payload alpha"
+[26-03-26 20:54:40] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:54:40] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #156 DROPPED: no connection for client-3 line-2
+[26-03-26 20:54:40] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:54:43] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #157 generated: client-4 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:54:43] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:54:43] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:54:43] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #157 DROPPED: no connection for client-4 line-2
+[26-03-26 20:54:46] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #158 generated: client-5 -> line-1 msg="OTN client traffic"
+[26-03-26 20:54:46] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:54:46] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:54:46] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #158 DROPPED: no connection for client-5 line-1
+[26-03-26 20:54:49] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #159 generated: client-6 -> line-1 msg="Data payload alpha"
+[26-03-26 20:54:49] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-1
+[26-03-26 20:54:49] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #159 DROPPED: no connection for client-6 line-1
+[26-03-26 20:54:49] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:54:52] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #160 generated: client-3 -> line-2 msg="OTN client traffic"
+[26-03-26 20:54:52] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:54:52] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #160 DROPPED: no connection for client-3 line-2
+[26-03-26 20:54:52] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:54:55] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #161 generated: client-6 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:54:56] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-2
+[26-03-26 20:54:56] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:54:56] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #161 DROPPED: no connection for client-6 line-2
+[26-03-26 20:54:58] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #162 generated: client-4 -> line-1 msg="Forwarding test pattern"
+[26-03-26 20:54:58] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-1
+[26-03-26 20:54:58] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:54:58] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #162 DROPPED: no connection for client-4 line-1
+[26-03-26 20:55:01] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #163 generated: client-5 -> line-1 msg="Waveserver mini frame"
+[26-03-26 20:55:01] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:55:01] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #163 DROPPED: no connection for client-5 line-1
+[26-03-26 20:55:01] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:55:04] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #164 generated: client-3 -> line-1 msg="Forwarding test pattern"
+[26-03-26 20:55:04] [DEBUG] [conn_mgr] [conn_manager.c:141] MSG_LOOKUP_CONNECTION: client-3 → line-1 via xc-1 operational_state=UP
+[26-03-26 20:55:04] [DEBUG] [traffic_mgr] [traffic_manager.c:80] Frame #164 forwarded: Client-3 -> Line-1 via xc-1
+[26-03-26 20:55:04] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=0: rx=1 dropped=0
+[26-03-26 20:55:07] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #165 generated: client-5 -> line-1 msg="Waveserver mini frame"
+[26-03-26 20:55:07] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:55:07] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:55:07] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #165 DROPPED: no connection for client-5 line-1
+[26-03-26 20:55:10] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #166 generated: client-6 -> line-1 msg="Data payload alpha"
+[26-03-26 20:55:10] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-1
+[26-03-26 20:55:11] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:55:11] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #166 DROPPED: no connection for client-6 line-1
+[26-03-26 20:55:13] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #167 generated: client-6 -> line-2 msg="Data payload alpha"
+[26-03-26 20:55:13] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-2
+[26-03-26 20:55:13] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #167 DROPPED: no connection for client-6 line-2
+[26-03-26 20:55:13] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:55:16] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #168 generated: client-3 -> line-2 msg="Data payload alpha"
+[26-03-26 20:55:16] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:55:16] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #168 DROPPED: no connection for client-3 line-2
+[26-03-26 20:55:16] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:55:19] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #169 generated: client-6 -> line-2 msg="Forwarding test pattern"
+[26-03-26 20:55:19] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-2
+[26-03-26 20:55:19] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #169 DROPPED: no connection for client-6 line-2
+[26-03-26 20:55:19] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:55:22] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #170 generated: client-6 -> line-2 msg="OTN client traffic"
+[26-03-26 20:55:22] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-2
+[26-03-26 20:55:22] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #170 DROPPED: no connection for client-6 line-2
+[26-03-26 20:55:22] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:55:25] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #171 generated: client-5 -> line-1 msg="Waveserver mini frame"
+[26-03-26 20:55:25] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:55:26] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:55:26] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #171 DROPPED: no connection for client-5 line-1
+[26-03-26 20:55:28] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #172 generated: client-6 -> line-1 msg="Waveserver mini frame"
+[26-03-26 20:55:28] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-1
+[26-03-26 20:55:28] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:55:28] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #172 DROPPED: no connection for client-6 line-1
+[26-03-26 20:55:31] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #173 generated: client-5 -> line-1 msg="Forwarding test pattern"
+[26-03-26 20:55:31] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:55:31] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #173 DROPPED: no connection for client-5 line-1
+[26-03-26 20:55:31] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:55:34] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #174 generated: client-6 -> line-1 msg="Forwarding test pattern"
+[26-03-26 20:55:34] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-1
+[26-03-26 20:55:34] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:55:34] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #174 DROPPED: no connection for client-6 line-1
+[26-03-26 20:55:37] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #175 generated: client-6 -> line-1 msg="Waveserver mini frame"
+[26-03-26 20:55:37] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-1
+[26-03-26 20:55:37] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:55:37] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #175 DROPPED: no connection for client-6 line-1
+[26-03-26 20:55:40] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #176 generated: client-3 -> line-2 msg="Forwarding test pattern"
+[26-03-26 20:55:41] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:55:41] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:55:41] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #176 DROPPED: no connection for client-3 line-2
+[26-03-26 20:55:43] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #177 generated: client-3 -> line-2 msg="OTN client traffic"
+[26-03-26 20:55:43] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:55:43] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #177 DROPPED: no connection for client-3 line-2
+[26-03-26 20:55:43] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:55:46] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #178 generated: client-3 -> line-2 msg="Data payload alpha"
+[26-03-26 20:55:46] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:55:46] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:55:46] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #178 DROPPED: no connection for client-3 line-2
+[26-03-26 20:55:49] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #179 generated: client-4 -> line-1 msg="Waveserver mini frame"
+[26-03-26 20:55:49] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-1
+[26-03-26 20:55:49] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:55:49] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #179 DROPPED: no connection for client-4 line-1
+[26-03-26 20:55:52] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #180 generated: client-3 -> line-1 msg="OTN client traffic"
+[26-03-26 20:55:52] [DEBUG] [conn_mgr] [conn_manager.c:141] MSG_LOOKUP_CONNECTION: client-3 → line-1 via xc-1 operational_state=UP
+[26-03-26 20:55:52] [DEBUG] [traffic_mgr] [traffic_manager.c:80] Frame #180 forwarded: Client-3 -> Line-1 via xc-1
+[26-03-26 20:55:52] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=0: rx=1 dropped=0
+[26-03-26 20:55:55] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #181 generated: client-5 -> line-1 msg="Forwarding test pattern"
+[26-03-26 20:55:55] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:55:55] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:55:55] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #181 DROPPED: no connection for client-5 line-1
+[26-03-26 20:55:58] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #182 generated: client-6 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:55:58] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-2
+[26-03-26 20:55:58] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:55:58] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #182 DROPPED: no connection for client-6 line-2
+[26-03-26 20:56:01] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #183 generated: client-3 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:56:01] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:56:01] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #183 DROPPED: no connection for client-3 line-2
+[26-03-26 20:56:01] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:56:04] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #184 generated: client-3 -> line-2 msg="OTN client traffic"
+[26-03-26 20:56:04] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:56:04] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:56:04] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #184 DROPPED: no connection for client-3 line-2
+[26-03-26 20:56:07] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #185 generated: client-6 -> line-1 msg="Data payload alpha"
+[26-03-26 20:56:07] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-1
+[26-03-26 20:56:07] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:56:07] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #185 DROPPED: no connection for client-6 line-1
+[26-03-26 20:56:10] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #186 generated: client-4 -> line-1 msg="OTN client traffic"
+[26-03-26 20:56:10] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-1
+[26-03-26 20:56:10] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #186 DROPPED: no connection for client-4 line-1
+[26-03-26 20:56:10] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:56:13] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #187 generated: client-3 -> line-1 msg="Forwarding test pattern"
+[26-03-26 20:56:13] [DEBUG] [conn_mgr] [conn_manager.c:141] MSG_LOOKUP_CONNECTION: client-3 → line-1 via xc-1 operational_state=UP
+[26-03-26 20:56:13] [DEBUG] [traffic_mgr] [traffic_manager.c:80] Frame #187 forwarded: Client-3 -> Line-1 via xc-1
+[26-03-26 20:56:13] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=0: rx=1 dropped=0
+[26-03-26 20:56:16] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #188 generated: client-6 -> line-2 msg="Data payload alpha"
+[26-03-26 20:56:16] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-2
+[26-03-26 20:56:16] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:56:16] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #188 DROPPED: no connection for client-6 line-2
+[26-03-26 20:56:19] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #189 generated: client-6 -> line-1 msg="Waveserver mini frame"
+[26-03-26 20:56:19] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-1
+[26-03-26 20:56:19] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #189 DROPPED: no connection for client-6 line-1
+[26-03-26 20:56:19] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:56:22] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #190 generated: client-3 -> line-1 msg="Waveserver mini frame"
+[26-03-26 20:56:22] [DEBUG] [conn_mgr] [conn_manager.c:141] MSG_LOOKUP_CONNECTION: client-3 → line-1 via xc-1 operational_state=UP
+[26-03-26 20:56:22] [DEBUG] [traffic_mgr] [traffic_manager.c:80] Frame #190 forwarded: Client-3 -> Line-1 via xc-1
+[26-03-26 20:56:22] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=0: rx=1 dropped=0
+[26-03-26 20:56:25] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #191 generated: client-5 -> line-1 msg="Forwarding test pattern"
+[26-03-26 20:56:25] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:56:25] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:56:25] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #191 DROPPED: no connection for client-5 line-1
+[26-03-26 20:56:28] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #192 generated: client-4 -> line-2 msg="Data payload alpha"
+[26-03-26 20:56:28] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:56:28] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #192 DROPPED: no connection for client-4 line-2
+[26-03-26 20:56:28] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:56:31] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #193 generated: client-5 -> line-2 msg="Forwarding test pattern"
+[26-03-26 20:56:31] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-2
+[26-03-26 20:56:31] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #193 DROPPED: no connection for client-5 line-2
+[26-03-26 20:56:31] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:56:34] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #194 generated: client-3 -> line-2 msg="OTN client traffic"
+[26-03-26 20:56:34] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:56:34] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #194 DROPPED: no connection for client-3 line-2
+[26-03-26 20:56:34] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:56:37] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #195 generated: client-5 -> line-2 msg="Data payload alpha"
+[26-03-26 20:56:37] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-2
+[26-03-26 20:56:37] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #195 DROPPED: no connection for client-5 line-2
+[26-03-26 20:56:37] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:56:40] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #196 generated: client-5 -> line-1 msg="OTN client traffic"
+[26-03-26 20:56:40] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:56:40] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #196 DROPPED: no connection for client-5 line-1
+[26-03-26 20:56:40] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:56:43] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #197 generated: client-3 -> line-1 msg="Waveserver mini frame"
+[26-03-26 20:56:43] [DEBUG] [conn_mgr] [conn_manager.c:141] MSG_LOOKUP_CONNECTION: client-3 → line-1 via xc-1 operational_state=UP
+[26-03-26 20:56:43] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=0: rx=1 dropped=0
+[26-03-26 20:56:43] [DEBUG] [traffic_mgr] [traffic_manager.c:80] Frame #197 forwarded: Client-3 -> Line-1 via xc-1
+[26-03-26 20:56:46] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #198 generated: client-6 -> line-2 msg="Data payload alpha"
+[26-03-26 20:56:46] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-2
+[26-03-26 20:56:46] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #198 DROPPED: no connection for client-6 line-2
+[26-03-26 20:56:46] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:56:49] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #199 generated: client-3 -> line-1 msg="Data payload alpha"
+[26-03-26 20:56:49] [DEBUG] [conn_mgr] [conn_manager.c:141] MSG_LOOKUP_CONNECTION: client-3 → line-1 via xc-1 operational_state=UP
+[26-03-26 20:56:49] [DEBUG] [traffic_mgr] [traffic_manager.c:80] Frame #199 forwarded: Client-3 -> Line-1 via xc-1
+[26-03-26 20:56:49] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=0: rx=1 dropped=0
+[26-03-26 20:56:52] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #200 generated: client-4 -> line-1 msg="Data payload alpha"
+[26-03-26 20:56:52] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-1
+[26-03-26 20:56:52] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #200 DROPPED: no connection for client-4 line-1
+[26-03-26 20:56:52] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:56:55] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #201 generated: client-5 -> line-2 msg="OTN client traffic"
+[26-03-26 20:56:55] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-2
+[26-03-26 20:56:55] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #201 DROPPED: no connection for client-5 line-2
+[26-03-26 20:56:55] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:56:58] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #202 generated: client-4 -> line-1 msg="Forwarding test pattern"
+[26-03-26 20:56:58] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-1
+[26-03-26 20:56:58] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:56:58] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #202 DROPPED: no connection for client-4 line-1
+[26-03-26 20:57:01] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #203 generated: client-4 -> line-2 msg="Data payload alpha"
+[26-03-26 20:57:01] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:57:01] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:57:01] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #203 DROPPED: no connection for client-4 line-2
+[26-03-26 20:57:04] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #204 generated: client-3 -> line-2 msg="OTN client traffic"
+[26-03-26 20:57:04] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:57:04] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #204 DROPPED: no connection for client-3 line-2
+[26-03-26 20:57:04] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:57:07] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #205 generated: client-6 -> line-2 msg="Forwarding test pattern"
+[26-03-26 20:57:07] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-2
+[26-03-26 20:57:07] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #205 DROPPED: no connection for client-6 line-2
+[26-03-26 20:57:07] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:57:10] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #206 generated: client-6 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:57:10] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-2
+[26-03-26 20:57:11] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:57:11] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #206 DROPPED: no connection for client-6 line-2
+[26-03-26 20:57:13] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #207 generated: client-5 -> line-1 msg="Forwarding test pattern"
+[26-03-26 20:57:13] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:57:13] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:57:13] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #207 DROPPED: no connection for client-5 line-1
+[26-03-26 20:57:16] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #208 generated: client-6 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:57:16] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-2
+[26-03-26 20:57:16] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:57:16] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #208 DROPPED: no connection for client-6 line-2
+[26-03-26 20:57:19] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #209 generated: client-6 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:57:19] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-2
+[26-03-26 20:57:19] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:57:19] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #209 DROPPED: no connection for client-6 line-2
+[26-03-26 20:57:22] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #210 generated: client-6 -> line-1 msg="OTN client traffic"
+[26-03-26 20:57:22] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-1
+[26-03-26 20:57:22] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:57:22] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #210 DROPPED: no connection for client-6 line-1
+[26-03-26 20:57:25] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #211 generated: client-6 -> line-1 msg="Waveserver mini frame"
+[26-03-26 20:57:25] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-1
+[26-03-26 20:57:25] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #211 DROPPED: no connection for client-6 line-1
+[26-03-26 20:57:25] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:57:28] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #212 generated: client-4 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:57:28] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:57:28] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:57:28] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #212 DROPPED: no connection for client-4 line-2
+[26-03-26 20:57:31] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #213 generated: client-3 -> line-1 msg="Data payload alpha"
+[26-03-26 20:57:31] [DEBUG] [conn_mgr] [conn_manager.c:141] MSG_LOOKUP_CONNECTION: client-3 → line-1 via xc-1 operational_state=UP
+[26-03-26 20:57:31] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=0: rx=1 dropped=0
+[26-03-26 20:57:31] [DEBUG] [traffic_mgr] [traffic_manager.c:80] Frame #213 forwarded: Client-3 -> Line-1 via xc-1
+[26-03-26 20:57:34] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #214 generated: client-3 -> line-2 msg="Forwarding test pattern"
+[26-03-26 20:57:34] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:57:34] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:57:34] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #214 DROPPED: no connection for client-3 line-2
+[26-03-26 20:57:37] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #215 generated: client-5 -> line-1 msg="Data payload alpha"
+[26-03-26 20:57:37] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:57:37] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #215 DROPPED: no connection for client-5 line-1
+[26-03-26 20:57:37] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:57:40] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #216 generated: client-4 -> line-2 msg="Data payload alpha"
+[26-03-26 20:57:40] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:57:41] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #216 DROPPED: no connection for client-4 line-2
+[26-03-26 20:57:41] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:57:43] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #217 generated: client-5 -> line-2 msg="Data payload alpha"
+[26-03-26 20:57:43] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-2
+[26-03-26 20:57:43] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #217 DROPPED: no connection for client-5 line-2
+[26-03-26 20:57:43] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:57:46] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #218 generated: client-5 -> line-1 msg="Forwarding test pattern"
+[26-03-26 20:57:46] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:57:46] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:57:46] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #218 DROPPED: no connection for client-5 line-1
+[26-03-26 20:57:49] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #219 generated: client-6 -> line-2 msg="Forwarding test pattern"
+[26-03-26 20:57:49] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-2
+[26-03-26 20:57:49] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:57:49] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #219 DROPPED: no connection for client-6 line-2
+[26-03-26 20:57:52] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #220 generated: client-3 -> line-1 msg="Forwarding test pattern"
+[26-03-26 20:57:52] [DEBUG] [conn_mgr] [conn_manager.c:141] MSG_LOOKUP_CONNECTION: client-3 → line-1 via xc-1 operational_state=UP
+[26-03-26 20:57:52] [DEBUG] [traffic_mgr] [traffic_manager.c:80] Frame #220 forwarded: Client-3 -> Line-1 via xc-1
+[26-03-26 20:57:52] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=0: rx=1 dropped=0
+[26-03-26 20:57:55] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #221 generated: client-5 -> line-2 msg="OTN client traffic"
+[26-03-26 20:57:55] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-2
+[26-03-26 20:57:55] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:57:55] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #221 DROPPED: no connection for client-5 line-2
+[26-03-26 20:57:58] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #222 generated: client-6 -> line-1 msg="Waveserver mini frame"
+[26-03-26 20:57:58] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-1
+[26-03-26 20:57:59] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #222 DROPPED: no connection for client-6 line-1
+[26-03-26 20:57:59] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:58:01] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #223 generated: client-4 -> line-1 msg="OTN client traffic"
+[26-03-26 20:58:01] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-1
+[26-03-26 20:58:01] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #223 DROPPED: no connection for client-4 line-1
+[26-03-26 20:58:01] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:58:04] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #224 generated: client-4 -> line-2 msg="Forwarding test pattern"
+[26-03-26 20:58:04] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:58:04] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:58:04] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #224 DROPPED: no connection for client-4 line-2
+[26-03-26 20:58:07] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #225 generated: client-4 -> line-2 msg="Forwarding test pattern"
+[26-03-26 20:58:07] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:58:07] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #225 DROPPED: no connection for client-4 line-2
+[26-03-26 20:58:07] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:58:10] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #226 generated: client-4 -> line-2 msg="OTN client traffic"
+[26-03-26 20:58:10] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:58:10] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:58:10] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #226 DROPPED: no connection for client-4 line-2
+[26-03-26 20:58:13] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #227 generated: client-4 -> line-2 msg="Data payload alpha"
+[26-03-26 20:58:13] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:58:13] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #227 DROPPED: no connection for client-4 line-2
+[26-03-26 20:58:13] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:58:16] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #228 generated: client-4 -> line-2 msg="Data payload alpha"
+[26-03-26 20:58:16] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:58:16] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #228 DROPPED: no connection for client-4 line-2
+[26-03-26 20:58:16] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:58:19] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #229 generated: client-4 -> line-1 msg="Data payload alpha"
+[26-03-26 20:58:19] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-1
+[26-03-26 20:58:19] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:58:19] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #229 DROPPED: no connection for client-4 line-1
+[26-03-26 20:58:22] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #230 generated: client-3 -> line-2 msg="OTN client traffic"
+[26-03-26 20:58:22] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:58:22] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:58:22] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #230 DROPPED: no connection for client-3 line-2
+[26-03-26 20:58:25] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #231 generated: client-6 -> line-2 msg="Data payload alpha"
+[26-03-26 20:58:25] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-2
+[26-03-26 20:58:25] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #231 DROPPED: no connection for client-6 line-2
+[26-03-26 20:58:25] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:58:28] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #232 generated: client-4 -> line-2 msg="OTN client traffic"
+[26-03-26 20:58:28] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:58:28] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #232 DROPPED: no connection for client-4 line-2
+[26-03-26 20:58:28] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:58:31] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #233 generated: client-6 -> line-1 msg="Waveserver mini frame"
+[26-03-26 20:58:31] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-1
+[26-03-26 20:58:31] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:58:31] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #233 DROPPED: no connection for client-6 line-1
+[26-03-26 20:58:34] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #234 generated: client-4 -> line-2 msg="Data payload alpha"
+[26-03-26 20:58:34] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:58:34] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #234 DROPPED: no connection for client-4 line-2
+[26-03-26 20:58:34] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:58:37] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #235 generated: client-3 -> line-1 msg="Waveserver mini frame"
+[26-03-26 20:58:37] [DEBUG] [conn_mgr] [conn_manager.c:141] MSG_LOOKUP_CONNECTION: client-3 → line-1 via xc-1 operational_state=UP
+[26-03-26 20:58:37] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=0: rx=1 dropped=0
+[26-03-26 20:58:37] [DEBUG] [traffic_mgr] [traffic_manager.c:80] Frame #235 forwarded: Client-3 -> Line-1 via xc-1
+[26-03-26 20:58:40] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #236 generated: client-6 -> line-1 msg="Data payload alpha"
+[26-03-26 20:58:40] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-1
+[26-03-26 20:58:40] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #236 DROPPED: no connection for client-6 line-1
+[26-03-26 20:58:40] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:58:43] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #237 generated: client-4 -> line-2 msg="OTN client traffic"
+[26-03-26 20:58:43] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:58:43] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #237 DROPPED: no connection for client-4 line-2
+[26-03-26 20:58:43] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:58:46] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #238 generated: client-4 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:58:46] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:58:47] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #238 DROPPED: no connection for client-4 line-2
+[26-03-26 20:58:47] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:58:49] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #239 generated: client-5 -> line-1 msg="Data payload alpha"
+[26-03-26 20:58:49] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:58:49] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:58:49] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #239 DROPPED: no connection for client-5 line-1
+[26-03-26 20:58:52] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #240 generated: client-5 -> line-1 msg="Forwarding test pattern"
+[26-03-26 20:58:52] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:58:52] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #240 DROPPED: no connection for client-5 line-1
+[26-03-26 20:58:52] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:58:55] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #241 generated: client-3 -> line-2 msg="Data payload alpha"
+[26-03-26 20:58:55] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:58:55] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #241 DROPPED: no connection for client-3 line-2
+[26-03-26 20:58:55] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:58:58] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #242 generated: client-3 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:58:58] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:58:58] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:58:58] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #242 DROPPED: no connection for client-3 line-2
+[26-03-26 20:59:01] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #243 generated: client-6 -> line-1 msg="Forwarding test pattern"
+[26-03-26 20:59:01] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-1
+[26-03-26 20:59:02] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:59:02] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #243 DROPPED: no connection for client-6 line-1
+[26-03-26 20:59:04] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #244 generated: client-3 -> line-2 msg="Forwarding test pattern"
+[26-03-26 20:59:04] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:59:04] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #244 DROPPED: no connection for client-3 line-2
+[26-03-26 20:59:04] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:59:07] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #245 generated: client-3 -> line-2 msg="Forwarding test pattern"
+[26-03-26 20:59:07] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:59:07] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #245 DROPPED: no connection for client-3 line-2
+[26-03-26 20:59:07] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:59:10] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #246 generated: client-4 -> line-1 msg="Waveserver mini frame"
+[26-03-26 20:59:10] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-1
+[26-03-26 20:59:10] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #246 DROPPED: no connection for client-4 line-1
+[26-03-26 20:59:10] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:59:13] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #247 generated: client-5 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:59:13] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-2
+[26-03-26 20:59:13] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:59:13] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #247 DROPPED: no connection for client-5 line-2
+[26-03-26 20:59:16] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #248 generated: client-3 -> line-2 msg="OTN client traffic"
+[26-03-26 20:59:17] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:59:17] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:59:17] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #248 DROPPED: no connection for client-3 line-2
+[26-03-26 20:59:19] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #249 generated: client-4 -> line-2 msg="Data payload alpha"
+[26-03-26 20:59:19] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:59:19] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #249 DROPPED: no connection for client-4 line-2
+[26-03-26 20:59:19] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:59:22] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #250 generated: client-4 -> line-2 msg="OTN client traffic"
+[26-03-26 20:59:22] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:59:22] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #250 DROPPED: no connection for client-4 line-2
+[26-03-26 20:59:22] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:59:25] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #251 generated: client-3 -> line-2 msg="Forwarding test pattern"
+[26-03-26 20:59:25] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 20:59:25] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #251 DROPPED: no connection for client-3 line-2
+[26-03-26 20:59:25] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 20:59:28] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #252 generated: client-4 -> line-1 msg="OTN client traffic"
+[26-03-26 20:59:28] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-1
+[26-03-26 20:59:28] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #252 DROPPED: no connection for client-4 line-1
+[26-03-26 20:59:28] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:59:31] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #253 generated: client-5 -> line-2 msg="Data payload alpha"
+[26-03-26 20:59:31] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-2
+[26-03-26 20:59:31] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #253 DROPPED: no connection for client-5 line-2
+[26-03-26 20:59:31] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:59:34] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #254 generated: client-5 -> line-2 msg="Forwarding test pattern"
+[26-03-26 20:59:34] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-2
+[26-03-26 20:59:34] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:59:34] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #254 DROPPED: no connection for client-5 line-2
+[26-03-26 20:59:37] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #255 generated: client-4 -> line-2 msg="OTN client traffic"
+[26-03-26 20:59:37] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:59:37] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #255 DROPPED: no connection for client-4 line-2
+[26-03-26 20:59:37] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:59:40] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #256 generated: client-3 -> line-1 msg="Data payload alpha"
+[26-03-26 20:59:40] [DEBUG] [conn_mgr] [conn_manager.c:141] MSG_LOOKUP_CONNECTION: client-3 → line-1 via xc-1 operational_state=UP
+[26-03-26 20:59:40] [DEBUG] [traffic_mgr] [traffic_manager.c:80] Frame #256 forwarded: Client-3 -> Line-1 via xc-1
+[26-03-26 20:59:40] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=0: rx=1 dropped=0
+[26-03-26 20:59:43] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #257 generated: client-5 -> line-1 msg="Data payload alpha"
+[26-03-26 20:59:43] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 20:59:44] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:59:44] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #257 DROPPED: no connection for client-5 line-1
+[26-03-26 20:59:46] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #258 generated: client-6 -> line-1 msg="Waveserver mini frame"
+[26-03-26 20:59:46] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-1
+[26-03-26 20:59:46] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:59:46] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #258 DROPPED: no connection for client-6 line-1
+[26-03-26 20:59:49] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #259 generated: client-4 -> line-1 msg="Data payload alpha"
+[26-03-26 20:59:49] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-1
+[26-03-26 20:59:49] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #259 DROPPED: no connection for client-4 line-1
+[26-03-26 20:59:49] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:59:52] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #260 generated: client-4 -> line-2 msg="Waveserver mini frame"
+[26-03-26 20:59:52] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 20:59:52] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #260 DROPPED: no connection for client-4 line-2
+[26-03-26 20:59:52] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 20:59:55] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #261 generated: client-6 -> line-1 msg="OTN client traffic"
+[26-03-26 20:59:55] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-1
+[26-03-26 20:59:55] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 20:59:55] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #261 DROPPED: no connection for client-6 line-1
+[26-03-26 20:59:58] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #262 generated: client-5 -> line-2 msg="Data payload alpha"
+[26-03-26 20:59:58] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-2
+[26-03-26 20:59:59] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 20:59:59] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #262 DROPPED: no connection for client-5 line-2
+[26-03-26 21:00:01] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #263 generated: client-4 -> line-2 msg="Waveserver mini frame"
+[26-03-26 21:00:01] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 21:00:01] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #263 DROPPED: no connection for client-4 line-2
+[26-03-26 21:00:01] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 21:00:04] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #264 generated: client-4 -> line-2 msg="OTN client traffic"
+[26-03-26 21:00:04] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 21:00:04] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #264 DROPPED: no connection for client-4 line-2
+[26-03-26 21:00:04] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 21:00:07] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #265 generated: client-4 -> line-1 msg="Forwarding test pattern"
+[26-03-26 21:00:07] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-1
+[26-03-26 21:00:07] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 21:00:07] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #265 DROPPED: no connection for client-4 line-1
+[26-03-26 21:00:10] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #266 generated: client-6 -> line-2 msg="OTN client traffic"
+[26-03-26 21:00:10] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-6 and line port-2
+[26-03-26 21:00:10] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #266 DROPPED: no connection for client-6 line-2
+[26-03-26 21:00:10] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=5: rx=0 dropped=1
+[26-03-26 21:00:13] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #267 generated: client-3 -> line-2 msg="OTN client traffic"
+[26-03-26 21:00:13] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 21:00:13] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #267 DROPPED: no connection for client-3 line-2
+[26-03-26 21:00:13] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 21:00:16] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #268 generated: client-3 -> line-1 msg="Forwarding test pattern"
+[26-03-26 21:00:16] [DEBUG] [conn_mgr] [conn_manager.c:141] MSG_LOOKUP_CONNECTION: client-3 → line-1 via xc-1 operational_state=UP
+[26-03-26 21:00:16] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=0: rx=1 dropped=0
+[26-03-26 21:00:16] [DEBUG] [traffic_mgr] [traffic_manager.c:80] Frame #268 forwarded: Client-3 -> Line-1 via xc-1
+[26-03-26 21:00:19] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #269 generated: client-4 -> line-2 msg="Waveserver mini frame"
+[26-03-26 21:00:19] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 21:00:19] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 21:00:19] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #269 DROPPED: no connection for client-4 line-2
+[26-03-26 21:00:22] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #270 generated: client-4 -> line-1 msg="Data payload alpha"
+[26-03-26 21:00:22] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-1
+[26-03-26 21:00:22] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 21:00:22] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #270 DROPPED: no connection for client-4 line-1
+[26-03-26 21:00:25] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #271 generated: client-5 -> line-2 msg="Data payload alpha"
+[26-03-26 21:00:25] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-2
+[26-03-26 21:00:25] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 21:00:25] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #271 DROPPED: no connection for client-5 line-2
+[26-03-26 21:00:28] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #272 generated: client-3 -> line-2 msg="Waveserver mini frame"
+[26-03-26 21:00:28] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-3 and line port-2
+[26-03-26 21:00:28] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #272 DROPPED: no connection for client-3 line-2
+[26-03-26 21:00:28] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=2: rx=0 dropped=1
+[26-03-26 21:00:31] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #273 generated: client-4 -> line-1 msg="Waveserver mini frame"
+[26-03-26 21:00:32] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-1
+[26-03-26 21:00:32] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 21:00:32] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #273 DROPPED: no connection for client-4 line-1
+[26-03-26 21:00:34] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #274 generated: client-5 -> line-1 msg="OTN client traffic"
+[26-03-26 21:00:34] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 21:00:34] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+[26-03-26 21:00:34] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #274 DROPPED: no connection for client-5 line-1
+[26-03-26 21:00:37] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #275 generated: client-4 -> line-2 msg="Waveserver mini frame"
+[26-03-26 21:00:37] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-4 and line port-2
+[26-03-26 21:00:37] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=3: rx=0 dropped=1
+[26-03-26 21:00:37] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #275 DROPPED: no connection for client-4 line-2
+[26-03-26 21:00:40] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #276 generated: client-3 -> line-1 msg="Data payload alpha"
+[26-03-26 21:00:40] [DEBUG] [conn_mgr] [conn_manager.c:141] MSG_LOOKUP_CONNECTION: client-3 → line-1 via xc-1 operational_state=UP
+[26-03-26 21:00:40] [DEBUG] [traffic_mgr] [traffic_manager.c:80] Frame #276 forwarded: Client-3 -> Line-1 via xc-1
+[26-03-26 21:00:40] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=0: rx=1 dropped=0
+[26-03-26 21:00:43] [DEBUG] [traffic_mgr] [traffic_manager.c:51] Frame #277 generated: client-5 -> line-1 msg="Waveserver mini frame"
+[26-03-26 21:00:43] [WARN] [conn_mgr] [conn_manager.c:128] MSG_LOOKUP_CONNECTION: no connection for client port-5 and line port-1
+[26-03-26 21:00:43] [WARN] [traffic_mgr] [traffic_manager.c:71] Frame #277 DROPPED: no connection for client-5 line-1
+[26-03-26 21:00:43] [INFO] [port_mgr] [port_manager.c:121] Updated counters for port_idx=4: rx=0 dropped=1
+>>>>>>> Stashed changes
+[26-03-26 21:19:16] [INFO] [port_mgr] [port_manager.c:29] Initialized ports
+[26-03-26 21:19:16] [INFO] [conn_mgr] [conn_manager.c:14] Initialize connection table
+[26-03-26 21:19:16] [INFO] [prot_mgr] [protection_manager.c:316] Protection Manager starting on UDP port 5004
+[26-03-26 21:19:16] [INFO] [traffic_mgr] [traffic_manager.c:16] Traffic stats initialized
+[26-03-26 21:19:31] [INFO] [cli] [cli.c:796] CLI started
+[26-03-26 21:19:39] [INFO] [port_mgr] [port_manager.c:72] port_idx=0 oper_state changed: DOWN -> UP (admin=enabled fault=none)
+[26-03-26 21:19:39] [INFO] [conn_mgr] [conn_manager.c:64] Port-1 operational_state changed to UP
+[26-03-26 21:19:39] [DEBUG] [port_mgr] [port_manager.c:62] Notified conn-mgr: port_idx=0, operational_state=UP
+[26-03-26 21:19:39] [INFO] [port_mgr] [port_manager.c:133] Port admin-enabled: port_idx=0
+[26-03-26 21:19:53] [INFO] [port_mgr] [port_manager.c:72] port_idx=1 oper_state changed: DOWN -> UP (admin=enabled fault=none)
+[26-03-26 21:19:53] [DEBUG] [port_mgr] [port_manager.c:62] Notified conn-mgr: port_idx=1, operational_state=UP
+[26-03-26 21:19:53] [INFO] [conn_mgr] [conn_manager.c:64] Port-2 operational_state changed to UP
+[26-03-26 21:19:53] [INFO] [port_mgr] [port_manager.c:133] Port admin-enabled: port_idx=1
+[26-03-26 21:19:54] [INFO] [port_mgr] [port_manager.c:72] port_idx=2 oper_state changed: DOWN -> UP (admin=enabled fault=none)
+[26-03-26 21:19:54] [DEBUG] [port_mgr] [port_manager.c:62] Notified conn-mgr: port_idx=2, operational_state=UP
+[26-03-26 21:19:54] [INFO] [conn_mgr] [conn_manager.c:64] Port-3 operational_state changed to UP
+[26-03-26 21:19:54] [INFO] [port_mgr] [port_manager.c:133] Port admin-enabled: port_idx=2
+[26-03-26 21:19:56] [INFO] [port_mgr] [port_manager.c:72] port_idx=3 oper_state changed: DOWN -> UP (admin=enabled fault=none)
+[26-03-26 21:19:56] [INFO] [conn_mgr] [conn_manager.c:64] Port-4 operational_state changed to UP
+[26-03-26 21:19:56] [DEBUG] [port_mgr] [port_manager.c:62] Notified conn-mgr: port_idx=3, operational_state=UP
+[26-03-26 21:19:56] [INFO] [port_mgr] [port_manager.c:133] Port admin-enabled: port_idx=3
+[26-03-26 21:20:00] [DEBUG] [port_mgr] [port_manager.c:107] MSG_GET_PORT_INFO: Returning info for port_idx-2
+[26-03-26 21:20:00] [DEBUG] [port_mgr] [port_manager.c:107] MSG_GET_PORT_INFO: Returning info for port_idx-0
+[26-03-26 21:20:01] [INFO] [conn_mgr] [conn_manager.c:250] Connection 'c1' created: client port-3 → line port-1
+[26-03-26 21:20:04] [ERROR] [cli] [common.c:136] recvfrom on port 5002 failed
+[26-03-26 21:20:04] [ERROR] [cli] [cli.c:61] Request timed out — is the service running?
+[26-03-26 21:20:04] [ERROR] [cli] [cli.c:315] send_and_receive failed to send message to CONN_MANAGER
+[26-03-26 21:20:10] [DEBUG] [port_mgr] [port_manager.c:107] MSG_GET_PORT_INFO: Returning info for port_idx-3
+[26-03-26 21:20:10] [DEBUG] [port_mgr] [port_manager.c:107] MSG_GET_PORT_INFO: Returning info for port_idx-1
+[26-03-26 21:20:10] [INFO] [conn_mgr] [conn_manager.c:250] Connection 'c2' created: client port-4 → line port-2
+[26-03-26 21:20:13] [ERROR] [cli] [common.c:136] recvfrom on port 5002 failed
+[26-03-26 21:20:13] [ERROR] [cli] [cli.c:61] Request timed out — is the service running?
+[26-03-26 21:20:13] [ERROR] [cli] [cli.c:315] send_and_receive failed to send message to CONN_MANAGER
+[26-03-26 21:20:20] [DEBUG] [port_mgr] [port_manager.c:107] MSG_GET_PORT_INFO: Returning info for port_idx-0
+[26-03-26 21:20:20] [DEBUG] [port_mgr] [port_manager.c:107] MSG_GET_PORT_INFO: Returning info for port_idx-1
+[26-03-26 21:20:20] [DEBUG] [prot_mgr] [protection_manager.c:82] refresh_entries: tracking 2 connection(s)
+[26-03-26 21:20:20] [INFO] [prot_mgr] [protection_manager.c:220] Protection group created: port-1 <-> port-2 (2 connection(s) tracked)
+[26-03-26 21:20:39] [INFO] [port_mgr] [port_manager.c:72] port_idx=0 oper_state changed: UP -> DOWN (admin=enabled fault=active)
+[26-03-26 21:20:39] [INFO] [prot_mgr] [protection_manager.c:131] Port-1 went DOWN -- triggering protection switchover
+[26-03-26 21:20:39] [DEBUG] [port_mgr] [port_manager.c:62] Notified conn-mgr: port_idx=0, operational_state=DOWN
+[26-03-26 21:20:39] [INFO] [conn_mgr] [conn_manager.c:64] Port-1 operational_state changed to DOWN
+[26-03-26 21:20:39] [WARN] [conn_mgr] [conn_manager.c:78] Connection c1 DOWN (port-1 went down)
+[26-03-26 21:20:39] [INFO] [port_mgr] [port_manager.c:160] Injected fault: port_idx=0
+[26-03-26 21:20:39] [INFO] [conn_mgr] [conn_manager.c:321] MSG_SWITCH_CONN_LINE: c1 line port 1 -> 2 (now UP)
+[26-03-26 21:20:48] [ERROR] [cli] [common.c:136] recvfrom on port 5004 failed
+[26-03-26 21:20:48] [ERROR] [cli] [cli.c:61] Request timed out — is the service running?
+[26-03-26 21:20:56] [ERROR] [cli] [common.c:136] recvfrom on port 5004 failed
+[26-03-26 21:20:56] [ERROR] [cli] [cli.c:61] Request timed out — is the service running?
+[26-03-26 21:21:05] [INFO] [port_mgr] [port_manager.c:29] Initialized ports
+[26-03-26 21:21:05] [INFO] [conn_mgr] [conn_manager.c:14] Initialize connection table
+[26-03-26 21:21:05] [INFO] [traffic_mgr] [traffic_manager.c:16] Traffic stats initialized
+[26-03-26 21:21:05] [INFO] [prot_mgr] [protection_manager.c:316] Protection Manager starting on UDP port 5004
+[26-03-26 21:21:11] [INFO] [cli] [cli.c:796] CLI started
+[26-03-26 21:21:14] [INFO] [port_mgr] [port_manager.c:72] port_idx=0 oper_state changed: DOWN -> UP (admin=enabled fault=none)
+[26-03-26 21:21:14] [INFO] [conn_mgr] [conn_manager.c:64] Port-1 operational_state changed to UP
+[26-03-26 21:21:14] [DEBUG] [port_mgr] [port_manager.c:62] Notified conn-mgr: port_idx=0, operational_state=UP
+[26-03-26 21:21:14] [INFO] [port_mgr] [port_manager.c:133] Port admin-enabled: port_idx=0
+[26-03-26 21:21:15] [INFO] [port_mgr] [port_manager.c:72] port_idx=1 oper_state changed: DOWN -> UP (admin=enabled fault=none)
+[26-03-26 21:21:15] [INFO] [conn_mgr] [conn_manager.c:64] Port-2 operational_state changed to UP
+[26-03-26 21:21:15] [DEBUG] [port_mgr] [port_manager.c:62] Notified conn-mgr: port_idx=1, operational_state=UP
+[26-03-26 21:21:15] [INFO] [port_mgr] [port_manager.c:133] Port admin-enabled: port_idx=1
+[26-03-26 21:21:18] [INFO] [port_mgr] [port_manager.c:72] port_idx=2 oper_state changed: DOWN -> UP (admin=enabled fault=none)
+[26-03-26 21:21:18] [DEBUG] [port_mgr] [port_manager.c:62] Notified conn-mgr: port_idx=2, operational_state=UP
+[26-03-26 21:21:18] [INFO] [conn_mgr] [conn_manager.c:64] Port-3 operational_state changed to UP
+[26-03-26 21:21:18] [INFO] [port_mgr] [port_manager.c:133] Port admin-enabled: port_idx=2
+[26-03-26 21:21:19] [INFO] [port_mgr] [port_manager.c:72] port_idx=3 oper_state changed: DOWN -> UP (admin=enabled fault=none)
+[26-03-26 21:21:19] [DEBUG] [port_mgr] [port_manager.c:62] Notified conn-mgr: port_idx=3, operational_state=UP
+[26-03-26 21:21:19] [INFO] [conn_mgr] [conn_manager.c:64] Port-4 operational_state changed to UP
+[26-03-26 21:21:19] [INFO] [port_mgr] [port_manager.c:133] Port admin-enabled: port_idx=3
+[26-03-26 21:21:26] [DEBUG] [port_mgr] [port_manager.c:107] MSG_GET_PORT_INFO: Returning info for port_idx-2
+[26-03-26 21:21:26] [DEBUG] [port_mgr] [port_manager.c:107] MSG_GET_PORT_INFO: Returning info for port_idx-0
+[26-03-26 21:21:26] [INFO] [conn_mgr] [conn_manager.c:250] Connection 'c1' created: client port-3 → line port-1
+[26-03-26 21:21:29] [ERROR] [cli] [common.c:136] recvfrom on port 5002 failed
+[26-03-26 21:21:29] [ERROR] [cli] [cli.c:61] Request timed out — is the service running?
+[26-03-26 21:21:29] [ERROR] [cli] [cli.c:315] send_and_receive failed to send message to CONN_MANAGER
+[26-03-26 21:21:36] [DEBUG] [port_mgr] [port_manager.c:107] MSG_GET_PORT_INFO: Returning info for port_idx-3
+[26-03-26 21:21:36] [DEBUG] [port_mgr] [port_manager.c:107] MSG_GET_PORT_INFO: Returning info for port_idx-1
+[26-03-26 21:21:36] [INFO] [conn_mgr] [conn_manager.c:250] Connection 'c2' created: client port-4 → line port-2
+[26-03-26 21:21:39] [ERROR] [cli] [common.c:136] recvfrom on port 5002 failed
+[26-03-26 21:21:39] [ERROR] [cli] [cli.c:61] Request timed out — is the service running?
+[26-03-26 21:21:39] [ERROR] [cli] [cli.c:315] send_and_receive failed to send message to CONN_MANAGER
+[26-03-26 21:21:44] [DEBUG] [port_mgr] [port_manager.c:107] MSG_GET_PORT_INFO: Returning info for port_idx-0
+[26-03-26 21:21:44] [DEBUG] [port_mgr] [port_manager.c:107] MSG_GET_PORT_INFO: Returning info for port_idx-1
+[26-03-26 21:21:44] [DEBUG] [prot_mgr] [protection_manager.c:82] refresh_entries: tracking 2 connection(s)
+[26-03-26 21:21:44] [INFO] [prot_mgr] [protection_manager.c:220] Protection group created: port-1 <-> port-2 (2 connection(s) tracked)
+[26-03-26 21:21:53] [INFO] [port_mgr] [port_manager.c:72] port_idx=0 oper_state changed: UP -> DOWN (admin=enabled fault=active)
+[26-03-26 21:21:53] [INFO] [conn_mgr] [conn_manager.c:64] Port-1 operational_state changed to DOWN
+[26-03-26 21:21:53] [DEBUG] [port_mgr] [port_manager.c:62] Notified conn-mgr: port_idx=0, operational_state=DOWN
+[26-03-26 21:21:53] [INFO] [prot_mgr] [protection_manager.c:131] Port-1 went DOWN -- triggering protection switchover
+[26-03-26 21:21:53] [INFO] [port_mgr] [port_manager.c:160] Injected fault: port_idx=0
+[26-03-26 21:21:53] [WARN] [conn_mgr] [conn_manager.c:78] Connection c1 DOWN (port-1 went down)
+[26-03-26 21:21:53] [INFO] [conn_mgr] [conn_manager.c:321] MSG_SWITCH_CONN_LINE: c1 line port 1 -> 2 (now UP)
+[26-03-26 21:22:00] [ERROR] [cli] [common.c:136] recvfrom on port 5004 failed
+[26-03-26 21:22:00] [ERROR] [cli] [cli.c:61] Request timed out — is the service running?
+>>>>>>> Stashed changes
+[26-03-26 21:31:01] [INFO] [conn_mgr] [conn_manager.c:14] Initialize connection table
+[26-03-26 21:31:01] [INFO] [port_mgr] [port_manager.c:29] Initialized ports
+[26-03-26 21:31:01] [INFO] [prot_mgr] [protection_manager.c:316] Protection Manager starting on UDP port 5004

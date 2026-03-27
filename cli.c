@@ -496,10 +496,104 @@ void cmd_help(void)
     printf("  start traffic [--client <id>] [--line <id>] Start traffic for specified ports (ports that are not specified will be randomized)\n");
     printf("  stop traffic                                Stop frame generation\n");
     printf("\n");
+    printf("  set protection group                        Create a 1+1 protection group (port-1 & port-2)\n");
+    printf("  delete protection group                     Remove the protection group\n");
+    printf("  show protection group                       Show protection group state and switchover history\n");
+    printf("\n");
     printf("  help                                        Show this help message\n");
     printf("  exit                                        Quit the CLI\n");
     printf("\n");
 }
+
+void cmd_set_protection_group(void)
+{
+    udp_message_t req = {0};
+    req.msg_type = MSG_SET_PROTECTION;
+    req.status   = STATUS_REQUEST;
+ 
+    udp_message_t resp = {0};
+    if (!send_and_receive(&req, &resp, PROTECTION_MGR_UDP))
+    {
+        fprintf(stderr, "[ERROR] Failed to communicate with protection manager\n");
+        return;
+    }
+ 
+    if (resp.status == STATUS_SUCCESS)
+        printf("[OK] Protection group created: port-1 <-> port-2\n");
+    else
+        print_cmd_error(&resp, "set protection group", "port-1/port-2");
+}
+ 
+void cmd_delete_protection_group(void)
+{
+    udp_message_t req = {0};
+    req.msg_type = MSG_DELETE_PROTECTION;
+    req.status   = STATUS_REQUEST;
+ 
+    udp_message_t resp = {0};
+    if (!send_and_receive(&req, &resp, PROTECTION_MGR_UDP))
+    {
+        fprintf(stderr, "[ERROR] Failed to communicate with protection manager\n");
+        return;
+    }
+ 
+    if (resp.status == STATUS_SUCCESS)
+        printf("[OK] Protection group deleted\n");
+    else
+        print_cmd_error(&resp, "delete protection group", "");
+}
+ 
+void cmd_show_protection_group(void)
+{
+    udp_message_t req = {0};
+    req.msg_type = MSG_GET_PROTECTION;
+    req.status   = STATUS_REQUEST;
+ 
+    udp_message_t resp = {0};
+    if (!send_and_receive(&req, &resp, PROTECTION_MGR_UDP))
+    {
+        fprintf(stderr, "[ERROR] Failed to communicate with protection manager\n");
+        return;
+    }
+ 
+    if (resp.status != STATUS_SUCCESS)
+    {
+        fprintf(stderr, "[ERROR] Protection manager returned failure\n");
+        return;
+    }
+ 
+    const udp_get_protection_reply_t *r =
+        (const udp_get_protection_reply_t *)resp.payload;
+ 
+    printf("\n");
+    printf("  Protection Group: %s\n", r->active ? "ACTIVE" : "INACTIVE");
+    printf("  Members:          port-1 <-> port-2\n");
+    printf("  Switchovers:      %u\n", r->switchover_count);
+ 
+    if (r->entry_count == 0)
+    {
+        printf("  (no connections tracked)\n");
+    }
+    else
+    {
+        printf("\n");
+        printf("  %-10s  %-13s  %-12s  %s\n",
+               "Connection", "Original Line", "Current Line", "State");
+        printf("  %-10s  %-13s  %-12s  %s\n",
+               "----------", "-------------", "------------", "----------");
+        for (int i = 0; i < r->entry_count; i++)
+        {
+            const udp_prot_entry_t *e = &r->entries[i];
+            printf("  %-10s  port-%-9d  port-%-8d  %s\n",
+                   e->conn_name,
+                   e->original_line,
+                   e->current_line,
+                   e->switched ? "switched" : "normal");
+        }
+    }
+    printf("\n");
+}
+
 
 // ============================================================================
 //  Command Parser
@@ -568,6 +662,10 @@ bool parse_and_execute(char *input)
         {
             cmd_show_traffic_stats();
         }
+        else if (strcmp(tokens[1], "protection") == 0 && token_count >= 3 && strcmp(tokens[2], "group") == 0)
+        {
+            cmd_show_protection_group();
+        }
         else if (strcmp(tokens[1], "logs") == 0)
         {
             // Parse optional --level and --service flags (order-independent)
@@ -590,11 +688,22 @@ bool parse_and_execute(char *input)
     }
 
     // ---- set port <id> ----
-    if (strcmp(tokens[0], "set") == 0 && token_count >= 3 &&
-        strcmp(tokens[1], "port") == 0)
+    if (strcmp(tokens[0], "set") == 0 && token_count >= 3)
     {
-        uint8_t port_id = (uint8_t)atoi(tokens[2]);
-        cmd_set_port(port_id);
+        if (strcmp(tokens[1], "port") == 0)
+        {
+            uint8_t port_id = (uint8_t)atoi(tokens[2]);
+            cmd_set_port(port_id);
+        }
+        else if (strcmp(tokens[1], "protection") == 0 &&
+                 token_count >= 3 && strcmp(tokens[2], "group") == 0)
+        {
+            cmd_set_protection_group();
+        }
+        else
+        {
+            fprintf(stderr, "[ERROR] Unknown set command: %s\n", tokens[1]);
+        }
         return true;
     }
 
@@ -610,6 +719,10 @@ bool parse_and_execute(char *input)
         else if (strcmp(tokens[1], "connection") == 0)
         {
             cmd_delete_connection(tokens[2]);
+        }
+        else if (strcmp(tokens[1], "protection") == 0 && token_count >= 3 && strcmp(tokens[2], "group") == 0)
+        {
+            cmd_delete_protection_group();
         }
         else
         {

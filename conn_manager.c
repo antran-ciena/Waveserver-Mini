@@ -295,6 +295,33 @@ void handle_delete_conn(const udp_message_t *req, udp_message_t *resp)
     
 }
 
+/*
+ * MSG_SWITCH_CONN_LINE — called by Protection Manager to move a
+ * connection to a different line port without deleting/re-creating it.
+ * Also brings the connection UP on the new port.
+ */
+void handle_switch_conn_line(const udp_message_t *req, udp_message_t *resp)
+{
+    const udp_switch_conn_line_request_t *payload =
+        (const udp_switch_conn_line_request_t *)req->payload;
+ 
+    conn_t *conn = find_connection_by_name(payload->conn_name);
+    if (conn == NULL)
+    {
+        set_error_msg(resp, "connection not found");
+        LOG(LOG_ERROR, "MSG_SWITCH_CONN_LINE: '%s' not found", payload->conn_name);
+        return;
+    }
+ 
+    uint8_t old_line = conn->line_port;
+    conn->line_port          = payload->new_line_port;
+    conn->operational_state  = CONN_UP;
+    resp->status = STATUS_SUCCESS;
+ 
+    LOG(LOG_INFO, "MSG_SWITCH_CONN_LINE: %s line port %d -> %d (now UP)",
+        conn->conn_name, old_line, payload->new_line_port);
+}
+
 bool dispatch(const udp_message_t *req, udp_message_t *resp)
 {
     bool send_reply = false;
@@ -321,12 +348,16 @@ bool dispatch(const udp_message_t *req, udp_message_t *resp)
         handle_delete_conn(req, resp);
         send_reply = true;
         break;
+    case MSG_SWITCH_CONN_LINE:
+        handle_switch_conn_line(req, resp);
+        send_reply = true;
+        break;
     default:
         LOG(LOG_WARN, "Unknown msg_type: %d", req->msg_type);
         break;
-    }
 
     return send_reply;
+    }
 }
 
 int main()
