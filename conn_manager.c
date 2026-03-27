@@ -149,8 +149,7 @@ void handle_create_connection(const udp_message_t *req, udp_message_t *resp)
     uint8_t client_port = payload->client_port;
     uint8_t line_port = payload->line_port;
 
-    resp->status = STATUS_FAILURE;
-
+    // name checks
     size_t name_len = strlen(payload->name);
     if (name_len == 0 || name_len >= MAX_CONN_NAME_CHARACTER)
     {
@@ -166,6 +165,7 @@ void handle_create_connection(const udp_message_t *req, udp_message_t *resp)
         return;
     }
 
+    // port checks
     if (client_port < MIN_CLIENT_PORT || client_port >= MIN_CLIENT_PORT + MAX_CLIENT_PORTS ||
         line_port < MIN_LINE_PORT || line_port >= MIN_LINE_PORT + MAX_LINE_PORTS)
     {
@@ -186,6 +186,7 @@ void handle_create_connection(const udp_message_t *req, udp_message_t *resp)
         }
     }
 
+    // find free slot
     int free_idx = -1;
     for (int i = 0; i < MAX_CONNS; i++)
     {
@@ -203,6 +204,7 @@ void handle_create_connection(const udp_message_t *req, udp_message_t *resp)
         return;
     }
 
+    // check if ports are up
     port_t client_port_info = {0};
     port_t line_port_info = {0};
     if (!get_port_info(client_port, &client_port_info) || !get_port_info(line_port, &line_port_info))
