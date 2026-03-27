@@ -65,8 +65,8 @@ void notify_port_state(uint8_t port_id)
 
 void recalculate_oper_state(port_t *port) {
     port_state_t prev_state = port->operational_state;
-    port->operational_state = (port->admin_enabled || !port->fault_active) ? PORT_UP : PORT_DOWN;
-    port->admin_enabled = !port->admin_enabled;
+    port->operational_state = (port->admin_enabled && !port->fault_active) ? PORT_UP : PORT_DOWN;
+    //port->admin_enabled = !port->admin_enabled;
     
     if (port->operational_state != prev_state) {
         LOG(LOG_INFO, "port_idx=%d oper_state changed: %s -> %s (admin=%s fault=%s)",
@@ -176,6 +176,22 @@ bool dispatch(const udp_message_t *req, udp_message_t *resp)
     return send_reply;
 }
 
+void log_connection_status(){
+    LOG(LOG_INFO, "----------------------------- HEALTH CHECK -----------------------------");
+    for (int c = 1; c < 7; c++){
+
+        port_t* curr_port = ports+c-1;
+
+        char* admin_out = curr_port->admin_enabled ? "Enabled" : "Disabled";
+        
+        char* fault_out = curr_port->fault_active ? "Faulty" : "None";
+
+        char* type = c < 3 ? "LINE" : "CLIENT";
+
+        LOG(LOG_INFO, "port_idx=%d (%s) admin=%s fault=%s oper=%s recieved=%d dropped=%d", c, type, admin_out, fault_out, curr_port->operational_state, curr_port->rx_frames, curr_port->dropped_frames);
+    }
+}
+
 int main()
 {
     log_init(SERVICE_NAME);
@@ -215,6 +231,7 @@ int main()
             }
         }
 
+        log_connection_status();
         // TODO: F6 — Health Check Cron Job (/2 pts)
         //
         // The health check should walk through every port and log a
@@ -227,6 +244,7 @@ int main()
         // [26-03-24 10:29:48] [INFO] [port_mgr] [port_manager.c:235] port_idx=3 (CLIENT) admin=Disabled fault=None oper=DOWN received=0 dropped=0
         // [26-03-24 10:29:48] [INFO] [port_mgr] [port_manager.c:235] port_idx=4 (CLIENT) admin=Disabled fault=None oper=DOWN received=0 dropped=1
         // [26-03-24 10:29:48] [INFO] [port_mgr] [port_manager.c:235] port_idx=5 (CLIENT) admin=Disabled fault=None oper=DOWN received=0 dropped=1
+
     }
     return 0;
 }
