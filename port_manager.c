@@ -140,7 +140,10 @@ void handle_delete_port(const udp_message_t *request, udp_message_t *response)
     if (!port) return;
 
     port->admin_enabled = false;
+    port->fault_active = false;
     recalculate_oper_state(port);
+    // Ensure port state DOWN is notified to connection manager
+    notify_port_state(port->id);
     LOG(LOG_INFO, "Port admin-disabled: port_idx=%d", port->id - 1);
     response->status = STATUS_SUCCESS;
 }
