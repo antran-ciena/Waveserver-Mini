@@ -1,0 +1,69 @@
+[26-03-26 19:21:08] [INFO] [conn_mgr] [conn_manager.c:13] Initialize connection table
+[26-03-26 19:21:08] [INFO] [traffic_mgr] [traffic_manager.c:16] Traffic stats initialized
+[26-03-26 19:21:08] [INFO] [port_mgr] [port_manager.c:29] Initialized ports
+[26-03-26 19:21:13] [INFO] [cli] [cli.c:665] CLI started
+[26-03-26 19:21:18] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-0
+[26-03-26 19:21:18] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-1
+[26-03-26 19:21:18] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-2
+[26-03-26 19:21:18] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-3
+[26-03-26 19:21:18] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-4
+[26-03-26 19:21:18] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-5
+[26-03-26 19:21:22] [INFO] [port_mgr] [port_manager.c:76] port_idx=0 oper_state changed: DOWN -> UP (admin=enabled fault=none)
+[26-03-26 19:21:22] [DEBUG] [port_mgr] [port_manager.c:63] Notified conn-mgr: port_idx=0, operational_state=UP
+[26-03-26 19:21:22] [INFO] [conn_mgr] [conn_manager.c:65] Port-1 operational_state changed to UP
+[26-03-26 19:21:22] [INFO] [port_mgr] [port_manager.c:132] Port admin-enabled: port_idx=0
+[26-03-26 19:21:22] [INFO] [port_mgr] [port_manager.c:76] port_idx=0 oper_state changed: UP -> DOWN (admin=disabled fault=none)
+[26-03-26 19:21:22] [DEBUG] [port_mgr] [port_manager.c:63] Notified conn-mgr: port_idx=0, operational_state=DOWN
+[26-03-26 19:21:22] [INFO] [conn_mgr] [conn_manager.c:65] Port-1 operational_state changed to DOWN
+[26-03-26 19:21:22] [INFO] [port_mgr] [port_manager.c:143] Port admin-disabled: port_idx=0
+[26-03-26 19:21:28] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-0
+[26-03-26 19:21:28] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-1
+[26-03-26 19:21:28] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-2
+[26-03-26 19:21:28] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-3
+[26-03-26 19:21:28] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-4
+[26-03-26 19:21:28] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-5
+[26-03-26 19:25:01] [INFO] [port_mgr] [port_manager.c:29] Initialized ports
+[26-03-26 19:25:01] [INFO] [traffic_mgr] [traffic_manager.c:16] Traffic stats initialized
+[26-03-26 19:25:01] [INFO] [conn_mgr] [conn_manager.c:13] Initialize connection table
+[26-03-26 19:25:09] [INFO] [cli] [cli.c:665] CLI started
+[26-03-26 19:25:18] [INFO] [port_mgr] [port_manager.c:76] port_idx=0 oper_state changed: DOWN -> UP (admin=enabled fault=none)
+[26-03-26 19:25:18] [DEBUG] [port_mgr] [port_manager.c:63] Notified conn-mgr: port_idx=0, operational_state=UP
+[26-03-26 19:25:18] [INFO] [conn_mgr] [conn_manager.c:65] Port-1 operational_state changed to UP
+[26-03-26 19:25:18] [INFO] [port_mgr] [port_manager.c:132] Port admin-enabled: port_idx=0
+[26-03-26 19:25:18] [INFO] [port_mgr] [port_manager.c:76] port_idx=0 oper_state changed: UP -> DOWN (admin=disabled fault=none)
+[26-03-26 19:25:18] [DEBUG] [port_mgr] [port_manager.c:63] Notified conn-mgr: port_idx=0, operational_state=DOWN
+[26-03-26 19:25:18] [INFO] [port_mgr] [port_manager.c:143] Port admin-disabled: port_idx=0
+[26-03-26 19:25:18] [INFO] [conn_mgr] [conn_manager.c:65] Port-1 operational_state changed to DOWN
+[26-03-26 19:25:21] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-0
+[26-03-26 19:25:21] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-1
+[26-03-26 19:25:21] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-2
+[26-03-26 19:25:21] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-3
+[26-03-26 19:25:21] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-4
+[26-03-26 19:25:21] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-5
+[26-03-26 19:27:00] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-0
+[26-03-26 19:27:00] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-1
+[26-03-26 19:27:00] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-2
+[26-03-26 19:27:00] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-3
+[26-03-26 19:27:00] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-4
+[26-03-26 19:27:00] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-5
+[26-03-26 19:27:07] [INFO] [conn_mgr] [conn_manager.c:13] Initialize connection table
+[26-03-26 19:27:07] [INFO] [traffic_mgr] [traffic_manager.c:16] Traffic stats initialized
+[26-03-26 19:27:07] [INFO] [port_mgr] [port_manager.c:29] Initialized ports
+[26-03-26 19:27:11] [INFO] [cli] [cli.c:665] CLI started
+[26-03-26 19:27:14] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-0
+[26-03-26 19:27:14] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-1
+[26-03-26 19:27:14] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-2
+[26-03-26 19:27:14] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-3
+[26-03-26 19:27:14] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-4
+[26-03-26 19:27:14] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-5
+[26-03-26 19:27:16] [INFO] [port_mgr] [port_manager.c:76] port_idx=0 oper_state changed: DOWN -> UP (admin=enabled fault=none)
+[26-03-26 19:27:16] [DEBUG] [port_mgr] [port_manager.c:63] Notified conn-mgr: port_idx=0, operational_state=UP
+[26-03-26 19:27:16] [INFO] [conn_mgr] [conn_manager.c:65] Port-1 operational_state changed to UP
+[26-03-26 19:27:16] [INFO] [port_mgr] [port_manager.c:132] Port admin-enabled: port_idx=0
+[26-03-26 19:27:19] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-0
+[26-03-26 19:27:19] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-1
+[26-03-26 19:27:19] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-2
+[26-03-26 19:27:19] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-3
+[26-03-26 19:27:19] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-4
+[26-03-26 19:27:19] [DEBUG] [port_mgr] [port_manager.c:106] MSG_GET_PORT_INFO: Returning info for port_idx-5
+[26-03-26 19:40:08] [ERROR] [conn_mgr] [conn_manager.c:188] could not find connection with that name (name=doesnotexist)
