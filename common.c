@@ -4,6 +4,7 @@
 #include <string.h>
 #include <unistd.h>
 
+
 #define LOG_FILE "wsmini.log"
 #define MAX_LOG_MSG_SIZE (718)
 
@@ -52,6 +53,7 @@ void log_write(log_level_t level,
     if (f)
     {
         fputs(log_line, f);
+        fclose(f);
     }
     else
     {
